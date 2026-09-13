@@ -170,6 +170,91 @@
   const PROJECTS = window.PROJECTS || {};
 
   /* ---------------------------------------------------------------------------
+     Case-study section tabs
+     Some case studies split their body into several sections shown as filter
+     chips (Morpheus: general presentation / mobile app / website). Called after
+     the modal body is injected, so it re-binds on every open.
+
+     Pausing video on hidden panels matters: a <video> keeps playing audio when
+     its container is display:none, which would otherwise bleed across tabs.
+  --------------------------------------------------------------------------- */
+  /* Start a muted loop video, retrying once it has buffered.
+     Calling play() on a freshly injected <video> whose readyState is still 0
+     rejects, and the browser does not honour the autoplay attribute for
+     elements inserted via innerHTML after load — so without the retry the
+     background videos sit frozen on their first frame. */
+  function playWhenReady(video) {
+    const attempt = () => {
+      const p = video.play();
+      return p && typeof p.catch === "function" ? p : null;
+    };
+    const p = attempt();
+    if (p) {
+      p.catch(() => {
+        video.addEventListener("canplay", attempt, { once: true });
+      });
+    }
+  }
+
+  function initCaseStudyTabs(root) {
+    const tablist = root.querySelector("[data-cs-tablist]");
+    if (!tablist) return;
+
+    const tabs   = Array.from(tablist.querySelectorAll("[data-cs-tab]"));
+    const panels = Array.from(root.querySelectorAll("[data-cs-panel]"));
+    if (!tabs.length || !panels.length) return;
+
+    function select(name, { focus = false } = {}) {
+      tabs.forEach((tab) => {
+        const on = tab.dataset.csTab === name;
+        tab.setAttribute("aria-selected", on ? "true" : "false");
+        tab.tabIndex = on ? 0 : -1;
+        if (on && focus) tab.focus();
+      });
+
+      panels.forEach((panel) => {
+        const on = panel.dataset.csPanel === name;
+        panel.hidden = !on;
+
+        panel.querySelectorAll("video").forEach((v) => {
+          if (!on) {
+            // A <video> keeps playing (and keeps its audio) inside a
+            // display:none container, so hidden panels must be paused.
+            if (!v.paused) v.pause();
+          } else if (v.autoplay && v.paused && !prefersReducedMotion.matches) {
+            // Re-arm the looping background videos we paused on the way out;
+            // without this they stay frozen when the viewer comes back.
+            playWhenReady(v);
+          }
+        });
+      });
+    }
+
+    tablist.addEventListener("click", (e) => {
+      const tab = e.target.closest("[data-cs-tab]");
+      if (tab) select(tab.dataset.csTab);
+    });
+
+    // Roving-tabindex arrow-key navigation, per the WAI-ARIA tabs pattern.
+    tablist.addEventListener("keydown", (e) => {
+      const i = tabs.findIndex((t) => t.getAttribute("aria-selected") === "true");
+      if (i < 0) return;
+      let next = null;
+      if (e.key === "ArrowRight") next = tabs[(i + 1) % tabs.length];
+      else if (e.key === "ArrowLeft") next = tabs[(i - 1 + tabs.length) % tabs.length];
+      else if (e.key === "Home") next = tabs[0];
+      else if (e.key === "End") next = tabs[tabs.length - 1];
+      if (next) {
+        e.preventDefault();
+        select(next.dataset.csTab, { focus: true });
+      }
+    });
+
+    const initial = tabs.find((t) => t.getAttribute("aria-selected") === "true") || tabs[0];
+    select(initial.dataset.csTab);
+  }
+
+  /* ---------------------------------------------------------------------------
      Module: video modal
      A lightbox video player (process/Instagram videos) opened via the
      "open-video-modal" custom event — kept decoupled from whichever UI
@@ -332,6 +417,9 @@
         ? `<img class="modal__hero-img" src="${data.image}" alt="${data.name}" />`
         : "";
       bodyEl.innerHTML = data.body || "";
+
+      // Wire up section tabs (filter chips) if this case study uses them
+      initCaseStudyTabs(bodyEl);
 
       // Wire up old-app hover preview if present in this modal
       const hoverTrigger = bodyEl.querySelector(".cs-old-app-hover__trigger");
