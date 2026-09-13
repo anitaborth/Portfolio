@@ -1,0 +1,14 @@
+/* Splash Cursor — fluid WebGL cursor effect (adapted from React Bits)
+   https://www.reactbits.dev/tools/background-studio?bg=splash-cursor
+   Canvas is fixed full-viewport, sits behind all page content, and never
+   intercepts pointer events. */
+#splash-cursor-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  display: block;
+}

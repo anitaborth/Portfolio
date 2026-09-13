@@ -79,6 +79,8 @@
   --font-sans: "Switzer", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --fw-light: 300;
   --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
   --fw-bold: 700;
 
   --fs-label: 0.6rem;    /* 12px → 9.6px  (-20%) */
@@ -104,6 +106,7 @@
   --border-width: 1px;
   --max-width: 1512px;          /* Figma canvas width             */
   --gutter: 30px;               /* horizontal page padding (Figma: px-[30px]) */
+  --content-narrow-width: 860px; /* shared measure for the hero copy and Work Experience table */
   --header-height: 61px;
   --band-height: 41px;
   --radius-pill: 100px;
@@ -378,6 +381,7 @@ main {
   flex-direction: column;
   font-size: 24px;
   color: #000000;
+  max-width: var(--content-narrow-width);
 }
 .hero__bio-row {
   display: flex;
@@ -431,6 +435,13 @@ main {
   transform: rotate(-45deg);
 }
 
+/* --- Hero visual: MetaBalls accent, right of the bio text ---------------- */
+.hero__visual {
+  flex: 0 0 clamp(220px, 26vw, 380px);
+  height: clamp(220px, 26vw, 380px);
+  align-self: center;
+}
+
 /* --- "OPEN TO WORK" marquee ---------------------------------------------- */
 .marquee {
   margin-block: 0;
@@ -470,7 +481,11 @@ main {
   to   { transform: translateX(-50%); } /* one duplicated half */
 }
 
-/* --- Work experience ------------------------------------------------------ */
+/* --- Work experience --------------------------------------------------------
+   Editorial layout referencing alejandromoscoloni.com/profile: full-canvas
+   width (independent of the narrower hero measure), a 3-column CSS Grid
+   (years / role / company — each its own column, nothing stacked), compact
+   14px/20px rows, single dividers between rows. ---------------------------- */
 .experience {
   padding-block: 5rem 6rem;
 }
@@ -484,108 +499,263 @@ main {
   margin-bottom: 1.5rem;
 }
 
+/* Section-specific label size/weight — kept separate from the shared
+   .section-label so other pages' labels (e.g. "Curated Work") are untouched. */
+.experience__label {
+  font-size: 14px;
+  font-weight: var(--fw-medium);
+}
+
+/* Independent of .container's narrower max-width — spans almost the full
+   canvas with its own fixed page margins. */
+.experience__wide {
+  width: calc(100% - 80px);
+  max-width: 1600px;
+  margin-inline: auto;
+}
+
 .experience__list {
   display: flex;
   flex-direction: column;
-  gap: var(--space-300);
 }
 
-/* Experience item — 7-column grid: period / gap / role / gap / desc / gap / icon
-   Equal 1fr gaps keep role & desc columns perfectly aligned across all rows */
+/* Three independent columns: years / role / company. Matches
+   alejandromoscoloni.com/profile's own technique, confirmed by inspecting
+   its live DOM: a flex/grid row of THREE EQUAL-WIDTH columns (not weighted
+   by content, e.g. not 18/42/40) with one small, consistent gap between
+   every column and left-aligned text in each. The visual "even rhythm"
+   comes from the columns themselves being identical widths, not from
+   tuning the gap to each row's exact text length — the reference has the
+   same large trailing whitespace after short values that a first glance
+   might suggest it doesn't, it just reads as balanced because the three
+   divisions are symmetrical. Reference values (verified directly): 3
+   equal ~510px columns, 10px gap, 14px/500 text — matched here 1:1 since
+   this table is nearly the same total width and font size. */
 .experience-item {
   display: grid;
-  grid-template-columns: auto 1fr 146px 1fr 425px 1fr 16px;
-  align-items: start;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 10px;
+  align-items: center;
+  justify-items: start;
   border-top: var(--border-width) solid var(--color-border);
-  padding-top: var(--space-300);
-  padding-bottom: var(--space-300);
+  padding-block: 1.125rem;
 }
+.experience-item:first-child {
+  border-top: none;
+}
+
 .experience-item__period {
-  grid-column: 1;
   font-size: 14px;
+  line-height: 20px;
   font-weight: var(--fw-regular);
-  color: #545454;
-  text-transform: uppercase;
-  line-height: var(--lh-tight);
+  color: #000000;
   white-space: nowrap;
-}
-.experience-item__role {
-  grid-column: 3;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  text-transform: capitalize;
 }
 .experience-item__title {
   font-size: 14px;
+  line-height: 20px;
   font-weight: var(--fw-regular);
   color: #000000;
-  line-height: var(--lh-tight);
 }
 .experience-item__company {
   font-size: 14px;
-  font-weight: var(--fw-bold);
+  line-height: 20px;
+  font-weight: var(--fw-semibold);
   color: #000000;
-  line-height: var(--lh-tight);
-}
-.experience-item__desc {
-  grid-column: 5;
-  font-size: 14px;
-  font-weight: var(--fw-light);
-  color: #4b4b4b;
-  line-height: 1.3;
-  margin: 0;
-}
-.experience-item__icon {
-  grid-column: 7;
-  display: block;
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
 }
 
-/* --- Experiments empty state --------------------------------------------- */
+/* =============================================================================
+   Experiments — monthly calendar archive
+   A grid of daily "cards": populated days show a thumbnail (image or a CSS
+   gradient placeholder skin); empty days stay static. Populated-day cards
+   animate into place on load and respond to hover via the Masonry-style
+   treatment in js/masonry.js (see css/masonry.css for that layer — this
+   block only owns the calendar grid's own box/type/color). Reuses the same
+   tokens/typography/motion language as the rest of the site — no new
+   visual system introduced.
+============================================================================= */
 .experiments {
   flex: 1;
+  padding-block: 4rem 6rem;
+}
+.experiments__inner {
   display: flex;
   flex-direction: column;
-  padding-block: 5rem 6rem;
 }
 
-.experiments__empty {
-  flex: 1;
+.experiments__header {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1.25rem;
-  padding-block: 4rem;
+  gap: 0.75rem;
+  max-width: 640px;
+  margin-bottom: 3rem;
+}
+.experiments__month {
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  margin: 0;
+}
+.experiments__intro {
+  font-size: var(--fs-intro);
+  font-weight: var(--fw-light);
+  color: rgba(255, 255, 255, 0.6);
+  line-height: var(--lh-relaxed);
+  margin: 0;
+}
+
+/* --- Weekday header row --------------------------------------------------- */
+.calendar__weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  margin-bottom: 0.75rem;
+}
+.calendar__weekdays span {
+  font-size: 12px;
+  font-weight: var(--fw-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.4);
   text-align: center;
 }
 
-.experiments__icon {
-  width: 48px;
-  height: 48px;
-  color: var(--color-text-label);
+/* --- Day grid -------------------------------------------------------------- */
+.calendar__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+.calendar__cell {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.calendar__cell--pad {
+  visibility: hidden;
+}
+.calendar__cell--empty {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 10px;
+}
+.calendar__cell--empty .calendar__daynum {
+  position: static;
+  color: rgba(255, 255, 255, 0.3);
 }
 
-.experiments__subtitle {
-  font-size: var(--fs-base);
-  color: var(--color-text-muted);
-  line-height: var(--lh-relaxed);
-  max-width: 480px;
-  margin: 0;
+.calendar__day {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  cursor: default;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  /* Initial state for the Masonry-style entrance animation in js/masonry.js
+     — GSAP animates opacity/transform/filter from here to their natural
+     values, so this only matters if JS never runs (no-JS/prefers-reduced-motion
+     fallback still needs the card visible). */
+  opacity: 1;
+}
+.calendar__day:hover,
+.calendar__day:focus-visible {
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+.calendar__day-media {
+  position: absolute;
+  inset: 0;
+}
+.calendar__day-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.65) 100%);
+}
+.calendar__daynum {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 13px;
+  font-weight: var(--fw-medium);
+  color: rgba(255, 255, 255, 0.85);
+}
+.calendar__tag {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-size: 11px;
+  font-weight: var(--fw-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #ffffff;
 }
 
-.experiments__subtitle a {
-  color: var(--color-text);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  transition: opacity 0.2s var(--ease);
+/* --- Placeholder gradient "skins" ------------------------------------------
+   DEV PLACEHOLDER ONLY — stand in for real experiment thumbnails until
+   those assets exist. Swap a real <img> into .calendar__day-media and drop
+   the skin-* class once an asset is ready; nothing else needs to change. */
+.skin-exploration { background: linear-gradient(135deg, #c95021, #ff9756); }
+.skin-render { background: linear-gradient(135deg, #1b2140, #4a3f8f); }
+.skin-branding { background: linear-gradient(135deg, #1f4d3d, #aaeec5); }
+.skin-animation { background: linear-gradient(135deg, #7a2340, #ff9756); }
+.skin-type { background: linear-gradient(135deg, #eee7aa, #c9a83a); }
+.skin-ui { background: linear-gradient(135deg, #101520, #1f39ae); }
+
+@media (max-width: 900px) {
+  .calendar__grid {
+    gap: 6px;
+  }
+  .calendar__cell {
+    border-radius: 10px;
+  }
 }
 
-.experiments__subtitle a:hover {
-  opacity: 0.6;
+@media (max-width: 640px) {
+  .calendar__weekdays {
+    display: none;
+  }
+  .calendar__grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .calendar__cell--pad {
+    display: none;
+  }
+  .calendar__cell--empty {
+    display: none;
+  }
+  .calendar__cell {
+    aspect-ratio: auto;
+    border-radius: 0;
+  }
+  .calendar__day {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    align-items: center;
+    gap: 1rem;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-block: 0.875rem;
+  }
+  .calendar__day-media {
+    position: static;
+    width: 64px;
+    height: 64px;
+    border-radius: 10px;
+    grid-row: 1 / 3;
+  }
+  .calendar__day-scrim {
+    display: none;
+  }
+  .calendar__daynum {
+    position: static;
+    grid-column: 2;
+    grid-row: 1;
+    color: rgba(255, 255, 255, 0.5);
+  }
+  .calendar__tag {
+    position: static;
+    grid-column: 2;
+    grid-row: 2;
+    color: #ffffff;
+  }
 }
 
 /* --- Hero zone: white layout container (header + hero + marquee) ---------- */
@@ -876,6 +1046,10 @@ main {
     min-height: 0;
     padding-block: 3rem;
   }
+  .hero__visual {
+    flex-basis: clamp(180px, 24vw, 260px);
+    height: clamp(180px, 24vw, 260px);
+  }
   .marquee {
     margin-block: 0;
   }
@@ -886,6 +1060,10 @@ main {
   :root {
     --gutter: 16px;
     --fs-intro: 0.9rem; /* 18px → 14.4px (-20%) */
+  }
+
+  .hero__visual {
+    display: none;
   }
 
   /* Collapse primary navigation into a toggle panel */
@@ -918,10 +1096,16 @@ main {
     transform: translateY(-3.5px) rotate(-45deg);
   }
 
-  /* Stack experience rows on mobile */
+  /* Stack experience rows on tablet/mobile — years, then role, then company,
+     preserving the same reading order and hierarchy as desktop. */
   .experience-item {
     grid-template-columns: 1fr;
+    align-items: start;
     gap: 0.25rem;
+    padding-block: 1rem;
+  }
+  .experience__wide {
+    width: calc(100% - 48px);
   }
 
   /* Curated Work — mobile */
@@ -1119,15 +1303,37 @@ main {
 [data-optional] { display: none; }
 [data-optional].is-visible { display: flex; flex-direction: column; gap: 1px; }
 
+/* Primary CTA link — shared across every case study (project links, video
+   links, App Store links, prototype links, and future ones). Combine with a
+   layout-specific class (font-size, spacing) rather than overriding color here. */
+.cta-link {
+  color: #957de2;
+  transition: color 0.15s;
+}
+.cta-link:hover { color: #7a66b9; }
+
 .modal__project-link {
   font-size: 13px;
   font-weight: 700;
-  color: #000;
   text-decoration: underline;
   text-underline-offset: 3px;
-  transition: opacity 0.15s;
 }
-.modal__project-link:hover { opacity: 0.6; }
+
+.modal__qr-code {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  background: #fff;
+  padding: 8px;
+  display: block;
+}
+.modal__qr-caption {
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 1.5;
+  margin: 0;
+}
 
 /* ── Content column ──────────────────────────────── */
 .modal__content {
@@ -1153,6 +1359,73 @@ main {
   flex-direction: column;
   gap: 60px;
   padding-bottom: 60px;
+}
+
+/* =============================================================================
+   Video Modal — lightbox for process/Instagram videos, opened from the
+   sidebar. Sits above the project modal (z-index 900) and shares its
+   fade + scale motion language.
+============================================================================= */
+.video-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 950;
+  background: rgba(0, 0, 0, 0.75);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.video-modal-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.video-modal {
+  position: relative;
+  width: 100%;
+  max-width: min(90vw, 420px);
+  transform: translateY(16px) scale(0.96);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.video-modal-overlay.is-open .video-modal {
+  transform: translateY(0) scale(1);
+}
+
+.video-modal__player {
+  width: 100%;
+  max-height: 86vh;
+  aspect-ratio: 9 / 16;
+  border-radius: 16px;
+  display: block;
+  background: #000;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
+}
+
+.video-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.55);
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s, opacity 0.15s;
+}
+.video-modal__close:hover { background: rgba(0, 0, 0, 0.75); }
+
+@media (max-width: 640px) {
+  .video-modal-overlay { padding: 16px; }
+  .video-modal { max-width: 100%; }
 }
 
 /* =============================================================================
@@ -1252,6 +1525,35 @@ main {
   display: block;
 }
 
+/* Photo quad — four-image showcase grid in a navy frame (Figma: node 56-2527) */
+.cs-photo-quad {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-100);
+  padding: var(--space-100);
+  background: #101c6b;
+  border-radius: 16px;
+}
+.cs-photo-quad img {
+  width: 100%;
+  aspect-ratio: 893 / 788;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+.cs-photo-video {
+  margin-top: 30px;
+}
+.cs-photo-video video {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  border-radius: 20px;
+  display: block;
+}
+
 /* Design-process image */
 .cs-process-img {
   width: 100%;
@@ -1265,6 +1567,19 @@ main {
   display: flex;
   flex-direction: column;
   gap: 40px;
+}
+/* Neutralize .cs-full-img's own margin-top when it's a flex child here —
+   the block's 40px `gap` already provides that spacing, so without this the
+   two stack (40 + 40 = 80px) whenever a feature has one or more full-width
+   screenshots instead of a .cs-phone-cards pair. */
+.cs-feature-block > .cs-full-img {
+  margin-top: 0;
+}
+/* When two feature blocks are stacked inside the same accordion body (not
+   direct .modal__body children, so the 60px flex-gap rhythm doesn't reach
+   them) — reuse that same 60px value to keep the vertical rhythm consistent. */
+.cs-accordion__body .cs-feature-block + .cs-feature-block {
+  margin-top: 60px;
 }
 .cs-feature-header {
   display: flex;
@@ -1427,6 +1742,29 @@ main {
   display: block;
 }
 
+/* Two full-height images side by side, each keeping its own natural aspect
+   ratio (no forced crop) — one side can be a vertical stack of two images
+   via .cs-img-stack. Used for image-heavy showcase sections (e.g. Arredo's
+   brand assets: palette + laptop mockup next to a tall site screenshot). */
+.cs-img-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+.cs-img-row img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+}
+.cs-img-row--square img { border-radius: 0; }
+.cs-img-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
 /* What I Learned */
 .cs-interview-grid {
   display: flex;
@@ -1492,9 +1830,9 @@ main {
   line-height: 1.48;
   margin: 0;
 }
-/* Etermax highlight cards use a purple/lilac palette (Morpheus keeps blue). */
-.cs-project .cs-blue-box { background: #ece3fa; }
-.cs-project .cs-blue-box p { color: #6a35d6; }
+/* Etermax highlight cards use amber to distinguish from the purple project accordions. */
+.cs-project .cs-blue-box { background: #fff3d6; }
+.cs-project .cs-blue-box p { color: #7c4d00; }
 
 /* Design Process */
 .cs-design-process {
@@ -1558,6 +1896,108 @@ main {
   width: 100%;
   height: auto;
   display: block;
+}
+
+/* Results / stat grid (Orion "The impact") — reuses the same dark-card
+   gradient language as .cs-ds-card / .cs-hypothesis-card / .cs-method-step. */
+.cs-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+.cs-stat {
+  background: linear-gradient(180deg, #0e152d 0%, #101520 100%);
+  border-radius: 16px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+.cs-stat-number {
+  font-size: 36px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+}
+.cs-stat-label {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.5;
+  margin: 0;
+}
+@media (max-width: 640px) {
+  .cs-stats-grid { grid-template-columns: 1fr; }
+}
+
+/* Component library grid — native HTML/CSS cards (Embassy's "One library,
+   every surface" capstone), styled after the same card language as
+   Embassy's own documentation (light card, pill tag, corner arrow). */
+.cs-comp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 40px;
+  padding: 24px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #f2f0fb 0%, #eef1fc 100%);
+}
+.cs-comp-card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.cs-comp-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cs-comp-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.45);
+  background: #f2f2f5;
+  border-radius: var(--radius-pill);
+  padding: 4px 10px;
+}
+.cs-comp-arrow {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #f2f2f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(0, 0, 0, 0.5);
+}
+.cs-comp-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #000;
+  margin: 0;
+}
+.cs-comp-desc {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 1.5;
+  margin: 0;
+}
+@media (max-width: 900px) {
+  .cs-comp-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .cs-comp-grid { grid-template-columns: 1fr; padding: 16px; }
 }
 
 /* Design Methodology grid */
@@ -1855,30 +2295,6 @@ main {
   text-transform: uppercase;
 }
 
-/* Instagram / video link section */
-.cs-instagram-section {
-  display: flex;
-  gap: 16px;
-  align-items: stretch;
-}
-.cs-instagram-card {
-  flex: 1;
-  background: #f5f5f5;
-  border-radius: 16px;
-  padding: 24px 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.cs-instagram-card a {
-  font-size: 16px;
-  font-weight: 700;
-  color: #000;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-.cs-instagram-card a:hover { color: #333; }
-
 /* Prototype CTA — attached below the AI feature image */
 .cs-prototype-cta {
   margin-top: 40px;
@@ -1905,61 +2321,64 @@ main {
 .cs-prototype-cta__link {
   font-size: 16px;
   font-weight: 700;
-  color: #000;
   text-decoration: underline;
   text-underline-offset: 3px;
   white-space: nowrap;
 }
-.cs-prototype-cta__link:hover { color: #333; }
 
-/* QR code — end-of-case-study dark card */
-.cs-qr-section {
-  background: linear-gradient(180deg, #0e152d 0%, #101520 100%);
-  border-radius: 20px;
-  padding: 48px 40px;
-  display: flex;
-  align-items: center;
-  gap: 48px;
-}
-.cs-qr-section__left {
-  flex: 1;
+/* Old App hover trigger */
+.cs-old-app-hover {
+  margin-top: 40px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 8px;
 }
-.cs-qr-heading {
-  font-size: 30px;
-  font-weight: 500;
-  color: #fff;
-  line-height: 1.48;
-  margin: 0;
-}
-.cs-qr-text {
+.cs-old-app-hover__trigger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
   font-size: 14px;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.6);
-  line-height: 1.6;
-  margin: 0;
-}
-.cs-appstore-link {
-  font-size: 15px;
-  font-weight: 700;
-  color: #fff;
+  font-weight: 500;
+  color: #545454;
   text-decoration: underline;
   text-underline-offset: 3px;
-  align-self: flex-start;
+  text-align: left;
+  width: fit-content;
+  transition: color 0.15s;
 }
-.cs-appstore-link:hover { color: rgba(255, 255, 255, 0.7); }
-.cs-qr-section__qr {
+.cs-old-app-hover__trigger:hover { color: #111; }
+
+/* Generic inline image hover-trigger (used in profile hero) */
+.img-hover-trigger {
+  display: inline-flex;
   flex-shrink: 0;
 }
-.cs-qr-code {
-  width: 160px;
-  height: 160px;
-  border-radius: 12px;
-  background: #fff;
-  padding: 12px;
+
+/* Cursor hint on any element with a hover-preview */
+[data-hover-preview] { cursor: default; }
+
+/* Floating hover preview (appended to body) */
+.cs-hover-preview {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  width: 340px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.28);
+  opacity: 0;
+  transform: scale(0.94) translateY(6px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+.cs-hover-preview.is-visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+.cs-hover-preview img {
   display: block;
+  width: 100%;
+  height: auto;
 }
 
 /* Old App screenshots grid */
@@ -2075,6 +2494,28 @@ main {
 /* Stacked label + heading + content. Spacing comes from the global vertical
    rhythm rules above (display:block so those sibling margins apply). */
 .cs-block { display: block; }
+
+/* Old-design reveal toggle */
+.cs-old-design-toggle { margin-top: 16px; }
+.cs-old-design-toggle summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #545454;
+  cursor: pointer;
+  list-style: none;
+  padding: 6px 14px;
+  border: 1px solid #d9d9d9;
+  border-radius: 20px;
+  transition: background 0.15s, border-color 0.15s;
+  user-select: none;
+}
+.cs-old-design-toggle summary::-webkit-details-marker { display: none; }
+.cs-old-design-toggle summary::after { content: " ↓"; }
+.cs-old-design-toggle[open] summary::after { content: " ↑"; }
+.cs-old-design-toggle summary:hover { background: #f5f5f5; border-color: #bbb; }
 
 /* Generic two-column text grid */
 .cs-cols-2 {
@@ -2407,10 +2848,7 @@ main {
   .cs-method-step:nth-child(2) { border-right: none; }
   .cs-method-step { border-bottom: 1px solid rgba(255,255,255,0.08); }
   .cs-method-step:last-child { border-bottom: none; }
-  .cs-instagram-section { flex-direction: column; }
   .cs-prototype-cta { flex-direction: column; align-items: flex-start; gap: 16px; }
-  .cs-qr-section { flex-direction: column; padding: 32px 24px; gap: 32px; }
-  .cs-qr-section__qr { align-self: center; }
 }
 
 /* Mobile */
@@ -2441,10 +2879,12 @@ main {
   .cs-feature-header,
   .cs-phone-cards,
   .cs-img-pair,
+  .cs-img-row,
   .cs-persona-pair,
   .cs-interview-grid { flex-direction: column; grid-template-columns: 1fr; }
   .cs-ds-card { grid-template-columns: 1fr 1fr; }
   .cs-photo-pair { grid-template-columns: 1fr; }
+  .cs-photo-quad { grid-template-columns: 1fr; }
   .cs-project__pill { font-size: 14px; }
   .cs-project__summary { padding: 14px 18px; }
   .cs-project__body { gap: 40px; margin-top: 32px; }

@@ -1,0 +1,19 @@
+/* MetaBalls — vanilla JS port of React Bits' MetaBalls.
+   Reference: https://www.reactbits.dev/
+   Original source: react-bits — src/content/Animations/MetaBalls/
+     MetaBalls.jsx + MetaBalls.css
+   The effect is a WebGL2 canvas (via OGL, loaded from a CDN as an ES
+   module — see js/metaBalls.js) injected into this container; only the
+   container's own box is styled here, matching the original's CSS. */
+
+.metaballs-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.metaballs-container canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

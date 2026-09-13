@@ -18,174 +18,29 @@
   />
   <meta property="og:type" content="website" />
 
-  <!-- Fonts: Switzer — self-hosted (see @font-face in styles.css) -->
+  <!-- Fonts: Switzer — self-hosted (see @font-face in styles.css). Kept here
+       so css/flowing-menu.css's "Switzer, Inter, sans-serif" stack resolves
+       to the real font instead of falling straight through to Inter. -->
   <link rel="preload" href="assets/fonts/switzer-400.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/switzer-700.woff2" as="font" type="font/woff2" crossorigin />
 
-  <link rel="stylesheet" href="styles.css?v=11" />
+  <link rel="stylesheet" href="styles.css?v=64" />
+  <link rel="stylesheet" href="css/splashCursor.css" />
+  <link rel="stylesheet" href="css/flowing-menu.css" />
 </head>
 
 <body>
   <!-- Skip link for keyboard / screen-reader users -->
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#fm-menu-root">Skip to content</a>
 
-  <!-- ==================== HERO ZONE ==================== -->
-  <div class="hero-zone">
+  <!-- ==================== FULLSCREEN FLOWING MENU ====================
+       Vanilla JS/GSAP port of React Bits' FlowingMenu (js/flowing-menu.js).
+       This container is intentionally empty — the menu markup is generated
+       entirely by that script from its menuItems array. -->
+  <main id="fm-menu-root" aria-label="Primary navigation"></main>
 
-    <header class="site-header" data-section="header">
-      <div class="site-header__inner container">
-        <a class="brand" href="/" aria-label="anitborth — home">anitborth&nbsp;|</a>
-
-        <!-- Mobile nav toggle -->
-        <button
-          class="nav-toggle"
-          type="button"
-          aria-label="Open navigation menu"
-          aria-expanded="false"
-          aria-controls="primary-nav"
-        >
-          <span class="nav-toggle__bar"></span>
-          <span class="nav-toggle__bar"></span>
-        </button>
-
-        <nav class="nav" id="primary-nav" aria-label="Primary">
-          <ul class="nav__list">
-            <li><a class="nav__link" href="work.html">Work</a></li>
-            <li><a class="nav__link" href="experiments.html">Experiments</a></li>
-            <li><a class="nav__link" href="#resume">Resume</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-
-    <section class="hero" aria-label="Hero">
-      <div class="hero__inner container">
-        <div class="hero__content">
-          <div class="hero__bio">
-            <div class="hero__bio-row">
-              <span>I'm </span><strong>Ana Borthagaray,</strong><span class="hero__bio-img-wrap"><img class="hero__bio-img" src="assets/me.png" alt="" aria-hidden="true" /></span><span> a visual product designer from Buenos Aires.</span>
-            </div>
-            <div class="hero__bio-row">
-              <span>I focus on defining what to build and why—bridging user needs, business goals,</span>
-            </div>
-            <div class="hero__bio-row">
-              <span>and technology to drive meaningful product decisions.</span><img class="hero__bio-img" src="assets/decisions.png" alt="" aria-hidden="true" />
-            </div>
-            <div class="hero__bio-row">
-              <span>My work goes beyond</span>
-              <img class="hero__bio-icon" src="assets/star1.svg" alt="" aria-hidden="true" />
-              <span>interface design, emphasizing problem framing,</span>
-            </div>
-            <div class="hero__bio-row">
-              <span>prioritization, and delivering</span>
-              <span>impactful user experiences.</span>
-              <img class="hero__bio-icon hero__bio-icon--arrow" src="assets/arrow.svg" alt="" aria-hidden="true" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- "OPEN TO WORK" marquee — bottom of dark zone -->
-    <aside class="marquee" aria-label="Status: open to work">
-      <div class="marquee__track" data-marquee>
-        <span class="marquee__group">
-          <span class="marquee__item">OPEN TO WORK</span>
-          <span class="marquee__item">OPEN TO WORK</span>
-          <span class="marquee__item">OPEN TO WORK</span>
-          <span class="marquee__item">OPEN TO WORK</span>
-          <span class="marquee__item">OPEN TO WORK</span>
-          <span class="marquee__item">OPEN TO WORK</span>
-        </span>
-      </div>
-    </aside>
-
-  </div><!-- /.hero-zone -->
-
-  <!-- ==================== MAIN CONTENT (white background) ==================== -->
-  <main id="main">
-
-    <!-- ====================== WORK EXPERIENCE ====================== -->
-    <section class="experience" id="work" aria-labelledby="experience-heading">
-      <div class="container">
-        <h2 id="experience-heading" class="section-label">Work experience</h2>
-
-        <ul class="experience__list">
-          <li class="experience-item">
-            <span class="experience-item__period">2023 — Today</span>
-            <div class="experience-item__role">
-              <span class="experience-item__title">Sr. Product Designer</span>
-              <span class="experience-item__company">Amalgama</span>
-            </div>
-            <p class="experience-item__desc">Led end-to-end product experiences for digital fitness products across desktop and mobile platforms.</p>
-            <img class="experience-item__icon" src="assets/star2.svg" alt="" aria-hidden="true" />
-          </li>
-
-          <li class="experience-item">
-            <span class="experience-item__period">2021 — 2023</span>
-            <div class="experience-item__role">
-              <span class="experience-item__title">Product Artist</span>
-              <span class="experience-item__company">Etermax</span>
-            </div>
-            <p class="experience-item__desc">Designed UI experiences and created visual assets for mobile products, bridging illustration and product design.</p>
-            <img class="experience-item__icon" src="assets/star2.svg" alt="" aria-hidden="true" />
-          </li>
-
-          <li class="experience-item">
-            <span class="experience-item__period">2019 — 2021</span>
-            <div class="experience-item__role">
-              <span class="experience-item__title">Sr. Media Developer</span>
-              <span class="experience-item__company">Accenture</span>
-            </div>
-            <p class="experience-item__desc">Supported global organizations through digital transformation initiatives, improving system adoption and employee experience.</p>
-            <img class="experience-item__icon" src="assets/star2.svg" alt="" aria-hidden="true" />
-          </li>
-
-          <li class="experience-item">
-            <span class="experience-item__period">2016 — 2019</span>
-            <div class="experience-item__role">
-              <span class="experience-item__title">UI Designer</span>
-              <span class="experience-item__company">Arredo</span>
-            </div>
-            <p class="experience-item__desc">Designed front-end experiences for the e-commerce platform, including landing pages, campaigns, and email communications.</p>
-            <img class="experience-item__icon" src="assets/star2.svg" alt="" aria-hidden="true" />
-          </li>
-
-          <li class="experience-item">
-            <span class="experience-item__period">2014 — 2016</span>
-            <div class="experience-item__role">
-              <span class="experience-item__title">Jr. Designer</span>
-              <span class="experience-item__company">WebAr</span>
-            </div>
-            <p class="experience-item__desc">Created digital experiences for multiple clients, designing websites, campaigns, and visual assets.</p>
-            <img class="experience-item__icon" src="assets/star2.svg" alt="" aria-hidden="true" />
-          </li>
-        </ul>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ============================ FOOTER ============================ -->
-  <footer class="site-footer">
-    <div class="site-footer__inner container">
-      <a class="site-footer__email" href="mailto:anitaborthagaray@gmail.com">
-        anitaborthagaray@gmail.com
-      </a>
-
-      <nav class="nav" aria-label="Social">
-        <ul class="nav__list">
-          <li>
-            <a class="nav__link" href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
-          </li>
-          <li>
-            <a class="nav__link" href="https://linkedin.com" target="_blank" rel="noopener noreferrer">Linkedin</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </footer>
-
-  <script src="script.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
+  <script src="js/flowing-menu.js" defer></script>
+  <script src="js/splashCursor.js" defer></script>
 </body>
 </html>

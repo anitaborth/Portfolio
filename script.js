@@ -175,9 +175,45 @@
         role: "Sr. Product designer, UX researcher, UI designer",
         tools: "Figma, Claude",
       },
-      link: { label: "Check Website Project", href: "#" },
+      link: { label: "Check Website Project →", href: "https://morpheus-website-brown.vercel.app/" },
+      video: {
+        label: "Watch Instagram video →",
+        href: "#",
+        src: "assets/morpheus/promo-video.mp4",
+      },
+      qr: {
+        image: "assets/morpheus/qr-appstore.svg",
+        alt: "QR code — download Morpheus on the App Store",
+        caption: "Scan to download Morpheus from the App Store.",
+        downloadLabel: "Download on the App Store →",
+        downloadHref: "https://apps.apple.com/us/app/morpheus-training/id1259741445",
+      },
       image: "assets/morpheus/header.png",
       body: `
+        <!-- ===================== WEBSITE ===================== -->
+        <details class="cs-project">
+          <summary class="cs-project__summary">
+            <span class="cs-project__pill">Website</span>
+            <span class="cs-project__chevron" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+          </summary>
+          <div class="cs-project__body">
+            <div>
+              <video class="cs-full-img" controls playsinline style="margin-top:0; border-radius:20px;">
+                <source src="assets/morpheus/website-video.mp4" type="video/mp4" />
+              </video>
+              <a href="https://morpheus-website-brown.vercel.app/" target="_blank" rel="noopener noreferrer" class="cs-prototype-cta__link cta-link" style="display:inline-block; margin-top:20px;">Check Website Project &rarr;</a>
+            </div>
+          </div>
+        </details>
+
+        <!-- ===================== MOBILE APP ===================== -->
+        <details class="cs-project" open>
+          <summary class="cs-project__summary">
+            <span class="cs-project__pill">Mobile App</span>
+            <span class="cs-project__chevron" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+          </summary>
+          <div class="cs-project__body">
+
         <div class="cs-cols-3">
           <div class="cs-col">
             <span class="cs-label-gray">Problem Statement</span>
@@ -193,17 +229,18 @@
           </div>
         </div>
 
-        <div class="cs-photo-pair">
-          <img src="assets/morpheus/Frame 1410127966.png" alt="Morpheus device" />
-          <img src="assets/morpheus/gemini2.jpg" alt="Morpheus workout" />
-        </div>
+        <video class="cs-full-img" autoplay loop muted playsinline style="margin-top:0; border-radius:20px;">
+          <source src="assets/morpheus/videos-morpheus.mp4" type="video/mp4" />
+        </video>
 
-        <div>
-          <div class="cs-section-header">
-            <span class="cs-label-gray">Intro</span>
-            <h3 class="cs-heading">Old App</h3>
-          </div>
-          <img src="assets/morpheus/oldapp.png" alt="Old app" class="cs-full-img" style="margin-top:0" />
+        <div class="cs-old-app-hover">
+          <span class="cs-label-gray">PREVIOUS VERSION</span>
+          <button
+            class="cs-old-app-hover__trigger"
+            type="button"
+            data-preview-src="assets/morpheus/oldapp.png"
+            aria-label="Preview previous Morpheus app"
+          >View old app ↗</button>
         </div>
 
         <div>
@@ -303,6 +340,29 @@
           <div class="cs-phone-cards">
             <div class="cs-phone-card"><img src="assets/morpheus/train.png" alt="Train screen 1" /></div>
             <div class="cs-phone-card"><img src="assets/morpheus/train2.png" alt="Train screen 2" /></div>
+          </div>
+        </div>
+
+        <div class="cs-feature-block">
+          <div class="cs-feature-header">
+            <div class="cs-feature-header-left">
+              <span class="cs-label-gray">KEY FEATURE 4</span>
+              <h3 class="cs-feature-title">Challenge</h3>
+              <p class="cs-feature-subtitle">Users participate in a monthly challenge where they can compare their progress on various metrics, including Recovery, Sleep, Steps, and Workouts, with other users. They can also earn points by reading daily posts.</p>
+            </div>
+            <div class="cs-feature-header-right">
+              <span class="cs-label-gray">GOALS</span>
+              <ul class="cs-goals-list">
+                <li>Redesign the flow by enhancing the UI and the information architecture of each screen.</li>
+                <li>Boost engagement with this new look and feel.</li>
+                <li>Refine the communication of progress.</li>
+                <li>Improve the explanations of how the points work.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="cs-phone-cards">
+            <div class="cs-phone-card"><img src="assets/morpheus/challenge1.png" alt="Challenge screen 1" /></div>
+            <div class="cs-phone-card"><img src="assets/morpheus/challenge2.png" alt="Challenge screen 2" /></div>
           </div>
         </div>
 
@@ -584,40 +644,257 @@
           <div class="cs-prototype-cta">
             <div class="cs-prototype-cta__left">
               <span class="cs-label-gray">PROTOTYPE</span>
-              <p class="cs-prototype-cta__text">Explore the AI insights feature in the interactive prototype.</p>
+              <p class="cs-prototype-cta__text">An interactive prototype of the AI Insights feature above &mdash; not the full Morpheus app.</p>
             </div>
-            <a href="#" target="_blank" rel="noopener" class="cs-prototype-cta__link">Try the prototype →</a>
+            <a href="https://www.figma.com/make/lqrzeSDp624s3JreXlor38/AI-Mobile-App---V2?fullscreen=1&t=OMpqJS5wWPVAiTj1-1&code-node-id=0-9" target="_blank" rel="noopener noreferrer" class="cs-prototype-cta__link cta-link">Try the AI Insights prototype →</a>
           </div>
         </div>
 
-        <div class="cs-instagram-card">
-          <span class="cs-label-gray">INSTAGRAM VIDEO</span>
-          <a href="#" target="_blank" rel="noopener">Watch process video</a>
-        </div>
-
-        <div class="cs-qr-section">
-          <div class="cs-qr-section__left">
-            <span class="cs-label-purple">LIVE PRODUCT</span>
-            <h3 class="cs-qr-heading">Try Morpheus</h3>
-            <p class="cs-qr-text">The redesigned app is live on the App Store. Scan the QR code or tap the link to download Morpheus and explore the new design firsthand.</p>
-            <a href="https://apps.apple.com/us/app/morpheus-training/id1259741445" target="_blank" rel="noopener" class="cs-appstore-link">Download on the App Store →</a>
           </div>
-          <div class="cs-qr-section__qr">
-            <img src="assets/morpheus/qr-appstore.svg" alt="QR code — download Morpheus on the App Store" class="cs-qr-code" />
-          </div>
-        </div>
+        </details>
       `,
     },
     "design-system": {
-      name: "Design System",
+      name: "Embassy Design System",
       meta: {
         client: "Amalgama",
-        type: "Design System · Tokens · Components",
-        year: "2023 — 2026",
-        role: "Product Design Lead",
+        type: "Design System - UI - AI",
+        year: "2026",
+        role: "Sr. UI designer",
+        tools: "Figma, Claude",
       },
-      image: "assets/amalgama.png",
-      body: `<p class="cs-text">Building the visual foundation that scales across every product we ship. Defining tokens, component library, motion principles, and the documentation that keeps every team aligned.</p>`,
+      link: { label: "Check Website Project", href: "#" },
+      image: "assets/embassy/hero.png",
+      body: `
+        <div class="cs-cols-3">
+          <div class="cs-col">
+            <span class="cs-label-gray">Problem Statement</span>
+            <p class="cs-text">Every new product started from a blank canvas. Without a single source of truth for UI decisions, teams re-derived the same components project after project &mdash; and once AI entered the workflow, generated screens had nothing consistent to reference, so output rarely matched our design language.</p>
+          </div>
+          <div class="cs-col">
+            <span class="cs-label-gray">GOAL</span>
+            <p class="cs-text">Build a design system covering every core component needed to start a Desktop or Mobile product without opening Figma, while keeping every screen aligned with our UI guidelines from the very first commit.</p>
+          </div>
+          <div class="cs-col">
+            <span class="cs-label-gray">THE CHALLENGE</span>
+            <p class="cs-text">Make the system legible to AI, not just to designers &mdash; so color, typography, and spacing tokens get applied correctly even when a screen is generated from a prompt instead of drawn in Figma.</p>
+          </div>
+        </div>
+
+        <div class="cs-block">
+          <span class="cs-label-gray">OVERVIEW</span>
+          <h3 class="cs-heading">What Embassy is, and how it's organized</h3>
+          <p class="cs-text">Embassy is Amalgama's single source of truth for product UI: the tokens, components, and usage guidelines every team pulls from, whether they're designing in Figma, prototyping with AI, or shipping code. We structured the documentation around three questions &mdash; what the system is, who it serves, and how to use it &mdash; so a new teammate, or a language model reading the docs, can get oriented in minutes instead of days.</p>
+          <img src="assets/embassy/quees.png" alt="Embassy documentation home — what the system is, who it's for, and how to use the docs" class="cs-full-img" />
+        </div>
+
+        <div>
+
+          <!-- 01 FOUNDATIONS -->
+          <details class="cs-accordion">
+            <summary>
+              <div class="cs-accordion-left">
+                <span class="cs-accordion-num">01</span>
+                <span class="cs-accordion-title">Foundations</span>
+              </div>
+              <span class="cs-accordion-icon">+</span>
+            </summary>
+            <div class="cs-accordion__body">
+
+              <div class="cs-feature-block">
+                <div class="cs-feature-header">
+                  <div class="cs-feature-header-left">
+                    <span class="cs-label-gray">KEY CHALLENGE</span>
+                    <h3 class="cs-feature-title">Design Tokens</h3>
+                    <p class="cs-feature-subtitle">We defined the token structure and naming convention from the ground up, adapting Material Design 3's model to fit Embassy's own needs rather than adopting it wholesale.</p>
+                  </div>
+                  <div class="cs-feature-header-right">
+                    <span class="cs-label-gray">GOALS</span>
+                    <ul class="cs-goals-list">
+                      <li>Document what design tokens are, and why every team needs to work from them.</li>
+                      <li>Define token types and a naming structure that reads the same way in Figma and in code.</li>
+                      <li>Map each token to the contexts it's meant to be used in.</li>
+                    </ul>
+                  </div>
+                </div>
+                <img src="assets/embassy/tokens1.png" alt="Embassy documentation — how a design token's name is structured (system, category, descriptive role)" class="cs-full-img" />
+                <img src="assets/embassy/tokens2.png" alt="Embassy documentation — Primary color tokens with light and dark values and recommended usage" class="cs-full-img" />
+              </div>
+
+            </div>
+          </details>
+
+          <!-- 02 STYLES -->
+          <details class="cs-accordion">
+            <summary>
+              <div class="cs-accordion-left">
+                <span class="cs-accordion-num">02</span>
+                <span class="cs-accordion-title">Styles</span>
+              </div>
+              <span class="cs-accordion-icon">+</span>
+            </summary>
+            <div class="cs-accordion__body">
+
+              <div class="cs-feature-block">
+                <div class="cs-feature-header">
+                  <div class="cs-feature-header-left">
+                    <span class="cs-label-gray">KEY CHALLENGE</span>
+                    <h3 class="cs-feature-title">Color Baseline</h3>
+                    <p class="cs-feature-subtitle">We defined Embassy's primitive palettes &mdash; the raw color scales every semantic token is built from &mdash; and a consistent way to document and preview them.</p>
+                  </div>
+                  <div class="cs-feature-header-right">
+                    <span class="cs-label-gray">GOALS</span>
+                    <ul class="cs-goals-list">
+                      <li>Establish a primitive scale (50 to 900) for Primary, Secondary, and Tertiary, so every future token traces back to one palette.</li>
+                      <li>Keep contrast and step spacing consistent across scales, so palettes can evolve without breaking accessibility.</li>
+                      <li>Preview every step directly in the documentation, instead of linking out to a separate Figma file.</li>
+                    </ul>
+                  </div>
+                </div>
+                <img src="assets/embassy/color1.png" alt="Embassy documentation — Primary Navy primitive color scale from 50 to 900 with hex values" class="cs-full-img" />
+              </div>
+
+              <div class="cs-feature-block">
+                <div class="cs-feature-header">
+                  <div class="cs-feature-header-left">
+                    <span class="cs-label-gray">KEY CHALLENGE</span>
+                    <h3 class="cs-feature-title">Color Roles</h3>
+                    <p class="cs-feature-subtitle">On top of the primitive scale, we layered semantic color roles &mdash; Primary, Surface, Outline, and more &mdash; so a component always reads its color from meaning rather than a raw hex step.</p>
+                  </div>
+                  <div class="cs-feature-header-right">
+                    <span class="cs-label-gray">GOALS</span>
+                    <ul class="cs-goals-list">
+                      <li>Give every semantic role a clear behavior: what it's for, and where it should &mdash; and shouldn't &mdash; be used.</li>
+                      <li>Support Light and Dark mode from the same token, so switching themes never requires a design handoff.</li>
+                      <li>Show each role applied to real components, so the abstraction stays grounded in something designers actually build.</li>
+                    </ul>
+                  </div>
+                </div>
+                <img src="assets/embassy/color2.png" alt="Embassy documentation — semantic color roles for Brand, Error, Surface, and Utility" class="cs-full-img" />
+                <img src="assets/embassy/roles.png" alt="Embassy documentation — color roles applied to real components in Light and Dark mode" class="cs-full-img" />
+              </div>
+
+            </div>
+          </details>
+
+          <!-- 03 COMPONENTS -->
+          <details class="cs-accordion">
+            <summary>
+              <div class="cs-accordion-left">
+                <span class="cs-accordion-num">03</span>
+                <span class="cs-accordion-title">Components</span>
+              </div>
+              <span class="cs-accordion-icon">+</span>
+            </summary>
+            <div class="cs-accordion__body">
+
+              <div class="cs-feature-block">
+                <div class="cs-feature-header">
+                  <div class="cs-feature-header-left">
+                    <span class="cs-label-gray">KEY COMPONENTS</span>
+                    <h3 class="cs-feature-title">Buttons</h3>
+                    <p class="cs-feature-subtitle">Five color treatments and five sizes cover every priority level a screen needs, without ever introducing a one-off variant.</p>
+                  </div>
+                  <div class="cs-feature-header-right">
+                    <span class="cs-label-gray">GOALS</span>
+                    <ul class="cs-goals-list">
+                      <li>Diverge deliberately from Material Design 3 where it served the brand better &mdash; full-radius pill shapes stay reserved for chips and badges, not buttons.</li>
+                      <li>Scale corner radius with size (XS/SM &rarr; 4px, MD/LG &rarr; 8px, XL &rarr; 12px), so larger buttons still read as buttons.</li>
+                      <li>Move past Material's 40px "small" baseline to a 24&ndash;52px height scale that matches our own density and platform conventions.</li>
+                    </ul>
+                  </div>
+                </div>
+                <img src="assets/embassy/buttons.png" alt="Embassy documentation — button variants, sizes, and design decisions versus Material Design 3" class="cs-full-img" />
+              </div>
+
+              <div class="cs-feature-block">
+                <div class="cs-feature-header">
+                  <div class="cs-feature-header-left">
+                    <span class="cs-label-gray">KEY COMPONENTS</span>
+                    <h3 class="cs-feature-title">Chips</h3>
+                    <p class="cs-feature-subtitle">Chips needed to stay visually lightweight while covering four distinct jobs, so we gave each variant its own icon language instead of leaning on color alone.</p>
+                  </div>
+                  <div class="cs-feature-header-right">
+                    <span class="cs-label-gray">GOALS</span>
+                    <ul class="cs-goals-list">
+                      <li>Support four variants &mdash; Assist, Filter, Input, and Suggestion &mdash; each mapped to a specific interaction pattern.</li>
+                      <li>Default to zero elevation, reserving shadow for the rare case where a chip needs to separate from a busy background.</li>
+                      <li>Keep labels and icons interchangeable, so filters and quick actions can be built from the same component.</li>
+                    </ul>
+                  </div>
+                </div>
+                <img src="assets/embassy/chips.png" alt="Embassy documentation — Assist, Filter, Input, and Suggestion chip variants" class="cs-full-img" />
+              </div>
+
+            </div>
+          </details>
+
+        </div>
+
+        <div>
+          <span class="cs-label-gray">SOLUTION</span>
+          <h3 class="cs-heading">One library, every surface</h3>
+          <p class="cs-text">Today Embassy ships 30 documented components &mdash; from foundational buttons and inputs to complex patterns like data tables, bottom sheets, and empty states &mdash; each with usage guidelines, accessibility notes, and code-ready specs. It's the same library whether a designer opens Figma or an engineer prompts an AI assistant to scaffold a screen.</p>
+          <div class="cs-comp-grid">
+            ${[
+              ["App bar", "Top and bottom app bars."],
+              ["Avatar", "User avatar with initials and image variants."],
+              ["Badges", "Status, priority, and label badges."],
+              ["Buttons", "Primary, ghost, danger, and icon buttons."],
+              ["Cards", "Content container with variants."],
+              ["Carousels", "Horizontally scrollable item collections."],
+              ["Checkbox", "Single and group checkbox selection."],
+              ["Chips", "Assist, filter, input, and suggestion chips."],
+              ["Date Picker", "Calendar for a single date or a date range."],
+              ["Dialog", "Prompt dialogs and confirmation modals."],
+              ["Divider", "Horizontal and vertical dividers."],
+              ["Empty State", "Empty state illustrations and CTAs."],
+              ["Input", "Text input with states and variants."],
+              ["Lists", "Single-line and multi-line list items."],
+              ["Loading and progress", "Spinners, progress bars, and skeletons."],
+              ["Menu", "Dropdown and context menus."],
+              ["Navigation", "Sidebar navigation with groups and items."],
+              ["Nav Card", "Navigation cards for section overview grids."],
+              ["Person Card", "Compact candidate/person card."],
+              ["Radio button", "Single-select radio button groups."],
+              ["Search", "Search bar, docked and full-screen."],
+              ["Select", "Dropdown select with options."],
+              ["Bottom Sheets", "Panel anchored to the bottom edge."],
+              ["Side Sheets", "Panel anchored to a side."],
+              ["Sliders", "Continuous and discrete value sliders."],
+              ["Snackbars", "Brief bottom-of-screen notifications."],
+              ["Switch", "Binary on/off toggle control."],
+              ["Table", "Data table with sorting and pagination."],
+              ["Tabs", "Tab navigation with active panel."],
+              ["Textarea", "Multi-line text area input."],
+            ]
+              .map(
+                ([title, desc]) => `
+            <div class="cs-comp-card">
+              <div class="cs-comp-card__head">
+                <span class="cs-comp-tag">Component</span>
+                <span class="cs-comp-arrow" aria-hidden="true">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+                </span>
+              </div>
+              <h4 class="cs-comp-title">${title}</h4>
+              <p class="cs-comp-desc">${desc}</p>
+            </div>`
+              )
+              .join("")}
+          </div>
+        </div>
+
+        <div>
+          <span class="cs-label-gray">REFLECTION</span>
+          <h3 class="cs-heading">Takeaways and if I had more time,</h3>
+          <ol class="cs-takeaways-list">
+            <li>Extend token coverage into motion and elevation, so animation timing and shadow depth are as systematized as color and type.</li>
+            <li>Audit AI-generated screens against the library, to measure how often components and tokens get picked correctly outside of Figma.</li>
+            <li>Build lightweight adoption metrics per team, to see where Embassy is driving speed &mdash; and where it's still being worked around.</li>
+          </ol>
+        </div>
+      `,
     },
     trivia: {
       name: "Trivia Crack",
@@ -642,9 +919,12 @@
             <div class="cs-block">
               <span class="cs-label-gray">SHOP</span>
               <h3 class="cs-heading">Redesign</h3>
-              <div class="cs-split">
-                <p class="cs-text">We started with a prototype and tested it with players in Argentina, then iterated and validated the design with US players through Playtest and an A/B test. Throughout, we leaned on well-established cognitive biases &mdash; such as Social Proof and the Von Restorff Effect &mdash; to steer players toward the most relevant offers.<br><br>The old shop buried every offer in one long list, making it hard for players to compare products or spot the best value at a glance. We restructured it into clear, scannable modules &mdash; Special Offer, Right Answers, Credits, Coins and Daily Deals &mdash; so each product type had its own space and visual priority.<br><br>Highlighting the most popular pack and framing each price against its original value gave players a clearer sense of what to buy, while the refreshed UI made the whole experience feel more trustworthy and far easier to navigate.</p>
-                <img src="assets/etermax/old-shop.png" alt="Old Trivia Crack shop screen" />
+              <div class="cs-blue-box">
+                <p>Tested with players in Argentina and iterated with US players via Playtest and A/B tests. We applied Social Proof and Von Restorff Effect to restructure the shop into scannable modules — making the best offers impossible to miss.</p>
+                <details class="cs-old-design-toggle">
+                  <summary>See old design</summary>
+                  <img src="assets/etermax/old-shop.png" alt="Old Trivia Crack shop screen" class="cs-full-img" style="margin-top:16px" />
+                </details>
               </div>
             </div>
 
@@ -655,11 +935,10 @@
               </div>
               <div class="cs-col">
                 <span class="cs-label-gray">GOAL</span>
-                <p class="cs-text">Improve the shopping experience.</p>
+                <p class="cs-text">Improve the shopping experience and turn it into a growth driver.</p>
                 <ul class="cs-goals-list">
-                  <li>Present offers as clear, self-contained modules.</li>
-                  <li>Introduce daily gifts to build a habit of returning.</li>
-                  <li>Rework the UI and navigation structure.</li>
+                  <li>Present offers as self-contained modules, with daily gifts to build a return habit.</li>
+                  <li>Lift shop conversion by 10&ndash;15% and grow ARPPU through repeat purchases.</li>
                 </ul>
               </div>
               <div class="cs-col">
@@ -693,10 +972,6 @@
             <div class="cs-block">
               <span class="cs-label-gray">SHOP</span>
               <h3 class="cs-heading">VIP Membership</h3>
-              <div class="cs-cols-2">
-                <p class="cs-text">With the redesigned shop in place, we introduced a VIP Membership &mdash; Trivia Crack Prime &mdash; giving committed players an ad-free, more rewarding experience. We prototyped the flow, tested it with players in Argentina, and refined it with US players through Playtest and an A/B test.</p>
-                <p class="cs-text">To make the membership's value easy to grasp, we drew on proven cognitive biases such as Social Proof and the Von Restorff Effect, so the premium benefits felt both desirable and clear.</p>
-              </div>
             </div>
 
             <div class="cs-cols-3">
@@ -708,9 +983,8 @@
                 <span class="cs-label-gray">GOAL</span>
                 <p class="cs-text">Make premium value clear and encourage more players to upgrade.</p>
                 <ul class="cs-goals-list">
-                  <li>Surface the membership at the right moments in the journey.</li>
                   <li>Communicate each benefit clearly &mdash; no ads, free wheel, unlimited lives.</li>
-                  <li>Lower the barrier with a 3-day free trial.</li>
+                  <li>Lower the barrier with a 3-day trial to lift conversion 8&ndash;12% and Day 30 retention.</li>
                 </ul>
               </div>
               <div class="cs-col">
@@ -723,7 +997,7 @@
 
             <!-- Design-thinking sub-steps -->
             <div>
-              <details class="cs-accordion" open>
+              <details class="cs-accordion">
                 <summary>
                   <div class="cs-accordion-left">
                     <span class="cs-accordion-num">01</span>
@@ -734,7 +1008,6 @@
                 <div class="cs-accordion__body">
                   <div class="cs-cols-2">
                     <div>
-                      <h3 class="cs-heading">Scope</h3>
                       <p class="cs-text">The membership bundles together the perks players value most:</p>
                       <ul class="cs-goals-list">
                         <li>An ad-free experience.</li>
@@ -744,14 +1017,12 @@
                       </ul>
                     </div>
                     <div>
-                      <h3 class="cs-heading">Benchmark</h3>
-                      <p class="cs-text">To shape the VIP Membership, we studied how successful products present premium memberships &mdash; how they communicate value and encourage players to upgrade:</p>
+                      <p class="cs-text">We benchmarked how successful apps present premium memberships to shape the VIP offer:</p>
                       <ul class="cs-goals-list">
                         <li>Coin Master</li>
                         <li>Duolingo</li>
                         <li>Clash Royale</li>
                       </ul>
-                      <p class="cs-text" style="margin-top:24px">These learnings informed the redesigned Shop and the new VIP Membership, making premium benefits more visible and easier to understand.</p>
                     </div>
                   </div>
                   <div class="cs-blue-box">
@@ -796,7 +1067,7 @@
                 </div>
               </details>
 
-              <details class="cs-accordion" open>
+              <details class="cs-accordion">
                 <summary>
                   <div class="cs-accordion-left">
                     <span class="cs-accordion-num">02</span>
@@ -805,9 +1076,6 @@
                   <span class="cs-accordion-icon">+</span>
                 </summary>
                 <div class="cs-accordion__body">
-                  <span class="cs-label-purple">DEFINE</span>
-                  <h3 class="cs-heading">Persona</h3>
-                  <p class="cs-text">Who are our players, how do they think, and what's their context? What do they need, and where do they struggle?</p>
                   <div class="cs-persona-card">
                     <div class="cs-persona-grid">
 
@@ -867,7 +1135,7 @@
                 </div>
               </details>
 
-              <details class="cs-accordion" open>
+              <details class="cs-accordion">
                 <summary>
                   <div class="cs-accordion-left">
                     <span class="cs-accordion-num">03</span>
@@ -876,9 +1144,6 @@
                   <span class="cs-accordion-icon">+</span>
                 </summary>
                 <div class="cs-accordion__body">
-                  <span class="cs-label-purple">IDEATE</span>
-                  <h3 class="cs-heading">Wireflow</h3>
-                  <p class="cs-text">Before designing and prototyping, we mapped how players would move through the feature to reach each goal.</p>
 
                   <div class="cs-objectives">
                     <div class="cs-objective">
@@ -922,7 +1187,7 @@
                 <div class="cs-accordion__body"></div>
               </details>
 
-              <details class="cs-accordion" open>
+              <details class="cs-accordion">
                 <summary>
                   <div class="cs-accordion-left">
                     <span class="cs-accordion-num">05</span>
@@ -941,7 +1206,34 @@
         <!-- ===================== PROJECT 2 ===================== -->
         <details class="cs-project" open>
           <summary class="cs-project__summary">
-            <span class="cs-project__pill">Project 2 | Quick Profile Update</span>
+            <span class="cs-project__pill">Project 2 | Onboarding</span>
+            <span class="cs-project__chevron" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+          </summary>
+          <div class="cs-project__body">
+
+            <div class="cs-cols-3">
+              <div class="cs-col">
+                <span class="cs-label-gray">Problem Statement</span>
+                <p class="cs-text">A significant percentage of users dropped off in their first few days. Playtests showed new players felt overwhelmed by the content immediately after installing and didn't know where to begin.</p>
+              </div>
+              <div class="cs-col">
+                <span class="cs-label-gray">GOAL</span>
+                <p class="cs-text">Improve Day 7 retention through a progressive onboarding based on Goal Gradient Effect and Progressive Disclosure — guiding players through short daily objectives over their first seven days. Target: lift Day 7 retention by 8–12% and reduce first-session drop-off.</p>
+              </div>
+              <div class="cs-col">
+                <span class="cs-label-gray">THE CHALLENGE</span>
+                <p class="cs-text">Design a gamified onboarding journey of short, rewarding missions introducing each game mode one at a time, culminating in a reward chest — leaving players confident enough to explore on their own.</p>
+              </div>
+            </div>
+
+            <img src="assets/etermax/onboarding.png" alt="Trivia Crack onboarding — staged missions introducing each game mode" class="cs-full-img" style="margin-top:0" />
+          </div>
+        </details>
+
+        <!-- ===================== PROJECT 3 ===================== -->
+        <details class="cs-project" open>
+          <summary class="cs-project__summary">
+            <span class="cs-project__pill">Project 3 | Quick Profile Update</span>
             <span class="cs-project__chevron" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
           </summary>
           <div class="cs-project__body">
@@ -949,41 +1241,20 @@
             <div class="cs-block">
               <span class="cs-label-gray">FTUE</span>
               <h3 class="cs-heading">Sign-in</h3>
-              <p class="cs-text">We reworked the sign-in process to clarify the steps players take before creating an account, reducing confusion for first-time players and setting clear expectations from the very first screen. We mapped the different entry flows &mdash; depending on whether the device had already been purchased &mdash; and defined clear objectives and baseline metrics up front, so we could keep the experience frictionless while measuring its impact on the business.</p>
-              <div class="cs-cols-2">
-                <div>
-                  <span class="cs-label-gray">User experience goals</span>
-                  <ul class="cs-goals-list">
-                    <li>Make the path to creating an account clear and predictable.</li>
-                    <li>Support both purchased-device and new-device flows.</li>
-                    <li>Keep every step straightforward and frictionless.</li>
-                    <li>Let players personalize their profile quickly &mdash; nickname and avatar.</li>
-                  </ul>
-                </div>
-                <div>
-                  <span class="cs-label-gray">Business objectives</span>
-                  <ul class="cs-goals-list">
-                    <li>Increase Day 7 retention by improving the first-time experience.</li>
-                    <li>Reduce onboarding drop-off by simplifying sign-in and account creation.</li>
-                    <li>Lift sign-in and account-creation completion rates.</li>
-                    <li>Move more players through onboarding and into the core experience.</li>
-                  </ul>
-                </div>
-              </div>
             </div>
 
             <div class="cs-cols-3">
               <div class="cs-col">
-                <span class="cs-label-gray">Problem Statement</span>
-                <p class="cs-text">New players had no simple way to set or update their basic profile &mdash; nickname and avatar &mdash; during their first session, which added friction right at the start.</p>
+                <span class="cs-label-gray">Problem</span>
+                <p class="cs-text">New players often dropped off during their first session because creating an account and setting up a profile felt like an extra step before they could start playing. Playtests showed confusion around what information was required and when.</p>
               </div>
               <div class="cs-col">
-                <span class="cs-label-gray">GOAL</span>
-                <p class="cs-text">Improve the first-time experience by letting players easily set their personal information the first time they open the app, so their profile feels personal from the very start.</p>
+                <span class="cs-label-gray">Goal</span>
+                <p class="cs-text">Create a frictionless first-time experience by making sign-in optional when possible, simplifying profile creation, and helping players reach gameplay faster &mdash; targeting a 10&ndash;15% lift in account-creation completion and a meaningful cut in first-session drop-off.</p>
               </div>
               <div class="cs-col">
-                <span class="cs-label-gray">THE CHALLENGE</span>
-                <p class="cs-text">Design a simple, friendly solution that asks for just the right amount of information &mdash; without overwhelming new players.</p>
+                <span class="cs-label-gray">Challenge</span>
+                <p class="cs-text">Balance business needs &mdash; account creation and retention &mdash; with a lightweight onboarding experience that minimizes friction while still encouraging players to complete their profile.</p>
               </div>
             </div>
 
@@ -991,20 +1262,15 @@
 
             <div class="cs-cols-2">
               <div>
-                <h3 class="cs-heading">Research Analysis</h3>
-                <p class="cs-text">We analyzed the results together with Etermax's UX Research team.</p>
                 <ul class="cs-goals-list">
-                  <li>We ran remote Playtests with new players in the US.</li>
-                  <li>We chose this approach because we needed fast input from new US players within our time and budget.</li>
-                  <li>We ran a <strong>benchmark</strong> to see how competitors solved the same problem.</li>
+                  <li>Remote Playtests with new US players, plus a benchmark of how competitors solved the same problem.</li>
+                  <li>Players wanted to change their nickname quickly — many preferred not to reveal their real identity.</li>
                 </ul>
               </div>
               <div>
-                <h3 class="cs-heading">User Needs</h3>
                 <ul class="cs-goals-list">
-                  <li>We found that <strong>players wanted to change their nickname quickly</strong>, since <strong>many preferred not to reveal their real identity</strong> to other players.</li>
-                  <li>This mattered: <strong>players were starting matches frustrated and anxious</strong> because they couldn't find a fast way to update their details.</li>
-                  <li>They also expected the change to feel instant &mdash; with no need to dig through settings menus.</li>
+                  <li>Players were starting matches frustrated because they couldn't update their details fast enough.</li>
+                  <li>They expected the change to feel instant — no digging through settings menus.</li>
                 </ul>
               </div>
             </div>
@@ -1017,10 +1283,10 @@
           </div>
         </details>
 
-        <!-- ===================== PROJECT 3 ===================== -->
+        <!-- ===================== PROJECT 4 ===================== -->
         <details class="cs-project" open>
           <summary class="cs-project__summary">
-            <span class="cs-project__pill">Project 3 | UI Animations</span>
+            <span class="cs-project__pill">Project 4 | UI Animations</span>
             <span class="cs-project__chevron" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
           </summary>
           <div class="cs-project__body">
@@ -1028,15 +1294,18 @@
             <div class="cs-block">
               <span class="cs-label-gray">MOTION</span>
               <h3 class="cs-heading">UI Animations</h3>
-              <div class="cs-cols-2">
-                <p class="cs-text">To bring the redesigned screens to life, I added a layer of motion across key flows &mdash; subtle, purposeful animations that make interactions feel responsive and reinforce Trivia Crack's playful personality. The final deliverables below cover the win &amp; claim moment, the question round, the game lobby, a loading transition, and the category wheel, showing how each interaction came to life.</p>
-                <div>
-                  <span class="cs-label-gray">GOALS</span>
-                  <ul class="cs-goals-list">
-                    <li>Give clear feedback on key actions like purchases and rewards.</li>
-                    <li>Guide attention toward important moments and calls to action.</li>
-                    <li>Add delight without slowing players down.</li>
-                  </ul>
+              <div class="cs-cols-3">
+                <div class="cs-col">
+                  <span class="cs-label-gray">FEEDBACK</span>
+                  <p class="cs-text">Clear signals on purchases and rewards so players follow through on key actions.</p>
+                </div>
+                <div class="cs-col">
+                  <span class="cs-label-gray">ATTENTION</span>
+                  <p class="cs-text">Motion guides the eye to important moments and CTAs, improving adoption of the wheel and daily rewards.</p>
+                </div>
+                <div class="cs-col">
+                  <span class="cs-label-gray">DELIGHT</span>
+                  <p class="cs-text">Purposeful animations that reinforce Trivia Crack's playful personality without slowing players down.</p>
                 </div>
               </div>
             </div>
@@ -1050,6 +1319,7 @@
             </div>
           </div>
         </details>
+
       `,
     },
     orion: {
@@ -1060,22 +1330,158 @@
         year: "2019 — 2021",
         role: "Senior Creative Designer",
       },
-      image: null,
-      body: `<p class="cs-text">Video and identity design system for enterprise clients. Creative direction, brand identity, and digital campaigns ensuring visual coherence across multiple accounts and agile methodologies.</p>`,
+      image: "assets/orion/hero.png",
+      body: `
+        <div>
+          <span class="cs-label-gray">OBJECTIVE</span>
+          <h3 class="cs-heading">Objective</h3>
+          <div class="cs-blue-box">
+            <p>Help users learn how to use a complex workplace tool through gamification, making the learning experience more engaging, accessible, and enjoyable.</p>
+          </div>
+        </div>
+
+        <div class="cs-cols-2">
+          <div class="cs-col">
+            <span class="cs-label-gray">CHALLENGES</span>
+            <ul class="cs-goals-list">
+              <li>Simplify complex product knowledge and transform it into an intuitive game experience.</li>
+              <li>Encourage employees to adopt the learning platform regularly instead of relying on traditional documentation.</li>
+            </ul>
+          </div>
+          <div class="cs-col">
+            <span class="cs-label-gray">USER NEEDS</span>
+            <p class="cs-text">Previously, users had to learn the tool through lengthy PowerPoint presentations that were difficult to follow and ineffective for knowledge retention. They needed a more engaging and interactive way to learn the platform.</p>
+          </div>
+        </div>
+
+        <div class="cs-block">
+          <span class="cs-label-gray">HOW WE SOLVED IT</span>
+          <h3 class="cs-heading">A game that teaches through play</h3>
+          <div class="cs-cols-2">
+            <p class="cs-text">We designed a progression system with levels based on the different areas of the tool, allowing users to learn through a structured journey. To increase engagement, we introduced a leaderboard that encouraged friendly competition among coworkers.</p>
+            <p class="cs-text">Before development, we tested interactive prototypes with internal team members to validate the user experience and identify usability issues early. We also conducted face-to-face user interviews to observe how people interacted with the game, understand their behavior, and gather qualitative feedback. Based on these insights, we iterated on the experience before releasing it to production.</p>
+          </div>
+        </div>
+
+        <div>
+          <span class="cs-label-gray">RESULTS</span>
+          <h3 class="cs-heading">The impact</h3>
+          <div class="cs-stats-grid">
+            <div class="cs-stat">
+              <span class="cs-stat-number">+20%</span>
+              <p class="cs-stat-label">Increase in tool adoption</p>
+            </div>
+            <div class="cs-stat">
+              <span class="cs-stat-number">80%</span>
+              <p class="cs-stat-label">Of users completed all learning levels</p>
+            </div>
+            <div class="cs-stat">
+              <span class="cs-stat-number">+50%</span>
+              <p class="cs-stat-label">More content learned vs. the previous training method</p>
+            </div>
+          </div>
+        </div>
+      `,
     },
     arredo: {
-      name: "Ecommerce",
+      name: "E-commerce",
       meta: {
         client: "Arredo",
-        type: "Product Design · UX UI",
-        year: "2016 — 2019",
-        role: "UX/UI Designer",
+        type: "UI design",
+        year: "2016 - 2019",
+        role: "UI designer",
+        tools: "Figma",
       },
-      image: "assets/arredo.png",
-      body: `<p class="cs-text">Designing the ecommerce experience for one of Argentina's leading furniture brands—homepage to checkout, optimising conversion, product discovery, and the full mobile experience.</p>`,
+      image: "assets/arredo/secondimg.png",
+      body: `
+        <div class="cs-img-row cs-img-row--square">
+          <div class="cs-img-stack">
+            <img src="assets/arredo/colorpalette.png" alt="Arredo brand color palette — purple, pink, white, green and black" />
+            <img src="assets/arredo/compu.png" alt="Arredo materials page shown on a laptop mockup" />
+          </div>
+          <img src="assets/arredo/website.png" alt="Arredo e-commerce homepage — full scrolling desktop screenshot" />
+        </div>
+
+        <img src="assets/arredo/iphone.png" alt="Arredo mobile navigation, Jardines category, and Inspírate section on iPhone" class="cs-full-img" style="margin-top:0; border-radius:0" />
+
+        <div class="cs-img-row cs-img-row--square">
+          <img src="assets/arredo/rebajas.png" alt="Seasonal sale homepage concept annotated with UX notes" />
+          <img src="assets/arredo/deco.png" alt="Home décor lifestyle photography — lantern and candles" />
+        </div>
+      `,
     },
   };
 
+  /* ---------------------------------------------------------------------------
+     Module: video modal
+     A lightbox video player (process/Instagram videos) opened via the
+     "open-video-modal" custom event — kept decoupled from whichever UI
+     triggers it (see initProjectModals) so either module works standalone.
+  --------------------------------------------------------------------------- */
+  function initVideoModal() {
+    const overlay = document.getElementById("video-modal");
+    if (!overlay) return;
+
+    const closeBtn = overlay.querySelector(".video-modal__close");
+    const player = overlay.querySelector(".video-modal__player");
+    let lastFocused = null;
+
+    function openVideo(src, label) {
+      if (!src) return;
+      lastFocused = document.activeElement;
+      player.src = src;
+      player.setAttribute("aria-label", label || "Process video");
+      overlay.removeAttribute("aria-hidden");
+      overlay.classList.add("is-open");
+
+      player.currentTime = 0;
+      const playPromise = player.play();
+      if (playPromise && playPromise.catch) {
+        // Autoplay with sound can be blocked — retry muted per browser policy.
+        playPromise.catch(() => {
+          player.muted = true;
+          player.play().catch(() => {});
+        });
+      }
+      closeBtn.focus();
+    }
+
+    function closeVideo() {
+      overlay.classList.remove("is-open");
+      overlay.setAttribute("aria-hidden", "true");
+      player.pause();
+      player.removeAttribute("src");
+      player.load();
+      if (lastFocused) lastFocused.focus();
+    }
+
+    document.addEventListener("open-video-modal", (e) => {
+      openVideo(e.detail && e.detail.src, e.detail && e.detail.label);
+    });
+
+    closeBtn.addEventListener("click", closeVideo);
+
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) closeVideo();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && overlay.classList.contains("is-open")) {
+        // Registered before initProjectModals' Escape handler (see init()),
+        // so this fires first — stop it here to avoid also closing the
+        // project modal underneath in the same keystroke.
+        e.stopImmediatePropagation();
+        closeVideo();
+      }
+    });
+  }
+
+  /* ---------------------------------------------------------------------------
+     Module: experiments calendar
+     Opens a lightweight preview modal for each populated calendar day. Reads
+     content straight off the button's data-* attributes, so new days can be
+     added to experiments.html without touching this file.
+  --------------------------------------------------------------------------- */
   function initProjectModals() {
     const cards   = document.querySelectorAll(".work-card[data-project]");
     const overlay = document.getElementById("project-modal");
@@ -1091,6 +1497,14 @@
 
     const linkEl = overlay.querySelector("[data-link-el]");
     const linkCard = overlay.querySelector("#modal-link-card");
+
+    const videoEl = overlay.querySelector("[data-video-link]");
+    const videoCard = overlay.querySelector("#modal-video-card");
+
+    const qrCard = overlay.querySelector("#modal-qr-card");
+    const qrImgEl = overlay.querySelector("[data-qr-img]");
+    const qrCaptionEl = overlay.querySelector("[data-qr-caption]");
+    const qrLinkEl = overlay.querySelector("[data-qr-link]");
 
     function openModal(id) {
       const data = PROJECTS[id];
@@ -1118,11 +1532,73 @@
         }
       }
 
+      // Sidebar process video card
+      if (videoCard && videoEl) {
+        if (data.video) {
+          videoEl.href = data.video.href || "#";
+          videoEl.textContent = data.video.label;
+          videoEl.dataset.videoSrc = data.video.src || "";
+          // target="_blank" is only appropriate for a real external link —
+          // when we open an in-page video lightbox instead, drop it, since
+          // some browsers begin the new-tab navigation before our JS
+          // click handler's preventDefault() can cancel it.
+          if (data.video.src) {
+            videoEl.removeAttribute("target");
+            videoEl.removeAttribute("rel");
+          } else {
+            videoEl.setAttribute("target", "_blank");
+            videoEl.setAttribute("rel", "noopener");
+          }
+          videoCard.hidden = false;
+        } else {
+          videoCard.hidden = true;
+          videoEl.dataset.videoSrc = "";
+        }
+      }
+
+      // Sidebar live product / QR card
+      if (qrCard && qrImgEl && qrCaptionEl && qrLinkEl) {
+        if (data.qr) {
+          qrImgEl.src = data.qr.image;
+          qrImgEl.alt = data.qr.alt || "";
+          qrCaptionEl.textContent = data.qr.caption || "";
+          qrLinkEl.href = data.qr.downloadHref;
+          qrLinkEl.textContent = data.qr.downloadLabel;
+          qrCard.hidden = false;
+        } else {
+          qrCard.hidden = true;
+        }
+      }
+
       // Content hero + body
       heroEl.innerHTML = data.image
         ? `<img class="modal__hero-img" src="${data.image}" alt="${data.name}" />`
         : "";
       bodyEl.innerHTML = data.body || "";
+
+      // Wire up old-app hover preview if present in this modal
+      const hoverTrigger = bodyEl.querySelector(".cs-old-app-hover__trigger");
+      if (hoverTrigger) {
+        const fp = document.createElement("div");
+        fp.className = "cs-hover-preview";
+        fp.innerHTML = `<img src="${hoverTrigger.dataset.previewSrc}" alt="" />`;
+        document.body.appendChild(fp);
+
+        hoverTrigger.addEventListener("mouseenter", () => fp.classList.add("is-visible"));
+        hoverTrigger.addEventListener("mouseleave", () => fp.classList.remove("is-visible"));
+        hoverTrigger.addEventListener("mousemove", (e) => {
+          const w = 340, gap = 20;
+          let left = e.clientX + gap;
+          let top  = e.clientY - 180;
+          if (left + w > window.innerWidth - 16) left = e.clientX - w - gap;
+          if (top < 16) top = e.clientY + gap;
+          fp.style.left = left + "px";
+          fp.style.top  = top  + "px";
+        });
+
+        // Stash reference so closeModal can remove it
+        overlay._hoverPreview = fp;
+      }
 
       contentEl.scrollTop = 0;
       document.body.classList.add("js-body-locked");
@@ -1135,6 +1611,10 @@
       overlay.classList.remove("is-open");
       document.body.classList.remove("js-body-locked");
       overlay.setAttribute("aria-hidden", "true");
+      if (overlay._hoverPreview) {
+        overlay._hoverPreview.remove();
+        overlay._hoverPreview = null;
+      }
       if (lastFocused) lastFocused.focus();
     }
 
@@ -1154,6 +1634,21 @@
 
     closeBtn.addEventListener("click", closeModal);
 
+    // Open the process video in a lightbox instead of navigating away,
+    // when the current project provides a local video src.
+    if (videoEl) {
+      videoEl.addEventListener("click", (e) => {
+        const src = videoEl.dataset.videoSrc;
+        if (!src) return;
+        e.preventDefault();
+        document.dispatchEvent(
+          new CustomEvent("open-video-modal", {
+            detail: { src, label: videoEl.textContent },
+          })
+        );
+      });
+    }
+
     overlay.addEventListener("click", (e) => {
       if (e.target === overlay) closeModal();
     });
@@ -1166,6 +1661,44 @@
   }
 
   /* ---------------------------------------------------------------------------
+     Generic hover-preview (profile page bio images + any [data-hover-preview])
+  --------------------------------------------------------------------------- */
+  function initHoverPreviews() {
+    // No hover on touch-only devices
+    if (window.matchMedia("(hover: none)").matches) return;
+
+    const triggers = document.querySelectorAll("[data-hover-preview]");
+    if (!triggers.length) return;
+
+    const fp = document.createElement("div");
+    fp.className = "cs-hover-preview";
+    const fpImg = document.createElement("img");
+    fpImg.alt = "";
+    fp.appendChild(fpImg);
+    document.body.appendChild(fp);
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener("mouseenter", () => {
+        fpImg.src = trigger.dataset.hoverPreview;
+        fp.classList.add("is-visible");
+      });
+      trigger.addEventListener("mouseleave", () => {
+        fp.classList.remove("is-visible");
+      });
+      trigger.addEventListener("mousemove", (e) => {
+        const w = fp.offsetWidth || 380;
+        const gap = 20;
+        let left = e.clientX + gap;
+        let top  = e.clientY - 160;
+        if (left + w > window.innerWidth - 16) left = e.clientX - w - gap;
+        if (top < 16) top = e.clientY + gap;
+        fp.style.left = left + "px";
+        fp.style.top  = top  + "px";
+      });
+    });
+  }
+
+  /* ---------------------------------------------------------------------------
      Bootstrap
   --------------------------------------------------------------------------- */
   function init() {
@@ -1173,7 +1706,9 @@
     initNavToggle(document.querySelector(".nav-toggle"));
     initReveal(Array.from(document.querySelectorAll("[data-reveal]")));
     initWorkCards();
+    initVideoModal();
     initProjectModals();
+    initHoverPreviews();
   }
 
   if (document.readyState === "loading") {

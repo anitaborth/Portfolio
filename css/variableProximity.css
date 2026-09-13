@@ -1,0 +1,32 @@
+/* VariableProximity — vanilla JS port of React Bits' VariableProximity.
+   Reference: https://www.reactbits.dev/
+   Original source: react-bits — src/content/TextAnimations/VariableProximity/
+     VariableProximity.jsx + VariableProximity.css
+   Deliberately no @import/font-family override here (the original imports
+   Roboto Flex) — this project keeps using its own Switzer, inherited from
+   whichever heading the effect is applied to. Only the structural bits
+   needed to split + measure text live here. */
+
+.vp-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.vp-letter {
+  display: inline-block;
+}
+
+/* Visually hidden but available to assistive tech — mirrors the original's
+   sr-only span so screen readers get the real text, not 200+ single-letter
+   spans (those are aria-hidden). */
+.vp-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

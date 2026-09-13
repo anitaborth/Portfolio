@@ -1,0 +1,11 @@
+/* Masonry — vanilla JS port of React Bits' Masonry, adapted to animate the
+   Experiments calendar's own CSS Grid instead of Masonry's original
+   absolute-positioned column-packing layout (see js/masonry.js for why).
+   This file only holds the motion-layer concern; the calendar grid's own
+   box/type/color rules live in styles.css under "Experiments — monthly
+   calendar archive". */
+
+.calendar__day {
+  will-change: opacity, transform, filter;
+  transform-origin: center center;
+}

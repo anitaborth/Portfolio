@@ -1,0 +1,16 @@
+/* SplitText — vanilla JS/GSAP port of React Bits' SplitText.
+   Reference: https://www.reactbits.dev/
+   Only the structural bits required to split + animate text live here —
+   no font, size, line-height, letter-spacing, or color rules. Whatever
+   typography the target element already has (from styles.css) still wins. */
+
+.split-char {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+/* Drop will-change once the animation has finished so the browser can free
+   the compositor layer — pure performance hygiene, no visual effect. */
+.split-text--done .split-char {
+  will-change: auto;
+}

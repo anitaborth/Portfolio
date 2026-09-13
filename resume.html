@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Resume — Ana Borthagaray</title>
+  <meta
+    name="description"
+    content="Resume — Ana Borthagaray, visual product designer from Buenos Aires."
+  />
+
+  <!-- Open Graph / social preview -->
+  <meta property="og:title" content="Resume — Ana Borthagaray" />
+  <meta
+    property="og:description"
+    content="Visual product designer from Buenos Aires. Problem framing, prioritization, and impactful user experiences."
+  />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts: Switzer — self-hosted (see @font-face in styles.css) -->
+  <link rel="preload" href="assets/fonts/switzer-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/switzer-700.woff2" as="font" type="font/woff2" crossorigin />
+
+  <link rel="stylesheet" href="styles.css?v=64" />
+</head>
+
+<body class="page-dark">
+  <!-- Skip link for keyboard / screen-reader users -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============================ HEADER ============================ -->
+  <header class="site-header" data-section="header">
+    <div class="site-header__inner container">
+      <a class="brand" href="index.html" aria-label="anitborth — home">anitborth&nbsp;|</a>
+
+      <!-- Mobile nav toggle -->
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+      >
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+
+      <nav class="nav" id="primary-nav" aria-label="Primary">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="work.html">Work</a></li>
+          <li><a class="nav__link" href="profile.html">Profile</a></li>
+          <li><a class="nav__link" href="experiments.html">Experiments</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- TODO: build out the Resume page content. -->
+  </main>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="site-footer">
+    <div class="site-footer__inner container">
+      <a class="site-footer__email" href="mailto:anitaborthagaray@gmail.com">
+        anitaborthagaray@gmail.com
+      </a>
+
+      <nav class="nav" aria-label="Social">
+        <ul class="nav__list">
+          <li>
+            <a class="nav__link" href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+          </li>
+          <li>
+            <a class="nav__link" href="https://linkedin.com" target="_blank" rel="noopener noreferrer">Linkedin</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
