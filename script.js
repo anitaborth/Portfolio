@@ -196,43 +196,109 @@
     }
   }
 
-  /* Size a same-origin iframe to its content, and keep it in sync as the
-     embedded document reflows (images finishing, viewport changes). Without
-     this the frame keeps its CSS min-height and the presentation is cut off. */
-  function initEmbedAutosize(root) {
-    root.querySelectorAll("iframe[data-cs-autosize]").forEach((frame) => {
-      let ro = null;
+  /* ---------------------------------------------------------------------------
+     Morpheus carousel geometry
+     The embedded presentation's cards carry their own rotateY/translateZ, but
+     two values came from the original page's bundle and are absent here: the
+     --radius the cards are pushed out to, and a per-card opacity that fades
+     the ones turning away. Without them the cards sit on too small a cylinder
+     at full opacity and read as a stack of slabs.
 
-      const measure = () => {
-        let doc;
-        try {
-          doc = frame.contentDocument;
-        } catch (err) {
-          return; // cross-origin; leave the CSS min-height in place
-        }
-        if (!doc || !doc.body) return;
-        const h = Math.max(doc.body.scrollHeight, doc.documentElement.scrollHeight);
-        if (h) frame.style.height = h + "px";
-      };
+     Both were measured off the published page:
+       radius  = stage width x 0.995
+       opacity = 0.55 + 0.45 * cos(angle), and 0 once past 90 degrees
+     The second reproduces every sampled card to three decimals.
 
-      const attach = () => {
-        measure();
-        let doc;
-        try {
-          doc = frame.contentDocument;
-        } catch (err) {
-          return;
-        }
-        if (!doc || !doc.body || typeof ResizeObserver === "undefined") return;
-        if (ro) ro.disconnect();
-        ro = new ResizeObserver(measure);
-        ro.observe(doc.body);
-      };
+     The published ring also rotates with scroll; that is not reproduced. It
+     rests at 0 degrees, with the front card facing the viewer.
+  --------------------------------------------------------------------------- */
+  function initMorpheusCarousel(root) {
+    const stage = root.querySelector('[class*="MorpheusCarousel"][class*="stage"]');
+    if (!stage) return;
+    const ring = stage.querySelector('[class*="ring"]');
+    if (!ring) return;
 
-      frame.addEventListener("load", attach);
-      // Already loaded (cached, or a re-open of the modal).
-      if (frame.contentDocument && frame.contentDocument.readyState === "complete") attach();
-      window.addEventListener("resize", measure);
+    const cards = Array.from(ring.children);
+    if (!cards.length) return;
+
+    const angleOf = (card) => {
+      const m = (card.getAttribute("style") || "").match(/rotateY\((-?[\d.]+)deg\)/);
+      return m ? parseFloat(m[1]) : 0;
+    };
+
+    const layout = () => {
+      const w = stage.getBoundingClientRect().width;
+      if (!w) return;
+      stage.style.setProperty("--radius", w * 0.995 + "px");
+
+      cards.forEach((card) => {
+        const eff = (((angleOf(card) % 360) + 540) % 360) - 180;   // wrap to [-180,180]
+        const o = Math.abs(eff) >= 90 ? 0 : 0.55 + 0.45 * Math.cos((eff * Math.PI) / 180);
+        card.style.opacity = Math.max(0, Math.min(1, o)).toFixed(3);
+      });
+    };
+
+    layout();
+    if (typeof ResizeObserver !== "undefined") new ResizeObserver(layout).observe(stage);
+    else window.addEventListener("resize", layout);
+  }
+
+  /* ---------------------------------------------------------------------------
+     Embedded presentation: play videos as they scroll into view
+     The embedded case study is a long document with many muted loop videos.
+     They carry no `autoplay`: the attribute is not honoured for elements
+     inserted via innerHTML, and starting all of them at once would decode
+     eighteen streams for no reason.
+
+     The observer's root is the modal's own scrolling pane — that is what
+     actually scrolls, not the window.
+  --------------------------------------------------------------------------- */
+  function initEmbedVideos(root) {
+    const embed = root.querySelector(".cs-embed-morpheus");
+    if (!embed || prefersReducedMotion) return;
+
+    const videos = Array.from(embed.querySelectorAll("video"));
+    if (!videos.length) return;
+
+    const play = (v) => {
+      const p = v.play();
+      if (p && typeof p.catch === "function") p.catch(() => {});
+    };
+
+    if (!("IntersectionObserver" in window)) {
+      videos.forEach(play);
+      return;
+    }
+
+    const scroller = root.closest(".modal__content");
+    const inView = new Set();
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            inView.add(entry.target);
+            play(entry.target);
+          } else {
+            inView.delete(entry.target);
+            if (!entry.target.paused) entry.target.pause();
+          }
+        });
+      },
+      { root: scroller, rootMargin: "200px 0px", threshold: 0.05 }
+    );
+
+    videos.forEach((v) => observer.observe(v));
+
+    /* A hidden document (background tab, or a preview pane that is not being
+       displayed) has its media suspended by the browser: play() resolves and
+       the video is paused again immediately. Nothing restarts it on its own,
+       so the ones still in view are resumed when the page comes back. */
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState !== "visible") return;
+      inView.forEach((v) => {
+        if (v.paused) play(v);
+      });
     });
   }
 
@@ -460,7 +526,8 @@
 
       // Wire up section tabs (filter chips) if this case study uses them
       initCaseStudyTabs(bodyEl);
-      initEmbedAutosize(bodyEl);
+      initMorpheusCarousel(bodyEl);
+      initEmbedVideos(bodyEl);
 
       // Wire up old-app hover preview if present in this modal
       const hoverTrigger = bodyEl.querySelector(".cs-old-app-hover__trigger");

@@ -33,9 +33,13 @@
    report every video as permanently visible. script.js drives playback in that
    case. The code below only covers opening this file directly. */
 (function () {
-  // Every video carries `autoplay`; honour the motion preference before any of
-  // them start, whether this document is embedded or opened on its own.
+  /* Videos no longer carry `autoplay`: inside a full-height iframe the
+     browser's own offscreen heuristics start them and then pause them
+     unpredictably. Playback is driven explicitly instead — by script.js when
+     embedded, by the observer below when this file is opened on its own.
+     This flag lets the parent read the preference without re-querying. */
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.setAttribute('data-reduced-motion', '');
     [].forEach.call(document.querySelectorAll('video'), function (v) {
       v.autoplay = false;
       v.removeAttribute('autoplay');
