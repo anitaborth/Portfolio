@@ -197,20 +197,22 @@
   }
 
   /* ---------------------------------------------------------------------------
-     Morpheus carousel geometry
-     The embedded presentation's cards carry their own rotateY/translateZ, but
-     two values came from the original page's bundle and are absent here: the
-     --radius the cards are pushed out to, and a per-card opacity that fades
-     the ones turning away. Without them the cards sit on too small a cylinder
-     at full opacity and read as a stack of slabs.
+     Morpheus carousel
+     The cards ship their own rotateY/translateZ from the server, but three
+     things came from the original page's bundle and are absent here: the
+     --radius they are pushed out to, the ring's rotation, and a per-card
+     opacity that fades the ones turning away. Without them the cards sit on
+     too small a cylinder, motionless, at full opacity.
 
-     Both were measured off the published page:
-       radius  = stage width x 0.995
-       opacity = 0.55 + 0.45 * cos(angle), and 0 once past 90 degrees
-     The second reproduces every sampled card to three decimals.
+     Measured on the published page:
+       radius   = stage width x 0.995
+       rotation = a steady 9.5 deg/s; scrolling does not drive it
+       opacity  = 0.55 + 0.45 * cos(angle), 0 once past 90 degrees
+     The opacity formula reproduces every sampled card to three decimals.
 
-     The published ring also rotates with scroll; that is not reproduced. It
-     rests at 0 degrees, with the front card facing the viewer.
+     Opacity has to be recomputed every frame, not once: it depends on each
+     card's angle plus the ring's current rotation. The ring can also be
+     dragged, as on the original, which is what `cursor: grab` advertises.
   --------------------------------------------------------------------------- */
   function initMorpheusCarousel(root) {
     const stage = root.querySelector('[class*="MorpheusCarousel"][class*="stage"]');
@@ -221,38 +223,101 @@
     const cards = Array.from(ring.children);
     if (!cards.length) return;
 
-    const angleOf = (card) => {
+    const AUTO_DEG_PER_SEC = 9.5;
+    const DRAG_DEG_PER_PX = 0.2;
+
+    const baseAngle = cards.map((card) => {
       const m = (card.getAttribute("style") || "").match(/rotateY\((-?[\d.]+)deg\)/);
       return m ? parseFloat(m[1]) : 0;
+    });
+
+    let rotation = 0;
+    let frame = null;
+    let last = 0;
+    let dragging = false;
+    let dragX = 0;
+
+    const sizeStage = () => {
+      const w = stage.getBoundingClientRect().width;
+      if (w) stage.style.setProperty("--radius", w * 0.995 + "px");
     };
 
-    const layout = () => {
-      const w = stage.getBoundingClientRect().width;
-      if (!w) return;
-      stage.style.setProperty("--radius", w * 0.995 + "px");
-
-      cards.forEach((card) => {
-        const eff = (((angleOf(card) % 360) + 540) % 360) - 180;   // wrap to [-180,180]
+    const paint = () => {
+      ring.style.transform = "rotateY(" + rotation.toFixed(3) + "deg)";
+      cards.forEach((card, i) => {
+        const eff = ((((baseAngle[i] + rotation) % 360) + 540) % 360) - 180;
         const o = Math.abs(eff) >= 90 ? 0 : 0.55 + 0.45 * Math.cos((eff * Math.PI) / 180);
         card.style.opacity = Math.max(0, Math.min(1, o)).toFixed(3);
       });
     };
 
-    layout();
-    if (typeof ResizeObserver !== "undefined") new ResizeObserver(layout).observe(stage);
-    else window.addEventListener("resize", layout);
+    const step = (now) => {
+      const dt = last ? Math.min((now - last) / 1000, 0.05) : 0;  // cap after a stall
+      last = now;
+      if (!dragging) rotation += AUTO_DEG_PER_SEC * dt;
+      paint();
+      frame = requestAnimationFrame(step);
+    };
+
+    const start = () => {
+      if (frame === null && !prefersReducedMotion) {
+        last = 0;
+        frame = requestAnimationFrame(step);
+      }
+    };
+    const stop = () => {
+      if (frame !== null) {
+        cancelAnimationFrame(frame);
+        frame = null;
+      }
+    };
+
+    /* Drag to spin. pointer events cover mouse and touch alike; the stage
+       declares touch-action: pan-y, so vertical scrolling still belongs to
+       the page and only horizontal movement reaches us. */
+    stage.addEventListener("pointerdown", (e) => {
+      dragging = true;
+      dragX = e.clientX;
+      stage.style.cursor = "grabbing";
+      stage.setPointerCapture(e.pointerId);
+    });
+    stage.addEventListener("pointermove", (e) => {
+      if (!dragging) return;
+      rotation += (e.clientX - dragX) * DRAG_DEG_PER_PX;
+      dragX = e.clientX;
+      paint();
+    });
+    const endDrag = (e) => {
+      if (!dragging) return;
+      dragging = false;
+      stage.style.cursor = "";
+      if (e.pointerId !== undefined && stage.hasPointerCapture(e.pointerId)) {
+        stage.releasePointerCapture(e.pointerId);
+      }
+    };
+    stage.addEventListener("pointerup", endDrag);
+    stage.addEventListener("pointercancel", endDrag);
+
+    sizeStage();
+    paint();
+
+    if (typeof ResizeObserver !== "undefined") {
+      new ResizeObserver(sizeStage).observe(stage);
+    } else {
+      window.addEventListener("resize", sizeStage);
+    }
+
+    // Spin only while the carousel is actually on screen.
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(
+        (entries) => entries.forEach((e) => (e.isIntersecting ? start() : stop())),
+        { root: root.closest(".modal__content"), rootMargin: "200px 0px" }
+      ).observe(stage);
+    } else {
+      start();
+    }
   }
 
-  /* ---------------------------------------------------------------------------
-     Embedded presentation: play videos as they scroll into view
-     The embedded case study is a long document with many muted loop videos.
-     They carry no `autoplay`: the attribute is not honoured for elements
-     inserted via innerHTML, and starting all of them at once would decode
-     eighteen streams for no reason.
-
-     The observer's root is the modal's own scrolling pane — that is what
-     actually scrolls, not the window.
-  --------------------------------------------------------------------------- */
   /* ---------------------------------------------------------------------------
      Morpheus takeaway marquee
      The two rows of drifting text at the end are moved by the original page's
