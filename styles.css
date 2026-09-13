@@ -2514,6 +2514,23 @@ main {
 
 .cs-tabpanel[hidden] { display: none; }
 
+/* Embedded case-study presentation.
+   Reproduced from the original published page, so it keeps its own stylesheet
+   and typefaces; the iframe is what stops those from leaking into the
+   portfolio's own cascade. Height is set from its content by script.js. */
+.cs-embed {
+  display: block;
+  width: 100%;
+  border: 0;
+  /* Placeholder until the first measurement lands, so the panel does not
+     collapse to nothing while the document is still loading. */
+  min-height: 60vh;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+
 /* The first child of a panel sits flush against the chip row. */
 .cs-tabpanel > :first-child { margin-top: 0; }
 

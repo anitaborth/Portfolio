@@ -38,109 +38,20 @@
 
         <!-- ===================== GENERAL PRESENTATION ===================== -->
         <section class="cs-tabpanel" role="tabpanel" id="cs-panel-morpheus-general" aria-labelledby="cs-tab-morpheus-general" data-cs-panel="general">
-          <!-- Hero -->
-          <video class="cs-full-img" style="margin-top:0; border-radius:20px;" autoplay muted loop playsinline>
-            <source src="assets/morpheus/presentation/videos/morpheus-hero-work-as-one.mp4" type="video/mp4" />
-          </video>
-
-          <p class="cs-heading" style="margin-top:32px;">The end of one-size-fits-all training. Morpheus is the only system designed to build your cardio sustainably &mdash; for life.</p>
-
-          <div class="cs-cols-3" style="margin-top:40px;">
-            <div class="cs-col">
-              <span class="cs-label-gray">Client</span>
-              <p class="cs-text">Morpheus Training</p>
-            </div>
-            <div class="cs-col">
-              <span class="cs-label-gray">Services</span>
-              <p class="cs-text">Product Design<br />Development</p>
-            </div>
-            <div class="cs-col">
-              <span class="cs-label-gray">Industry</span>
-              <p class="cs-text">Health &amp; Wellness</p>
-            </div>
-          </div>
-
-          <!-- Feature -->
-          <div class="cs-split" style="margin-top:56px;">
-            <div>
-              <p class="cs-heading">Personalized system to improve your fitness</p>
-              <p class="cs-text">Most wearables use five static heart rate zones. Morpheus uses three zones built for how your body actually creates energy.</p>
-            </div>
-            <video class="cs-full-img" style="margin-top:0; border-radius:20px;" autoplay muted loop playsinline>
-              <source src="assets/morpheus/presentation/videos/morpheus-feature-athlete.mp4" type="video/mp4" />
-            </video>
-          </div>
-
-          <!-- Overview -->
-          <div class="cs-split" style="margin-top:56px;">
-            <div>
-              <span class="cs-label-gray">Overview</span>
-              <p class="cs-text">Morpheus keeps an eye on your data with a chest strap, so you can easily check your recovery and HR zones daily to train smarter.</p>
-            </div>
-            <img class="cs-full-img" style="margin-top:0;" src="assets/morpheus/presentation/morpheus-overview-man-holding-device.jpeg" alt="Morpheus smart device worn on a chest strap" loading="lazy" />
-          </div>
-
-          <!-- Challenge -->
-          <span class="cs-label-gray" style="margin-top:56px;">The challenge</span>
-          <div class="cs-cols-2" style="margin-top:8px;">
-            <p class="cs-text">The client approached us with a primary issue: the app was not intuitive, appeared outdated, and required a fresh look along with a cohesive design system. We proposed creating a survey to better understand the users' problems. Once we understood this, we could analyze what was a priority to work on.</p>
-            <p class="cs-text">The challenge was to integrate the device into the React Native app and also integrate Garmin, Apple Health, and other platforms so that all users could have a better experience.</p>
-          </div>
-          <img class="cs-full-img" src="assets/morpheus/presentation/morpheus-challenge-hyrox-panorama.png" alt="Athletes competing in a Hyrox event" loading="lazy" />
-
-          <!-- Approach -->
-          <span class="cs-label-gray" style="margin-top:56px;">The approach</span>
-          <p class="cs-text">After understanding the main issues, we moved on to create a development plan using Agile methodologies, specifically with two-week sprints that allow us to demonstrate progress and value delivered to the client week by week. We started by uploading everything to staging to test with the client and the team while we continued designing new features. When we had a completed feature, we set up user interviews to test the adjustments and review if we needed to update anything after the discussions.</p>
-
-          <!-- Explore -->
-          <p class="cs-heading" style="margin-top:56px;">Explore Morpheus</p>
-          <div class="cs-media-grid" style="margin-top:24px;">
-            <figure class="cs-media-item"><img src="assets/morpheus/presentation/morpheus-explore-phone-home.png" alt="Morpheus app — Home screen" loading="lazy" /><figcaption class="cs-label-gray">Home</figcaption></figure>
-            <figure class="cs-media-item"><img src="assets/morpheus/presentation/morpheus-explore-phone-challenges.png" alt="Morpheus app — Challenges screen" loading="lazy" /><figcaption class="cs-label-gray">Challenges</figcaption></figure>
-            <figure class="cs-media-item"><img src="assets/morpheus/presentation/morpheus-explore-phone-train.png" alt="Morpheus app — Train screen" loading="lazy" /><figcaption class="cs-label-gray">Train</figcaption></figure>
-            <figure class="cs-media-item"><img src="assets/morpheus/presentation/morpheus-explore-phone-learn.png" alt="Morpheus app — Learn screen" loading="lazy" /><figcaption class="cs-label-gray">Learn</figcaption></figure>
-            <figure class="cs-media-item"><img src="assets/morpheus/presentation/morpheus-explore-phone-menu.png" alt="Morpheus app — Menu screen" loading="lazy" /><figcaption class="cs-label-gray">Menu</figcaption></figure>
-          </div>
-
-          <!-- Product shots -->
-          <div class="cs-media-grid" style="margin-top:40px;">
-            <div class="cs-media-item"><img src="assets/morpheus/presentation/carousel/morpheus-carousel-wristband.png" alt="Morpheus wristband" loading="lazy" /></div>
-            <div class="cs-media-item"><img src="assets/morpheus/presentation/carousel/morpheus-carousel-chest-strap.png" alt="Morpheus chest strap" loading="lazy" /></div>
-            <div class="cs-media-item"><img src="assets/morpheus/presentation/carousel/morpheus-carousel-app-recovery.png" alt="Recovery score in the Morpheus app" loading="lazy" /></div>
-            <div class="cs-media-item"><img src="assets/morpheus/presentation/carousel/morpheus-carousel-app-hr-zones.png" alt="Heart-rate zones in the Morpheus app" loading="lazy" /></div>
-          </div>
-
-          <!-- Outcome -->
-          <span class="cs-label-gray" style="margin-top:56px;">The outcome</span>
-          <div class="cs-cols-2" style="margin-top:8px;">
-            <p class="cs-text">We provide essential data in an intuitive way, including daily metrics and targets, making training easier.</p>
-            <p class="cs-text">Users can view their progress weekly, monthly, and annually, allowing them to easily track how many minutes they need to reach their weekly targets in each zone. This ultimately leads to improved longevity and quality of life.</p>
-          </div>
-
-          <!-- Impact -->
-          <p class="cs-heading" style="margin-top:56px;">Impact</p>
-          <div class="cs-stats-grid">
-            <div class="cs-stat"><span class="cs-stat-number">+8.000</span><p class="cs-stat-label">users around the world</p></div>
-            <div class="cs-stat"><span class="cs-stat-number">+10%</span><p class="cs-stat-label">retention</p></div>
-            <div class="cs-stat"><span class="cs-stat-number">+20%</span><p class="cs-stat-label">adoption</p></div>
-            <div class="cs-stat"><span class="cs-stat-number">-70%</span><p class="cs-stat-label">crashes</p></div>
-            <div class="cs-stat"><span class="cs-stat-number">+20%</span><p class="cs-stat-label">user feedback</p></div>
-          </div>
-
-          <!-- Takeaway -->
-          <span class="cs-label-gray" style="margin-top:56px;">Takeaway</span>
-          <p class="cs-text">The time we took to develop the app was useful in ensuring that users are happy with the result, having listened to their needs. The development also helped significantly reduce bugs and crashes by modifying the underlying code. The connection with the wearable was a challenge that ended up being utilized by various apps like Garmin, Apple Health, etc.</p>
-
-          <div class="cs-split" style="margin-top:40px;">
-            <video class="cs-full-img" style="margin-top:0; border-radius:20px;" autoplay muted loop playsinline>
-              <source src="assets/morpheus/presentation/videos/morpheus-takeaway-woman-training-720.mp4" type="video/mp4" />
-            </video>
-            <div>
-              <p class="cs-heading">Train at the right intensity using Morpheus</p>
-              <p class="cs-text">Improving your cardiorespiratory fitness is one of the most evidence-backed interventions for extending the years you actually perform at your best &mdash; and it's trainable at any age.</p>
-              <img class="cs-full-img" src="assets/morpheus/presentation/takeaway/morpheus-takeaway-hyrox.png" alt="Hyrox training" loading="lazy" />
-            </div>
-          </div>
+          <!-- The case-study presentation is reproduced verbatim from the
+               original page, so it ships as a self-contained document with its
+               own stylesheet and fonts and is embedded here. Keeping it in an
+               iframe is deliberate: its CSS carries a full token system and
+               three typefaces that would otherwise collide with the portfolio.
+               The frame is same-origin, so script.js sizes it to its content. -->
+          <iframe
+            class="cs-embed"
+            src="embeds/morpheus/index.html"
+            title="Morpheus Training — case study presentation"
+            loading="lazy"
+            scrolling="no"
+            allow="autoplay"
+            data-cs-autosize></iframe>
         </section>
 
         <!-- ===================== MOBILE APP ===================== -->

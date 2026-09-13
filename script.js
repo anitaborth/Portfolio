@@ -196,6 +196,46 @@
     }
   }
 
+  /* Size a same-origin iframe to its content, and keep it in sync as the
+     embedded document reflows (images finishing, viewport changes). Without
+     this the frame keeps its CSS min-height and the presentation is cut off. */
+  function initEmbedAutosize(root) {
+    root.querySelectorAll("iframe[data-cs-autosize]").forEach((frame) => {
+      let ro = null;
+
+      const measure = () => {
+        let doc;
+        try {
+          doc = frame.contentDocument;
+        } catch (err) {
+          return; // cross-origin; leave the CSS min-height in place
+        }
+        if (!doc || !doc.body) return;
+        const h = Math.max(doc.body.scrollHeight, doc.documentElement.scrollHeight);
+        if (h) frame.style.height = h + "px";
+      };
+
+      const attach = () => {
+        measure();
+        let doc;
+        try {
+          doc = frame.contentDocument;
+        } catch (err) {
+          return;
+        }
+        if (!doc || !doc.body || typeof ResizeObserver === "undefined") return;
+        if (ro) ro.disconnect();
+        ro = new ResizeObserver(measure);
+        ro.observe(doc.body);
+      };
+
+      frame.addEventListener("load", attach);
+      // Already loaded (cached, or a re-open of the modal).
+      if (frame.contentDocument && frame.contentDocument.readyState === "complete") attach();
+      window.addEventListener("resize", measure);
+    });
+  }
+
   function initCaseStudyTabs(root) {
     const tablist = root.querySelector("[data-cs-tablist]");
     if (!tablist) return;
@@ -221,7 +261,7 @@
             // A <video> keeps playing (and keeps its audio) inside a
             // display:none container, so hidden panels must be paused.
             if (!v.paused) v.pause();
-          } else if (v.autoplay && v.paused && !prefersReducedMotion.matches) {
+          } else if (v.autoplay && v.paused && !prefersReducedMotion) {
             // Re-arm the looping background videos we paused on the way out;
             // without this they stay frozen when the viewer comes back.
             playWhenReady(v);
@@ -420,6 +460,7 @@
 
       // Wire up section tabs (filter chips) if this case study uses them
       initCaseStudyTabs(bodyEl);
+      initEmbedAutosize(bodyEl);
 
       // Wire up old-app hover preview if present in this modal
       const hoverTrigger = bodyEl.querySelector(".cs-old-app-hover__trigger");
