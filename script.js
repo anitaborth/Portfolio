@@ -253,6 +253,79 @@
      The observer's root is the modal's own scrolling pane — that is what
      actually scrolls, not the window.
   --------------------------------------------------------------------------- */
+  /* ---------------------------------------------------------------------------
+     Morpheus takeaway marquee
+     The two rows of drifting text at the end are moved by the original page's
+     bundle, which writes a transform on every frame — there is no CSS
+     animation to inherit, so without this they sit still.
+
+     Each track holds its content duplicated exactly twice, so translating by
+     one half and wrapping gives a seamless loop. Directions and speeds are the
+     ones measured on the published page: the top row drifts left, the lower
+     row right, at slightly different rates.
+  --------------------------------------------------------------------------- */
+  function initMorpheusMarquee(root) {
+    const marquee = root.querySelector('[class*="takeawayMarquee"]');
+    if (!marquee || prefersReducedMotion) return;
+
+    const tracks = Array.from(marquee.querySelectorAll('[class*="__track"]'));
+    if (!tracks.length) return;
+
+    const SPEEDS = [-34, 26];   // px/s, measured on the published page
+
+    const rows = tracks.map((track, i) => ({
+      track,
+      speed: SPEEDS[i] !== undefined ? SPEEDS[i] : i % 2 ? 26 : -34,
+      offset: 0,
+      span: track.offsetWidth / 2,
+    }));
+
+    let last = 0;
+    let frame = null;
+
+    const step = (now) => {
+      const dt = last ? Math.min((now - last) / 1000, 0.05) : 0;  // cap after a stall
+      last = now;
+
+      rows.forEach((row) => {
+        if (!row.span) return;
+        let o = (row.offset + row.speed * dt) % row.span;
+        if (o > 0) o -= row.span;            // keep it in (-span, 0]
+        row.offset = o;
+        row.track.style.transform = "translate3d(" + o.toFixed(2) + "px, 0, 0)";
+      });
+
+      frame = requestAnimationFrame(step);
+    };
+
+    const start = () => {
+      if (frame === null) {
+        last = 0;
+        frame = requestAnimationFrame(step);
+      }
+    };
+    const stop = () => {
+      if (frame !== null) {
+        cancelAnimationFrame(frame);
+        frame = null;
+      }
+    };
+
+    window.addEventListener("resize", () => {
+      rows.forEach((row) => { row.span = row.track.offsetWidth / 2; });
+    });
+
+    // Only run while it is actually on screen.
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(
+        (entries) => entries.forEach((e) => (e.isIntersecting ? start() : stop())),
+        { root: root.closest(".modal__content"), rootMargin: "200px 0px" }
+      ).observe(marquee);
+    } else {
+      start();
+    }
+  }
+
   function initEmbedVideos(root) {
     const embed = root.querySelector(".cs-embed-morpheus");
     if (!embed || prefersReducedMotion) return;
@@ -528,6 +601,7 @@
       initCaseStudyTabs(bodyEl);
       initMorpheusCarousel(bodyEl);
       initEmbedVideos(bodyEl);
+      initMorpheusMarquee(bodyEl);
 
       // Wire up old-app hover preview if present in this modal
       const hoverTrigger = bodyEl.querySelector(".cs-old-app-hover__trigger");
