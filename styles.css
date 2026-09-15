@@ -3028,7 +3028,7 @@ main {
 }
 
 .resume__inner {
-  width: min(616px, 100% - 3rem);
+  width: min(720px, 100% - 3rem);
   margin-inline: auto;
 }
 
@@ -3054,7 +3054,7 @@ main {
 }
 
 .resume__name {
-  font-size: clamp(1.5rem, 2.4vw, 1.85rem);
+  font-size: clamp(1.75rem, 2.8vw, 2.15rem);
   font-weight: var(--fw-bold);
   letter-spacing: -0.03em;
   color: var(--resume-fg);
@@ -3062,13 +3062,13 @@ main {
 }
 
 .resume__role {
-  font-size: 0.82rem;
+  font-size: 0.92rem;
   color: var(--resume-fg-muted);
   margin: 0;
 }
 
 .resume__bio {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   line-height: 1.7;
   color: var(--resume-fg-muted);
   margin: 1.5rem 0 0;
@@ -3085,7 +3085,7 @@ main {
 }
 
 .resume__meta li {
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   color: var(--resume-fg-quiet);
   border: 1px solid var(--resume-hairline);
   border-radius: 999px;
@@ -3123,7 +3123,7 @@ main {
 .resume__section { margin-top: 3.5rem; }
 
 .resume__section-label {
-  font-size: 0.62rem;
+  font-size: 0.68rem;
   font-weight: var(--fw-medium);
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -3147,19 +3147,19 @@ main {
 }
 
 .resume__org {
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: var(--fw-semibold);
   letter-spacing: -0.01em;
   color: var(--resume-fg);
 }
 
 .resume__dates {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: var(--resume-fg-quiet);
 }
 
 .resume__title {
-  font-size: 0.82rem;
+  font-size: 0.9rem;
   color: var(--resume-fg-muted);
   margin: 0.2rem 0 0;
 }
@@ -3174,8 +3174,8 @@ main {
 
 .resume__points li {
   position: relative;
-  padding-left: 1rem;
-  font-size: 0.8rem;
+  padding-left: 1.1rem;
+  font-size: 0.875rem;
   line-height: 1.6;
   color: var(--resume-fg-muted);
 }
@@ -3196,11 +3196,11 @@ main {
   background: var(--resume-card);
   border-left: 2px solid var(--resume-accent);
   border-radius: 8px;
-  padding: 1rem 1.1rem;
+  padding: 1.25rem 1.4rem;
 }
 
 .resume__featured-label {
-  font-size: 0.6rem;
+  font-size: 0.65rem;
   font-weight: var(--fw-semibold);
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -3209,23 +3209,26 @@ main {
 }
 
 .resume__featured-title {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   font-weight: var(--fw-semibold);
   color: var(--resume-fg);
   margin: 0.45rem 0 0.4rem;
 }
 
 .resume__featured-text {
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   line-height: 1.65;
   color: var(--resume-fg-muted);
   margin: 0;
+  /* The card runs the full column; without a cap this paragraph sets past 100
+     characters a line, well beyond a comfortable measure. */
+  max-width: 64ch;
 }
 
 /* ---- skills ---- */
 .resume__skill-row {
   display: grid;
-  grid-template-columns: 90px 1fr;
+  grid-template-columns: 110px 1fr;
   gap: 1rem;
   align-items: start;
   padding-block: 0.9rem;
@@ -3234,7 +3237,7 @@ main {
 .resume__skill-row:first-of-type { border-top: 0; }
 
 .resume__skill-label {
-  font-size: 0.6rem;
+  font-size: 0.65rem;
   font-weight: var(--fw-medium);
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -3252,7 +3255,7 @@ main {
 }
 
 .resume__tags li {
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   color: var(--resume-tag);
   border: 1px solid var(--resume-hairline);
   border-radius: 999px;
@@ -3279,7 +3282,7 @@ main {
 }
 
 .resume__note {
-  font-size: 0.76rem;
+  font-size: 0.82rem;
   line-height: 1.65;
   color: var(--resume-fg-quiet);
   margin: 1rem 0 0;
