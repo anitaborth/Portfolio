@@ -138,7 +138,8 @@
                     </div>
                   </div>
                   <div class="cs-blue-box">
-                    <p><strong>Insights:</strong> Surface the membership from within the Shop, offer a free trial for the first week, and keep the choice simple with just two plans.</p>
+                    <span class="cs-callout-label">Insights</span>
+                    <p>Surface the membership from within the Shop, offer a free trial for the first week, and keep the choice simple with just two plans.</p>
                   </div>
                   <table class="cs-insights-table">
                     <thead>

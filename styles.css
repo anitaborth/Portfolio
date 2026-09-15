@@ -1349,8 +1349,10 @@ main {
   font-size: 11px;
   font-weight: 400;
   text-transform: uppercase;
-  color: rgba(0, 0, 0, 0.4);
-  letter-spacing: 0.04em;
+  /* Was rgba(0,0,0,0.4) — #999 on white, 2.85:1, under the 4.5:1 AA needs at
+     this size. #6b6b6b measures 5.30:1. */
+  color: #6b6b6b;
+  letter-spacing: 0.06em;
   line-height: 1.48;
 }
 .modal__meta-value {
@@ -1495,19 +1497,24 @@ main {
 .cs-label-gray {
   display: block;
   font-size: 12px;
-  font-weight: 400;
+  font-weight: 500;
   text-transform: uppercase;
-  color: rgba(0, 0, 0, 0.4);
-  letter-spacing: 0.04em;
+  /* Was rgba(0,0,0,0.4) — #999 on white, 2.85:1, under the 4.5:1 AA asks for
+     at this size. #6b6b6b measures 5.30:1. */
+  color: #6b6b6b;
+  letter-spacing: 0.06em;
   line-height: 1.48;
 }
 .cs-label-purple {
   display: block;
-  font-size: 14px;
-  font-weight: 400;
+  /* Matched to .cs-label-gray: two label styles at 12px and 14px read as two
+     systems rather than one with a colour variant. */
+  font-size: 12px;
+  font-weight: 500;
   text-transform: uppercase;
-  color: #8f62cb;
-  letter-spacing: 0.04em;
+  /* #8f62cb was 4.40:1 on white, just under AA. #6f42ab measures 5.74:1. */
+  color: #6f42ab;
+  letter-spacing: 0.06em;
   line-height: 1.48;
 }
 
@@ -1558,16 +1565,27 @@ main {
 .cs-section-header > .cs-label-purple + .cs-heading { margin-top: 0; }
 
 /* 3-col intro */
+/* The three columns read as one set rather than three loose blocks: a rule
+   across the top gives them a shared region, and the gap is wide enough that
+   proximity groups each label with its own paragraph instead of with the
+   neighbouring column. */
 .cs-cols-3 {
-  display: flex;
-  justify-content: space-between;
-  gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+  padding-top: 20px;
+  border-top: 1px solid #e6e6e6;
+}
+
+@media (max-width: 860px) {
+  .cs-cols-3 { grid-template-columns: 1fr; gap: 32px; }
 }
 .cs-col {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  /* Tighter than the 14px it was: the label belongs to the paragraph under it,
+     and that bond should be closer than the 48px separating the columns. */
+  gap: 10px;
 }
 
 /* Photo pair */
@@ -1875,18 +1893,47 @@ main {
 }
 
 /* Blue highlight boxes (Problem Statement + Goal) */
+/* Key-takeaway callout.
+   Was centred at 94 characters a line. Centred body copy puts the start of
+   every line in a different place, so the eye has to hunt for it on each
+   return sweep — the cost grows with the number of lines. Now ranged left
+   with the measure capped, and marked with a rule on the leading edge so it
+   reads as an aside without needing the size to say so. */
 .cs-blue-box {
   background: #e1e6f8;
   border-radius: 20px;
-  padding: 30px;
+  border-left: 3px solid #0015ff;
+  padding: 28px 32px;
   margin-top: 40px;
+  text-align: left;
+  /* The tint hugs the text instead of running the full column: with the
+     measure capped, a full-width box left a third of itself empty, which
+     reads as a mistake rather than as breathing room. */
+  max-width: 580px;
+}
+
+/* An eyebrow inside the callout, for the boxes that were opening with a
+   run-in "Insights:" doing a label's job inside the sentence. */
+.cs-callout-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #0015ff;
+  opacity: 0.75;
+  margin-bottom: 10px;
 }
 .cs-blue-box p {
-  font-size: 22px;
+  font-size: 19px;
   font-weight: 300;
   color: #0015ff;
-  text-align: center;
-  line-height: 1.48;
+  /* Ranged left, measure capped: it was centred at 94 characters a line.
+     48ch, not 62 — ch is the width of "0", and Switzer's average character is
+     appreciably narrower, so 62ch still let the line run to 84. */
+  text-align: left;
+  max-width: 48ch;
+  line-height: 1.5;
   margin: 0;
 }
 /* Etermax highlight cards use amber to distinguish from the purple project accordions. */
