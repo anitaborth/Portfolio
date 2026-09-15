@@ -1943,6 +1943,11 @@ main {
   text-align: left;
 }
 
+/* Standing on its own between sections rather than closing one, the callout
+   is spaced by the panel's own gap; its margin would add to that. */
+.modal__body > .cs-blue-box,
+.cs-tabpanel > .cs-blue-box { margin-top: 0; }
+
 .cs-blue-box > * { grid-column: 2; }
 .cs-blue-box > .cs-callout-label { grid-column: 1; grid-row: 1; }
 
@@ -1975,6 +1980,39 @@ main {
   line-height: 1.5;
   margin: 0;
 }
+/* A callout that lists commands. The name of each skill is the literal string
+   you type, so it is set in mono: it reads as something to be entered rather
+   than as a term in the sentence around it. Stacked rather than two columns —
+   the callout's own 2fr share is already narrow enough that a name beside its
+   description would leave the description at a broken measure. */
+.cs-skill-list {
+  list-style: none;
+  margin: 20px 0 0;
+  padding: 0;
+}
+.cs-skill-list li + li {
+  margin-top: 14px;
+  padding-top: 14px;
+  /* The blue at a low alpha, so the divider belongs to the box rather than
+     cutting across it. */
+  border-top: 1px solid rgba(0, 21, 255, 0.14);
+}
+.cs-skill-list code {
+  display: block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+  letter-spacing: -0.01em;
+  color: #0015ff;
+}
+.cs-skill-list span {
+  display: block;
+  margin-top: 4px;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: #0015ff;
+}
+
 /* Etermax highlight cards use amber to distinguish from the purple project accordions. */
 .cs-project .cs-blue-box { background: #fff3d6; }
 .cs-project .cs-blue-box p { color: #7c4d00; }

@@ -33,6 +33,32 @@
           </div>
         </div>
 
+        <!-- The plugin: the system reaching a project before its first screen -->
+        <div class="cs-blue-box">
+          <span class="cs-callout-label">Plugin</span>
+          <div>
+            <p>Embassy also ships as a Claude Code plugin, so the system reaches a project before its first screen exists. Anyone at Amalgama installs it and calls the skill they need &mdash; the design system arrives with the work instead of being looked up afterwards.</p>
+            <ul class="cs-skill-list">
+              <li>
+                <code>embassy:start</code>
+                <span>Opens a new project. Builds its design system from ours, or adapts the one the project already has &mdash; and is also what you call to correct what is already there.</span>
+              </li>
+              <li>
+                <code>embassy:screen</code>
+                <span>Builds new screens, desktop and mobile, against whichever system the project is on.</span>
+              </li>
+              <li>
+                <code>embassy:review</code>
+                <span>Reviews a screen against that system.</span>
+              </li>
+              <li>
+                <code>embassy:eval</code>
+                <span>Evaluates the system as a whole.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
         <div class="cs-block">
           <span class="cs-label-gray">OVERVIEW</span>
           <h3 class="cs-heading">What Embassy is, and how it's organized</h3>
