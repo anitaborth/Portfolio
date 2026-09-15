@@ -22,7 +22,116 @@
   <link rel="preload" href="assets/fonts/switzer-400.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/switzer-700.woff2" as="font" type="font/woff2" crossorigin />
 
-  <link rel="stylesheet" href="styles.css?v=72" />
+  <link rel="stylesheet" href="styles.css?v=73" />
+  <!-- Structured data: lets a parser read the CV as data, not just as text. -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Ana Borthagaray",
+  "jobTitle": "Product Designer",
+  "description": "End-to-end product designer with 10+ years crafting digital experiences across mobile, web, and platforms.",
+  "email": "mailto:anitaborthagaray@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Buenos Aires",
+    "addressCountry": "AR"
+  },
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Amalgama"
+  },
+  "hasOccupation": [
+    {
+      "@type": "Occupation",
+      "name": "Product Designer",
+      "occupationLocation": {
+        "@type": "Organization",
+        "name": "Amalgama"
+      }
+    },
+    {
+      "@type": "Occupation",
+      "name": "Product Artist",
+      "occupationLocation": {
+        "@type": "Organization",
+        "name": "Etermax"
+      }
+    },
+    {
+      "@type": "Occupation",
+      "name": "Media Lead & Sr. Digital Designer",
+      "occupationLocation": {
+        "@type": "Organization",
+        "name": "Accenture"
+      }
+    },
+    {
+      "@type": "Occupation",
+      "name": "Freelance Design Consultant",
+      "occupationLocation": {
+        "@type": "Organization",
+        "name": "Inter-American Development Bank"
+      }
+    },
+    {
+      "@type": "Occupation",
+      "name": "Freelance Design Consultant",
+      "occupationLocation": {
+        "@type": "Organization",
+        "name": "Organisation of American States"
+      }
+    },
+    {
+      "@type": "Occupation",
+      "name": "UI Designer",
+      "occupationLocation": {
+        "@type": "Organization",
+        "name": "Arredo"
+      }
+    }
+  ],
+  "alumniOf": [
+    {
+      "@type": "EducationalOrganization",
+      "name": "University of Buenos Aires (UBA)"
+    },
+    {
+      "@type": "EducationalOrganization",
+      "name": "Coderhouse"
+    },
+    {
+      "@type": "EducationalOrganization",
+      "name": "Interaction Design Foundation"
+    },
+    {
+      "@type": "EducationalOrganization",
+      "name": "Edison"
+    }
+  ],
+  "knowsAbout": [
+    "Product Design",
+    "UX Design",
+    "UI Design",
+    "Design Systems",
+    "User Research",
+    "Usability Testing",
+    "Wireframing",
+    "Prototyping",
+    "Interaction Design",
+    "Motion Design",
+    "Agile",
+    "Design Thinking",
+    "Figma",
+    "After Effects",
+    "Photoshop",
+    "Illustrator",
+    "Adobe XD",
+    "HTML & CSS",
+    "Amplitude"
+  ]
+}
+  </script>
 </head>
 
 <body class="page-dark">
@@ -82,13 +191,21 @@
           <li>Buenos Aires, Argentina</li>
         </ul>
 
+        <!-- The PDF is generated from this very page (see the @media print
+             rules), so the two never drift apart in layout. -->
+        <p class="resume__actions">
+          <a class="resume__download" href="ana-borthagaray-resume.pdf" download>
+            Download PDF
+          </a>
+        </p>
+
         <!-- ========================== EXPERIENCE ========================== -->
         <section class="resume__section" aria-labelledby="resume-experience">
           <h2 id="resume-experience" class="resume__section-label">Experience</h2>
         <article class="resume__entry">
           <div class="resume__entry-head">
             <h3 class="resume__org">Amalgama <span class="resume-pill resume-pill--ok">Now</span></h3>
-            <span class="resume__dates">Dec 2023 – Present</span>
+            <span class="resume__dates"><time datetime="2023-12">Dec 2023</time> – Present</span>
           </div>
           <p class="resume__title">Product Designer</p>
           <ul class="resume__points">
@@ -106,7 +223,7 @@
         <article class="resume__entry">
           <div class="resume__entry-head">
             <h3 class="resume__org">Etermax</h3>
-            <span class="resume__dates">Apr 2021 – Nov 2023</span>
+            <span class="resume__dates"><time datetime="2021-04">Apr 2021</time> – <time datetime="2023-11">Nov 2023</time></span>
           </div>
           <p class="resume__title">Product Artist</p>
           <ul class="resume__points">
@@ -121,7 +238,7 @@
         <article class="resume__entry">
           <div class="resume__entry-head">
             <h3 class="resume__org">Accenture</h3>
-            <span class="resume__dates">May 2019 – Apr 2021</span>
+            <span class="resume__dates"><time datetime="2019-05">May 2019</time> – <time datetime="2021-04">Apr 2021</time></span>
           </div>
           <p class="resume__title">Media Lead &amp; Sr. Digital Designer</p>
           <ul class="resume__points">
@@ -134,7 +251,7 @@
         <article class="resume__entry">
           <div class="resume__entry-head">
             <h3 class="resume__org">IDB — Inter-American Development Bank</h3>
-            <span class="resume__dates">Mar 2017 – Dec 2022</span>
+            <span class="resume__dates"><time datetime="2017-03">Mar 2017</time> – <time datetime="2022-12">Dec 2022</time></span>
           </div>
           <p class="resume__title">Freelance Design Consultant</p>
           <ul class="resume__points">
@@ -146,7 +263,7 @@
         <article class="resume__entry">
           <div class="resume__entry-head">
             <h3 class="resume__org">OAS — Organisation of American States</h3>
-            <span class="resume__dates">Mar 2017 – Dec 2019</span>
+            <span class="resume__dates"><time datetime="2017-03">Mar 2017</time> – <time datetime="2019-12">Dec 2019</time></span>
           </div>
           <p class="resume__title">Freelance Design Consultant</p>
           <ul class="resume__points">
@@ -157,7 +274,7 @@
         <article class="resume__entry">
           <div class="resume__entry-head">
             <h3 class="resume__org">ARREDO</h3>
-            <span class="resume__dates">Sep 2015 – May 2019</span>
+            <span class="resume__dates"><time datetime="2015-09">Sep 2015</time> – <time datetime="2019-05">May 2019</time></span>
           </div>
           <p class="resume__title">UI Designer</p>
           <ul class="resume__points">
@@ -173,28 +290,28 @@
         <article class="resume__entry">
           <div class="resume__entry-head">
             <h3 class="resume__org">Mobile User Experience Design</h3>
-            <span class="resume__dates">Mar 2023 – Present</span>
+            <span class="resume__dates"><time datetime="2023-03">Mar 2023</time> – Present</span>
           </div>
           <p class="resume__title">Interaction Design Foundation</p>
         </article>
         <article class="resume__entry">
           <div class="resume__entry-head">
             <h3 class="resume__org">How to Make Design Decisions with AI <span class="resume-pill resume-pill--new">New</span></h3>
-            <span class="resume__dates">Nov 2024</span>
+            <span class="resume__dates"><time datetime="2024-11">Nov 2024</time></span>
           </div>
           <p class="resume__title">Edison</p>
         </article>
         <article class="resume__entry">
           <div class="resume__entry-head">
             <h3 class="resume__org">UX/UI Design — Basic &amp; Advanced</h3>
-            <span class="resume__dates">Mar – Dec 2020</span>
+            <span class="resume__dates">Mar – <time datetime="2020-12">Dec 2020</time></span>
           </div>
           <p class="resume__title">Coderhouse</p>
         </article>
         <article class="resume__entry">
           <div class="resume__entry-head">
             <h3 class="resume__org">Bachelor of Graphic Design</h3>
-            <span class="resume__dates">Mar 2010 – Dec 2016</span>
+            <span class="resume__dates"><time datetime="2010-03">Mar 2010</time> – <time datetime="2016-12">Dec 2016</time></span>
           </div>
           <p class="resume__title">University of Buenos Aires (UBA)</p>
         </article>

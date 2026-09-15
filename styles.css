@@ -3095,6 +3095,35 @@ main {
 .resume__meta a { color: inherit; text-decoration: none; }
 .resume__meta a:hover { color: var(--resume-fg-muted); }
 
+.resume__actions { margin: 1.25rem 0 0; }
+
+.resume__download {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: var(--fw-medium);
+  color: var(--resume-fg);
+  background: rgba(167, 139, 250, 0.12);
+  border: 1px solid rgba(167, 139, 250, 0.32);
+  border-radius: 999px;
+  padding: 0.5rem 1.1rem;
+  text-decoration: none;
+  transition: background-color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.resume__download:hover {
+  background: rgba(167, 139, 250, 0.2);
+  border-color: rgba(167, 139, 250, 0.5);
+}
+
+.resume__download:focus-visible {
+  outline: 2px solid var(--resume-accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .resume__download { transition: none; }
+}
+
 /* ---- pills ---- */
 .resume-pill {
   display: inline-block;
@@ -3293,4 +3322,81 @@ main {
   .resume__entry-head { flex-direction: column; gap: 0.15rem; }
   .resume__skill-row { grid-template-columns: 1fr; gap: 0.5rem; }
   .resume__skill-label { padding-top: 0; }
+}
+
+/* =============================================================================
+   RESUME — print / PDF
+   -----------------------------------------------------------------------------
+   The downloadable PDF is generated from this page, so the print rules are what
+   the file looks like. Dark-on-black is right on screen and wrong on paper, so
+   the palette inverts here; site chrome and the download button are dropped;
+   and entries are kept from splitting across pages.
+============================================================================= */
+@media print {
+  @page {
+    size: A4;
+    margin: 16mm 14mm;
+  }
+
+  .site-header,
+  .site-footer,
+  .skip-link,
+  .resume__actions {
+    display: none !important;
+  }
+
+  html, body, .page-dark {
+    background: #fff !important;
+    color: #111 !important;
+  }
+
+  .resume {
+    /* Ink-friendly rewrite of the screen palette. */
+    --resume-surface: #fff;
+    --resume-card: #f6f6f7;
+    --resume-fg: #111;
+    --resume-fg-muted: #333;
+    --resume-fg-quiet: #666;
+    --resume-tag: #333;
+    --resume-hairline: #d8d8d8;
+    --resume-accent: #5b21b6;
+    --resume-ok: #15803d;
+    --resume-new: #a16207;
+
+    background: #fff !important;
+    padding: 0 !important;
+  }
+
+  .resume__inner { width: 100%; }
+
+  /* Keep a job and its bullets together rather than orphaning a heading. */
+  .resume__entry,
+  .resume__featured,
+  .resume__skill-row {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .resume__section { break-before: auto; margin-top: 1.6rem; }
+  .resume__section-label { margin-bottom: 0.8rem; }
+
+  .resume__avatar {
+    background: #ede9fe !important;
+    color: #5b21b6 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .resume-pill,
+  .resume__tags li,
+  .resume__meta li,
+  .resume__featured {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* A printed page has no hover target, so spell the address out. */
+  .resume__meta a::after { content: ""; }
+
+  a { color: inherit; text-decoration: none; }
 }
