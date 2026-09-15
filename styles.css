@@ -578,6 +578,52 @@ main {
   flex: 1;
   padding-block: 4rem 6rem;
 }
+
+/* Empty state — shown while there is nothing finished to publish.
+   The calendar markup this replaces lives on the experiments-calendar
+   branch; its styles below are left in place so restoring it is just a
+   matter of putting the markup back.
+
+   Colours are written for the dark page. The original empty state was
+   designed when this page had a light background, and reusing those tokens
+   here would have left #545454 text and a pure-black link on #111. */
+.experiments__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  min-height: 40vh;
+  padding-block: 4rem;
+  text-align: center;
+}
+
+.experiments__icon {
+  width: 48px;
+  height: 48px;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.experiments__subtitle {
+  font-size: var(--fs-base);
+  color: rgba(255, 255, 255, 0.6);
+  line-height: var(--lh-relaxed);
+  max-width: 480px;
+  margin: 0;
+}
+
+.experiments__subtitle a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.2s var(--ease);
+}
+
+.experiments__subtitle a:hover { opacity: 0.6; }
+
+@media (prefers-reduced-motion: reduce) {
+  .experiments__subtitle a { transition: none; }
+}
 .experiments__inner {
   display: flex;
   flex-direction: column;

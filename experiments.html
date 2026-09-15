@@ -19,7 +19,7 @@
   <link rel="preload" href="assets/fonts/switzer-400.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/switzer-700.woff2" as="font" type="font/woff2" crossorigin />
 
-  <link rel="stylesheet" href="styles.css?v=64" />
+  <link rel="stylesheet" href="styles.css?v=70" />
   <link rel="stylesheet" href="css/masonry.css?v=1" />
 </head>
 
@@ -53,166 +53,21 @@
 
   <main id="main">
     <section class="experiments" aria-labelledby="experiments-heading">
-      <div class="container experiments__inner">
-
-        <div class="experiments__header">
-          <h2 id="experiments-heading" class="section-label">Experiments</h2>
-          <h1 class="experiments__month">July 2026</h1>
-          <p class="experiments__intro">A running archive of the explorations I make between client work — design studies, animation tests, branding exercises, and 3D renders.</p>
+      <div class="container">
+        <h2 id="experiments-heading" class="section-label">Experiments</h2>
+        <div class="experiments__empty">
+          <svg class="experiments__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9 3h6" />
+            <path d="M9 3v7.5L4.22 18.5A1 1 0 0 0 5.1 20h13.8a1 1 0 0 0 .88-1.5L15 10.5V3" />
+            <circle cx="9.5" cy="15.5" r="0.75" fill="currentColor" stroke="none" />
+            <circle cx="12.5" cy="17" r="0.75" fill="currentColor" stroke="none" />
+            <circle cx="14.5" cy="14.5" r="0.75" fill="currentColor" stroke="none" />
+          </svg>
+          <p class="experiments__subtitle">
+            Experiments under construction.. want to know more? contact me at
+            <a href="mailto:anitaborthagaray@gmail.com">anitaborthagaray@gmail.com</a>
+          </p>
         </div>
-
-        <!-- Calendar grid — each populated day is a Masonry-style entrance/hover
-             card (see js/masonry.js); empty days are static. -->
-        <div class="calendar__weekdays" aria-hidden="true">
-          <span>Sun</span>
-          <span>Mon</span>
-          <span>Tue</span>
-          <span>Wed</span>
-          <span>Thu</span>
-          <span>Fri</span>
-          <span>Sat</span>
-        </div>
-
-        <div class="calendar__grid">
-          <div class="calendar__cell calendar__cell--pad" aria-hidden="true"></div>
-          <div class="calendar__cell calendar__cell--pad" aria-hidden="true"></div>
-          <div class="calendar__cell calendar__cell--pad" aria-hidden="true"></div>
-          <div class="calendar__cell calendar__cell--empty">
-            <span class="calendar__daynum">1</span>
-          </div>
-          <div class="calendar__cell calendar__day">
-            <div class="calendar__day-media skin-exploration"></div>
-            <div class="calendar__day-scrim"></div>
-            <span class="calendar__daynum">2</span>
-            <span class="calendar__tag">Exploration</span>
-            <span class="visually-hidden">Gradient mesh study</span>
-          </div>
-          <div class="calendar__cell calendar__cell--empty">
-            <span class="calendar__daynum">3</span>
-          </div>
-          <div class="calendar__cell calendar__cell--empty">
-            <span class="calendar__daynum">4</span>
-          </div>
-          <div class="calendar__cell calendar__day">
-            <div class="calendar__day-media skin-render"></div>
-            <div class="calendar__day-scrim"></div>
-            <span class="calendar__daynum">5</span>
-            <span class="calendar__tag">Render</span>
-            <span class="visually-hidden">Abstract sphere render</span>
-          </div>
-          <div class="calendar__cell calendar__cell--empty">
-            <span class="calendar__daynum">6</span>
-          </div>
-          <div class="calendar__cell calendar__cell--empty">
-            <span class="calendar__daynum">7</span>
-          </div>
-          <div class="calendar__cell calendar__day">
-            <div class="calendar__day-media skin-branding"></div>
-            <div class="calendar__day-scrim"></div>
-            <span class="calendar__daynum">8</span>
-            <span class="calendar__tag">Branding</span>
-            <span class="visually-hidden">Logo mark exploration</span>
-          </div>
-          <div class="calendar__cell calendar__cell--empty">
-            <span class="calendar__daynum">9</span>
-          </div>
-          <div class="calendar__cell calendar__cell--empty">
-            <span class="calendar__daynum">10</span>
-          </div>
-          <div class="calendar__cell calendar__day">
-            <div class="calendar__day-media skin-animation"></div>
-            <div class="calendar__day-scrim"></div>
-            <span class="calendar__daynum">11</span>
-            <span class="calendar__tag">Animation</span>
-            <span class="visually-hidden">Micro-interaction loop</span>
-          </div>
-          <div class="calendar__cell calendar__cell--empty">
-            <span class="calendar__daynum">12</span>
-          </div>
-          <div class="calendar__cell calendar__cell--empty">
-            <span class="calendar__daynum">13</span>
-          </div>
-          <div class="calendar__cell calendar__day">
-            <div class="calendar__day-media skin-type"></div>
-            <div class="calendar__day-scrim"></div>
-            <span class="calendar__daynum">14</span>
-            <span class="calendar__tag">Type</span>
-            <span class="visually-hidden">Variable type pairing</span>
-          </div>
-          <div class="calendar__cell calendar__cell--empty">
-            <span class="calendar__daynum">15</span>
-          </div>
-          <div class="calendar__cell calendar__cell--empty">
-            <span class="calendar__daynum">16</span>
-          </div>
-          <div class="calendar__cell calendar__day">
-            <div class="calendar__day-media skin-ui"></div>
-            <div class="calendar__day-scrim"></div>
-            <span class="calendar__daynum">17</span>
-            <span class="calendar__tag">UI</span>
-            <span class="visually-hidden">Dashboard concept</span>
-          </div>
-          <div class="calendar__cell calendar__cell--empty">
-            <span class="calendar__daynum">18</span>
-          </div>
-          <div class="calendar__cell calendar__cell--empty">
-            <span class="calendar__daynum">19</span>
-          </div>
-          <div class="calendar__cell calendar__cell--empty">
-            <span class="calendar__daynum">20</span>
-          </div>
-          <div class="calendar__cell calendar__day">
-            <div class="calendar__day-media skin-exploration"></div>
-            <div class="calendar__day-scrim"></div>
-            <span class="calendar__daynum">21</span>
-            <span class="calendar__tag">Exploration</span>
-            <span class="visually-hidden">Noise texture experiment</span>
-          </div>
-          <div class="calendar__cell calendar__cell--empty">
-            <span class="calendar__daynum">22</span>
-          </div>
-          <div class="calendar__cell calendar__cell--empty">
-            <span class="calendar__daynum">23</span>
-          </div>
-          <div class="calendar__cell calendar__day">
-            <div class="calendar__day-media skin-render"></div>
-            <div class="calendar__day-scrim"></div>
-            <span class="calendar__daynum">24</span>
-            <span class="calendar__tag">Render</span>
-            <span class="visually-hidden">Material study</span>
-          </div>
-          <div class="calendar__cell calendar__cell--empty">
-            <span class="calendar__daynum">25</span>
-          </div>
-          <div class="calendar__cell calendar__cell--empty">
-            <span class="calendar__daynum">26</span>
-          </div>
-          <div class="calendar__cell calendar__day">
-            <div class="calendar__day-media skin-branding"></div>
-            <div class="calendar__day-scrim"></div>
-            <span class="calendar__daynum">27</span>
-            <span class="calendar__tag">Branding</span>
-            <span class="visually-hidden">Palette exploration</span>
-          </div>
-          <div class="calendar__cell calendar__cell--empty">
-            <span class="calendar__daynum">28</span>
-          </div>
-          <div class="calendar__cell calendar__cell--empty">
-            <span class="calendar__daynum">29</span>
-          </div>
-          <div class="calendar__cell calendar__day">
-            <div class="calendar__day-media skin-ui"></div>
-            <div class="calendar__day-scrim"></div>
-            <span class="calendar__daynum">30</span>
-            <span class="calendar__tag">UI</span>
-            <span class="visually-hidden">Card component variations</span>
-          </div>
-          <div class="calendar__cell calendar__cell--empty">
-            <span class="calendar__daynum">31</span>
-          </div>
-          <div class="calendar__cell calendar__cell--pad" aria-hidden="true"></div>
-        </div>
-
       </div>
     </section>
   </main>
@@ -237,7 +92,5 @@
   </footer>
 
   <script src="script.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
-  <script src="js/masonry.js?v=1" defer></script>
 </body>
 </html>
