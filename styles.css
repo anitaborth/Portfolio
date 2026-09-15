@@ -3469,6 +3469,32 @@ main {
   gap: 0 0.28em;
 }
 
+/* ---- entrance -------------------------------------------------------------
+   The words arrive one at a time in reading order, each fading up into place,
+   and a word that carries an image or a mark brings it along in the same beat
+   rather than after it — which is why the stagger is indexed over the line's
+   direct children and not over every leaf.
+
+   Base opacity stays 1 and only the keyframe starts at 0: if the animation
+   never runs, the headline is simply there rather than invisible. */
+@keyframes hero-word-in {
+  from { opacity: 0; transform: translateY(0.16em); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-display__line > * {
+  animation: hero-word-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--i, 0) * 70ms);
+}
+
+/* The container already fades itself in; with the words staggering inside it,
+   that second fade only muddies the entrance. */
+.hero__content:has(.hero-display) { animation: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-display__line > * { animation: none; }
+}
+
 .hero-display__it { font-style: italic; }
 
 /* A word and the image or mark that belongs to it wrap as one unit, so a

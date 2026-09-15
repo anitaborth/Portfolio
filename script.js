@@ -391,6 +391,19 @@
     }
   }
 
+  /* ---------------------------------------------------------------------------
+     Display headline entrance
+     Numbers the headline's items so CSS can stagger them. Indexing runs across
+     lines, so the delay keeps climbing from one line to the next instead of
+     restarting and making the lines arrive together.
+  --------------------------------------------------------------------------- */
+  function initDisplayStagger() {
+    var items = document.querySelectorAll(".hero-display__line > *");
+    items.forEach(function (item, i) {
+      item.style.setProperty("--i", i);
+    });
+  }
+
   function initEmbedVideos(root) {
     const embed = root.querySelector(".cs-embed-morpheus");
     if (!embed || prefersReducedMotion) return;
@@ -794,6 +807,7 @@
      Bootstrap
   --------------------------------------------------------------------------- */
   function init() {
+    initDisplayStagger();
     initMarquee(document.querySelector("[data-marquee]"));
     initNavToggle(document.querySelector(".nav-toggle"));
     initReveal(Array.from(document.querySelectorAll("[data-reveal]")));
