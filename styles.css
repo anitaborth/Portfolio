@@ -872,10 +872,11 @@ main {
   font-size: clamp(1.12rem, 2.38vw, 2.03rem);
   line-height: 1.24;
   letter-spacing: -0.02em;
-  /* Scaled with the type: left at 820px the smaller size ran 102 characters
-     a line. Not a ch value either — Instrument Serif's characters are narrow
-     enough that 20ch came out barely 400px. */
-  max-width: 574px;
+  /* Back to the width it had before the type was reduced. Scaling it down
+     with the font kept the measure at 71 characters but shrank the block far
+     more than asked; the width is the page's opening statement, and the
+     request was to reduce the type, not the column. */
+  max-width: 820px;
   text-align: left;
   color: rgba(255, 255, 255, 0.92);
 }
@@ -1569,12 +1570,35 @@ main {
    across the top gives them a shared region, and the gap is wide enough that
    proximity groups each label with its own paragraph instead of with the
    neighbouring column. */
+/* Numbered so the three read as a sequence — problem, goal, challenge — and
+   not as three interchangeable blocks. The numerals come from a counter, so
+   no case study has to hand-maintain them. Each column carries its own rule
+   instead of one across the group: the rule then belongs to the column it
+   heads, which is what makes the label and its paragraph read as one unit. */
 .cs-cols-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 48px;
-  padding-top: 20px;
-  border-top: 1px solid #e6e6e6;
+  counter-reset: cs-col;
+}
+
+.cs-cols-3 > .cs-col {
+  padding-top: 16px;
+  border-top: 2px solid #111;
+}
+
+.cs-cols-3 > .cs-col::before {
+  counter-increment: cs-col;
+  content: counter(cs-col, decimal-leading-zero);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: #111;
+  margin-bottom: 2px;
+}
+
+@media (max-width: 860px) {
+  .cs-cols-3 { grid-template-columns: 1fr; gap: 32px; }
 }
 
 @media (max-width: 860px) {
@@ -1899,17 +1923,32 @@ main {
    return sweep — the cost grows with the number of lines. Now ranged left
    with the measure capped, and marked with a rule on the leading edge so it
    reads as an aside without needing the size to say so. */
+/* Key-takeaway callout, as a margin note: what it is on the left, what it
+   says on the right. The label anchors the left edge, so the block can run
+   the full column while the prose still stops at a readable measure — a
+   centred full-width box had neither. Square on the ruled edge so the rule
+   reads as a margin mark rather than as a border around a card. */
 .cs-blue-box {
-  background: #e1e6f8;
-  border-radius: 20px;
+  display: grid;
+  grid-template-columns: 132px minmax(0, 1fr);
+  gap: 0 28px;
+  align-items: start;
+  background: #eef1fb;
   border-left: 3px solid #0015ff;
+  border-radius: 0 16px 16px 0;
   padding: 28px 32px;
   margin-top: 40px;
   text-align: left;
-  /* The tint hugs the text instead of running the full column: with the
-     measure capped, a full-width box left a third of itself empty, which
-     reads as a mistake rather than as breathing room. */
-  max-width: 580px;
+  max-width: 820px;
+}
+
+.cs-blue-box > * { grid-column: 2; }
+.cs-blue-box > .cs-callout-label { grid-column: 1; grid-row: 1; }
+
+@media (max-width: 720px) {
+  .cs-blue-box { grid-template-columns: 1fr; gap: 10px 0; }
+  .cs-blue-box > *,
+  .cs-blue-box > .cs-callout-label { grid-column: 1; }
 }
 
 /* An eyebrow inside the callout, for the boxes that were opening with a
@@ -1921,8 +1960,9 @@ main {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: #0015ff;
-  opacity: 0.75;
-  margin-bottom: 10px;
+  opacity: 0.7;
+  /* Nudged onto the first line's baseline rather than its box top. */
+  padding-top: 5px;
 }
 .cs-blue-box p {
   font-size: 19px;

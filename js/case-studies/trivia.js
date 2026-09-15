@@ -32,6 +32,7 @@
               <span class="cs-label-gray">SHOP</span>
               <h3 class="cs-heading">Redesign</h3>
               <div class="cs-blue-box">
+                <span class="cs-callout-label">Approach</span>
                 <p>Tested with players in Argentina and iterated with US players via Playtest and A/B tests. We applied Social Proof and Von Restorff Effect to restructure the shop into scannable modules — making the best offers impossible to miss.</p>
                 <details class="cs-old-design-toggle">
                   <summary>See old design</summary>
@@ -377,6 +378,7 @@
             </div>
 
             <div class="cs-blue-box">
+              <span class="cs-callout-label">Validation</span>
               <p>We tested the low-fidelity prototype in the office with players in Argentina. From the results, we built a <strong>cost/benefit</strong> map to set <strong>priorities and next iterations</strong>, then moved into the <strong>high-fidelity version</strong> to bring into the onboarding.</p>
             </div>
 

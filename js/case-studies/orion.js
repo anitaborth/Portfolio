@@ -20,6 +20,7 @@
           <span class="cs-label-gray">OBJECTIVE</span>
           <h3 class="cs-heading">Objective</h3>
           <div class="cs-blue-box">
+            <span class="cs-callout-label">Objective</span>
             <p>Help users learn how to use a complex workplace tool through gamification, making the learning experience more engaging, accessible, and enjoyable.</p>
           </div>
         </div>

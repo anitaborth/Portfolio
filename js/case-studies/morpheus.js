@@ -427,6 +427,7 @@
                 <span class="cs-label-purple">POSSIBLE SOLUTION</span>
                 <h3 class="cs-heading">Goal</h3>
                 <div class="cs-blue-box">
+                  <span class="cs-callout-label">Focus</span>
                   <p>Working on helping users read and digest their health data, guiding their workouts based on their metrics, will maximize the app's experience and improve user satisfaction.</p>
                 </div>
               </div>
