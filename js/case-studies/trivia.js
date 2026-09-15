@@ -17,13 +17,15 @@
       },
       image: "assets/etermax/hero.png",
       body: `
-        <!-- ===================== PROJECT 1 ===================== -->
-        <details class="cs-project" open>
-          <summary class="cs-project__summary">
-            <span class="cs-project__pill">Project 1 | Shop Redesign and VIP Membership</span>
-            <span class="cs-project__chevron" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
-          </summary>
-          <div class="cs-project__body">
+        <div class="cs-tabs" role="tablist" aria-label="Trivia Crack projects" data-cs-tablist>
+          <button type="button" class="cs-tab" role="tab" id="cs-tab-trivia-project-1" aria-controls="cs-panel-trivia-project-1" aria-selected="true" data-cs-tab="project-1">Project 1 | Shop Redesign and VIP Membership</button>
+          <button type="button" class="cs-tab" role="tab" id="cs-tab-trivia-project-2" aria-controls="cs-panel-trivia-project-2" aria-selected="false" data-cs-tab="project-2">Project 2 | Onboarding</button>
+          <button type="button" class="cs-tab" role="tab" id="cs-tab-trivia-project-3" aria-controls="cs-panel-trivia-project-3" aria-selected="false" data-cs-tab="project-3">Project 3 | Quick Profile Update</button>
+          <button type="button" class="cs-tab" role="tab" id="cs-tab-trivia-project-4" aria-controls="cs-panel-trivia-project-4" aria-selected="false" data-cs-tab="project-4">Project 4 | UI Animations</button>
+        </div>
+
+        <!-- ===================== PROJECT 1 | SHOP REDESIGN AND VIP MEMBERSHIP ===================== -->
+        <section class="cs-tabpanel" role="tabpanel" id="cs-panel-trivia-project-1" aria-labelledby="cs-tab-trivia-project-1" data-cs-panel="project-1">
 
             <!-- SHOP / Redesign -->
             <div class="cs-block">
@@ -310,16 +312,10 @@
                 </div>
               </details>
             </div>
-          </div>
-        </details>
+        </section>
 
-        <!-- ===================== PROJECT 2 ===================== -->
-        <details class="cs-project" open>
-          <summary class="cs-project__summary">
-            <span class="cs-project__pill">Project 2 | Onboarding</span>
-            <span class="cs-project__chevron" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
-          </summary>
-          <div class="cs-project__body">
+        <!-- ===================== PROJECT 2 | ONBOARDING ===================== -->
+        <section class="cs-tabpanel" role="tabpanel" id="cs-panel-trivia-project-2" aria-labelledby="cs-tab-trivia-project-2" data-cs-panel="project-2">
 
             <div class="cs-cols-3">
               <div class="cs-col">
@@ -337,16 +333,10 @@
             </div>
 
             <img src="assets/etermax/onboarding.png" alt="Trivia Crack onboarding — staged missions introducing each game mode" class="cs-full-img" style="margin-top:0" />
-          </div>
-        </details>
+        </section>
 
-        <!-- ===================== PROJECT 3 ===================== -->
-        <details class="cs-project" open>
-          <summary class="cs-project__summary">
-            <span class="cs-project__pill">Project 3 | Quick Profile Update</span>
-            <span class="cs-project__chevron" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
-          </summary>
-          <div class="cs-project__body">
+        <!-- ===================== PROJECT 3 | QUICK PROFILE UPDATE ===================== -->
+        <section class="cs-tabpanel" role="tabpanel" id="cs-panel-trivia-project-3" aria-labelledby="cs-tab-trivia-project-3" data-cs-panel="project-3">
 
             <div class="cs-block">
               <span class="cs-label-gray">FTUE</span>
@@ -390,16 +380,10 @@
             </div>
 
             <img src="assets/etermax/signin-flow.png" alt="Quick Profile Update flow across three screens" class="cs-full-img" style="margin-top:0" />
-          </div>
-        </details>
+        </section>
 
-        <!-- ===================== PROJECT 4 ===================== -->
-        <details class="cs-project" open>
-          <summary class="cs-project__summary">
-            <span class="cs-project__pill">Project 4 | UI Animations</span>
-            <span class="cs-project__chevron" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
-          </summary>
-          <div class="cs-project__body">
+        <!-- ===================== PROJECT 4 | UI ANIMATIONS ===================== -->
+        <section class="cs-tabpanel" role="tabpanel" id="cs-panel-trivia-project-4" aria-labelledby="cs-tab-trivia-project-4" data-cs-panel="project-4">
 
             <div class="cs-block">
               <span class="cs-label-gray">MOTION</span>
@@ -427,9 +411,7 @@
               <img class="cs-anim" src="assets/etermax/anim-modal.gif" alt="Loading transition animation" loading="lazy" />
               <img class="cs-anim" src="assets/etermax/anim-wheel.gif" alt="Category wheel spinning into a question round" loading="lazy" />
             </div>
-          </div>
-        </details>
-
+        </section>
       `,
   };
 })();
