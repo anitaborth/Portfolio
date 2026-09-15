@@ -115,16 +115,16 @@
                   <div class="cs-cols-2">
                     <div>
                       <p class="cs-text">The membership bundles together the perks players value most:</p>
-                      <ul class="cs-goals-list">
-                        <li>An ad-free experience.</li>
-                        <li>Free rewards from the prize wheel.</li>
-                        <li>Unlimited lives.</li>
-                        <li>A 3-day free trial.</li>
+                      <ul class="cs-chip-list">
+                        <li>Ad-free experience</li>
+                        <li>Free prize wheel rewards</li>
+                        <li>Unlimited lives</li>
+                        <li>3-day free trial</li>
                       </ul>
                     </div>
                     <div>
-                      <p class="cs-text">We benchmarked how successful apps present premium memberships to shape the VIP offer:</p>
-                      <ul class="cs-goals-list">
+                      <p class="cs-text">We benchmarked how leading apps present their memberships:</p>
+                      <ul class="cs-chip-list">
                         <li>Coin Master</li>
                         <li>Duolingo</li>
                         <li>Clash Royale</li>
