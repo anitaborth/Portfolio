@@ -22,11 +22,24 @@
 (function () {
   'use strict';
 
+  /* `images` cycles across the marquee's repetitions, so a hovered item shows
+     several stills rather than the same one four times. Work uses the project
+     strips from work.html; the others have no artwork yet and fall back to the
+     plain rounded swatch. */
   var menuItems = [
-    { title: 'Work', link: 'work.html', image: 'assets/menu/work.jpg' },
-    { title: 'Profile', link: 'profile.html', image: 'assets/menu/profile.jpg' },
-    { title: 'Experiments', link: 'experiments.html', image: 'assets/menu/experiments.jpg' },
-    { title: 'Resume', link: 'resume.html', image: 'assets/menu/resume.jpg' }
+    {
+      title: 'Work',
+      link: 'work.html',
+      images: [
+        'assets/morpheus.png',
+        'assets/amalgama.png',
+        'assets/preguntados.png',
+        'assets/arredo.png'
+      ]
+    },
+    { title: 'Profile', link: 'profile.html', images: [] },
+    { title: 'Experiments', link: 'experiments.html', images: [] },
+    { title: 'Resume', link: 'resume.html', images: [] }
   ];
 
   var SPEED = 15; // seconds per full marquee loop — matches the original default
@@ -55,9 +68,20 @@
 
     var img = document.createElement('div');
     img.className = 'fm-marquee__img';
-    // TODO: replace with a real photo/still once assets/menu/<item>.jpg exists —
-    // until then this renders as a plain rounded placeholder swatch.
-    img.style.setProperty('--fm-item-image', 'url(' + image + ')');
+    // Left unset when the item has no artwork: the stylesheet then falls back
+    // to the rounded swatch, rather than pointing at a file that is not there.
+    //
+    // Resolved to an absolute URL first. This custom property is consumed by
+    // background-image in css/flowing-menu.css, and a relative url() inside a
+    // stylesheet resolves against the stylesheet — "assets/x.png" would be
+    // looked for in css/assets/. Going through document.baseURI also keeps it
+    // correct when the site is served from a subpath.
+    if (image) {
+      img.style.setProperty(
+        '--fm-item-image',
+        'url("' + new URL(image, document.baseURI).href + '")'
+      );
+    }
     part.appendChild(img);
 
     return part;
@@ -82,8 +106,10 @@
     marqueeInner.className = 'fm-marquee__inner';
     marqueeInner.setAttribute('aria-hidden', 'true');
 
+    var images = item.images || [];
     for (var i = 0; i < MIN_REPETITIONS; i++) {
-      marqueeInner.appendChild(buildMarqueePart(item.title, item.image));
+      var image = images.length ? images[i % images.length] : null;
+      marqueeInner.appendChild(buildMarqueePart(item.title, image));
     }
 
     marqueeInnerWrap.appendChild(marqueeInner);
