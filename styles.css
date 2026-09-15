@@ -3442,7 +3442,7 @@ main {
 .hero-display {
   /* The hero no longer shares its width with a side visual, so the headline
      runs across the page as it does in the reference. */
-  --display-size: clamp(2.2rem, 7vw, 6.5rem);
+  --display-size: clamp(2.2rem, 8.2vw, 7.5rem);
 
   font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
   font-weight: 400;
