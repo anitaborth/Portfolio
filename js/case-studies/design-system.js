@@ -18,18 +18,23 @@
       link: { label: "Check Website Project", href: "#" },
       image: "assets/embassy/hero.png",
       body: `
-        <div class="cs-cols-3">
-          <div class="cs-col">
-            <span class="cs-label-gray">Problem Statement</span>
-            <p class="cs-text">Every new product started from a blank canvas. Without a single source of truth for UI decisions, teams re-derived the same components project after project &mdash; and once AI entered the workflow, generated screens had nothing consistent to reference, so output rarely matched our design language.</p>
-          </div>
-          <div class="cs-col">
-            <span class="cs-label-gray">GOAL</span>
-            <p class="cs-text">Build a design system covering every core component needed to start a Desktop or Mobile product without opening Figma, while keeping every screen aligned with our UI guidelines from the very first commit.</p>
-          </div>
-          <div class="cs-col">
-            <span class="cs-label-gray">THE CHALLENGE</span>
-            <p class="cs-text">Make the system legible to AI, not just to designers &mdash; so color, typography, and spacing tokens get applied correctly even when a screen is generated from a prompt instead of drawn in Figma.</p>
+        <div>
+          <span class="cs-label-gray">DESIGN SYSTEM</span>
+          <h3 class="cs-heading">Foundations</h3>
+
+          <div class="cs-cols-3">
+            <div class="cs-col">
+              <span class="cs-label-gray">Problem Statement</span>
+              <p class="cs-text">Every new product started from a blank canvas. Without a single source of truth for UI decisions, teams re-derived the same components project after project &mdash; and once AI entered the workflow, generated screens had nothing consistent to reference, so output rarely matched our design language.</p>
+            </div>
+            <div class="cs-col">
+              <span class="cs-label-gray">GOAL</span>
+              <p class="cs-text">Build a design system covering every core component needed to start a Desktop or Mobile product without opening Figma, while keeping every screen aligned with our UI guidelines from the very first commit.</p>
+            </div>
+            <div class="cs-col">
+              <span class="cs-label-gray">THE CHALLENGE</span>
+              <p class="cs-text">Make the system legible to AI, not just to designers &mdash; so color, typography, and spacing tokens get applied correctly even when a screen is generated from a prompt instead of drawn in Figma.</p>
+            </div>
           </div>
         </div>
 
