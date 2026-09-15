@@ -1944,9 +1944,10 @@ main {
 }
 
 /* Standing on its own between sections rather than closing one, the callout
-   is spaced by the panel's own gap; its margin would add to that. */
-.modal__body > .cs-blue-box,
-.cs-tabpanel > .cs-blue-box { margin-top: 0; }
+   is spaced by the body's flex gap; its own margin would add to that. Only
+   here: inside a tab panel the separation IS the margin, so zeroing it there
+   would collapse the callout onto the block above. */
+.modal__body > .cs-blue-box { margin-top: 0; }
 
 .cs-blue-box > * { grid-column: 2; }
 .cs-blue-box > .cs-callout-label { grid-column: 1; grid-row: 1; }
