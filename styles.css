@@ -863,11 +863,20 @@ main {
 }
 
 .curated-work__intro {
-  max-width: 911px;
-  font-size: 24px;
-  line-height: 1.91;
+  /* Instrument Serif, the same display face as the profile hero. Set larger
+     and much tighter than the 24px/1.91 it replaced: that leading was built
+     for body copy, and at display size it read as separate lines rather than
+     a paragraph. */
+  font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3.4vw, 2.9rem);
+  line-height: 1.24;
+  letter-spacing: -0.02em;
+  /* Not a ch value: Instrument Serif's character width makes 20ch barely
+     400px, which stacked this into a narrow ten-line column. */
+  max-width: 820px;
   text-align: left;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.92);
 }
 
 .curated-work__label {
