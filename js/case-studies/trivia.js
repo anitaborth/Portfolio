@@ -31,14 +31,6 @@
             <div class="cs-block">
               <span class="cs-label-gray">SHOP</span>
               <h3 class="cs-heading">Redesign</h3>
-              <div class="cs-blue-box">
-                <span class="cs-callout-label">Approach</span>
-                <p>Tested with players in Argentina and iterated with US players via Playtest and A/B tests. We applied Social Proof and Von Restorff Effect to restructure the shop into scannable modules — making the best offers impossible to miss.</p>
-                <details class="cs-old-design-toggle">
-                  <summary>See old design</summary>
-                  <img src="assets/etermax/old-shop.png" alt="Old Trivia Crack shop screen" class="cs-full-img" style="margin-top:16px" />
-                </details>
-              </div>
             </div>
 
             <div class="cs-cols-3">
@@ -60,7 +52,16 @@
               </div>
             </div>
 
-            <img src="assets/etermax/new-shop.png" alt="Redesigned Trivia Crack shop with Special Offer, Right Answers, Credits, Coins and Daily Deals" class="cs-full-img" style="margin-top:0" />
+            <div class="cs-blue-box">
+              <span class="cs-callout-label">Approach</span>
+              <p>Tested with players in Argentina and iterated with US players via Playtest and A/B tests. We applied Social Proof and Von Restorff Effect to restructure the shop into scannable modules — making the best offers impossible to miss.</p>
+              <details class="cs-old-design-toggle">
+                <summary>See old design</summary>
+                <img src="assets/etermax/old-shop.png" alt="Old Trivia Crack shop screen" class="cs-full-img" style="margin-top:16px" />
+              </details>
+            </div>
+
+            <img src="assets/etermax/new-shop.png" alt="Redesigned Trivia Crack shop with Special Offer, Right Answers, Credits, Coins and Daily Deals" class="cs-full-img" />
 
             <div class="cs-media-grid">
               <div class="cs-media-item">
@@ -106,7 +107,7 @@
               </div>
             </div>
 
-            <img src="assets/etermax/vip-mockup.png" alt="Trivia Crack PRIME membership screen with Monthly and Yearly plans" class="cs-full-img" style="margin-top:0" />
+            <img src="assets/etermax/vip-mockup.png" alt="Trivia Crack PRIME membership screen with Monthly and Yearly plans" class="cs-full-img" />
 
             <!-- Design-thinking sub-steps -->
             <div>
@@ -319,6 +320,11 @@
         <!-- ===================== PROJECT 2 | ONBOARDING ===================== -->
         <section class="cs-tabpanel" role="tabpanel" id="cs-panel-trivia-project-2" aria-labelledby="cs-tab-trivia-project-2" data-cs-panel="project-2">
 
+            <div class="cs-block">
+              <span class="cs-label-gray">ONBOARDING</span>
+              <h3 class="cs-heading">First seven days</h3>
+            </div>
+
             <div class="cs-cols-3">
               <div class="cs-col">
                 <span class="cs-label-gray">Problem Statement</span>
@@ -334,7 +340,7 @@
               </div>
             </div>
 
-            <img src="assets/etermax/onboarding.png" alt="Trivia Crack onboarding — staged missions introducing each game mode" class="cs-full-img" style="margin-top:0" />
+            <img src="assets/etermax/onboarding.png" alt="Trivia Crack onboarding — staged missions introducing each game mode" class="cs-full-img" />
         </section>
 
         <!-- ===================== PROJECT 3 | QUICK PROFILE UPDATE ===================== -->
@@ -360,7 +366,7 @@
               </div>
             </div>
 
-            <img src="assets/etermax/profile-mockup.png" alt="Quick Profile Update modal — Hi, Peter Hackman, pick your favorite avatar" class="cs-full-img" style="margin-top:0" />
+            <img src="assets/etermax/profile-mockup.png" alt="Quick Profile Update modal — Hi, Peter Hackman, pick your favorite avatar" class="cs-full-img" />
 
             <div class="cs-cols-2">
               <div>
@@ -382,7 +388,7 @@
               <p>We tested the low-fidelity prototype in the office with players in Argentina. From the results, we built a <strong>cost/benefit</strong> map to set <strong>priorities and next iterations</strong>, then moved into the <strong>high-fidelity version</strong> to bring into the onboarding.</p>
             </div>
 
-            <img src="assets/etermax/signin-flow.png" alt="Quick Profile Update flow across three screens" class="cs-full-img" style="margin-top:0" />
+            <img src="assets/etermax/signin-flow.png" alt="Quick Profile Update flow across three screens" class="cs-full-img" />
         </section>
 
         <!-- ===================== PROJECT 4 | UI ANIMATIONS ===================== -->
