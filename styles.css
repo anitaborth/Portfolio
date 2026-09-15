@@ -1956,17 +1956,18 @@ main {
    reads as a margin mark rather than as a border around a card. */
 .cs-blue-box {
   display: grid;
-  grid-template-columns: 132px minmax(0, 1fr);
-  gap: 0 28px;
+  /* Proportional rather than a fixed label column: the text then fills the
+     share that leaves it a readable line instead of stopping short of a
+     capped width and leaving the right of the box empty. */
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 0 32px;
   align-items: start;
   background: #eef1fb;
-  border-left: 3px solid #0015ff;
-  border-radius: 0 16px 16px 0;
-  padding: 28px 32px;
+  border-radius: 20px;
+  padding: 32px;
   /* One step in the panel's vertical scale, same as between the other blocks. */
   margin-top: 48px;
   text-align: left;
-  max-width: 820px;
 }
 
 .cs-blue-box > * { grid-column: 2; }
@@ -1995,11 +1996,9 @@ main {
   font-size: 19px;
   font-weight: 300;
   color: #0015ff;
-  /* Ranged left, measure capped: it was centred at 94 characters a line.
-     48ch, not 62 — ch is the width of "0", and Switzer's average character is
-     appreciably narrower, so 62ch still let the line run to 84. */
+  /* Ranged left — it was centred at 94 characters a line. The measure is set
+     by the grid's 2fr share now, not by a max-width of its own. */
   text-align: left;
-  max-width: 48ch;
   line-height: 1.5;
   margin: 0;
 }
