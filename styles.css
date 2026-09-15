@@ -3416,3 +3416,100 @@ main {
 
   a { color: inherit; text-decoration: none; }
 }
+
+/* =============================================================================
+   PROFILE — display headline
+   -----------------------------------------------------------------------------
+   Instrument Serif set large, with images and marks sitting inside the line of
+   type. Self-hosted alongside Switzer (SIL Open Font License), latin subset.
+============================================================================= */
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("assets/fonts/instrument-serif-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("assets/fonts/instrument-serif-400-italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+.hero-display {
+  /* Sized so each line fits the hero's text column in one row — the metaballs
+     visual takes the rest of the width, so this is narrower than the reference,
+     which runs the headline across the whole page. */
+  --display-size: clamp(2.1rem, 6.2vw, 5.6rem);
+
+  font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  font-size: var(--display-size);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: #000;
+  margin: 0;
+}
+
+.hero-display__eyes {
+  display: block;
+  width: clamp(38px, 4vw, 58px);
+  color: #1d3fd4;
+  margin-bottom: clamp(1rem, 3vw, 2.5rem);
+}
+.hero-display__eyes svg { width: 100%; height: auto; display: block; }
+
+/* Each line is its own flex row so the images and marks share the baseline with
+   the words instead of being pushed onto their own line. */
+.hero-display__line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 0.28em;
+}
+
+.hero-display__it { font-style: italic; }
+
+/* A word and the image or mark that belongs to it wrap as one unit, so a
+   narrow viewport never drops an image onto a row of its own. */
+.hero-display__pair {
+  display: inline-flex;
+  align-items: center;
+  gap: 0 0.28em;
+  white-space: nowrap;
+}
+
+/* Images are sized in em, so they scale with the type at every breakpoint
+   rather than drifting out of proportion. */
+.hero-display__img {
+  display: inline-flex;
+  width: 1.55em;
+  height: 0.74em;
+  border-radius: 0.07em;
+  overflow: hidden;
+  flex: none;
+}
+
+.hero-display__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-display__mark {
+  display: inline-flex;
+  width: 0.62em;
+  height: 0.62em;
+  flex: none;
+  color: #000;
+}
+.hero-display__mark svg { width: 100%; height: 100%; display: block; }
+
+@media (max-width: 700px) {
+  .hero-display { max-width: none; }
+  .hero-display__line { gap: 0 0.22em; }
+}

@@ -22,7 +22,7 @@
   <link rel="preload" href="assets/fonts/switzer-400.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/switzer-700.woff2" as="font" type="font/woff2" crossorigin />
 
-  <link rel="stylesheet" href="styles.css?v=75" />
+  <link rel="stylesheet" href="styles.css?v=78" />
   <link rel="stylesheet" href="css/variableProximity.css" />
   <link rel="stylesheet" href="css/scrollVelocity.css" />
   <link rel="stylesheet" href="css/metaBalls.css?v=2" />
@@ -65,27 +65,33 @@
     <section class="hero" aria-label="Hero">
       <div class="hero__inner container">
         <div class="hero__content">
-          <div class="hero__bio vp-hero">
-            <div class="hero__bio-row">
-              <span>I'm </span><strong>Ana Borthagaray,</strong><span class="hero__bio-img-wrap" data-hover-preview="assets/portrait-hero.png"><img class="hero__bio-img" src="assets/me.png" alt="" aria-hidden="true" /></span><span> a visual product designer from Buenos Aires.</span>
-            </div>
-            <div class="hero__bio-row">
-              <span>I focus on defining what to build and why—bridging user needs, business goals,</span>
-            </div>
-            <div class="hero__bio-row">
-              <span>and technology to drive meaningful product decisions.</span><span class="img-hover-trigger" data-hover-preview="assets/decisions.png"><img class="hero__bio-img" src="assets/decisions.png" alt="" aria-hidden="true" /></span>
-            </div>
-            <div class="hero__bio-row">
-              <span>My work goes beyond</span>
-              <img class="hero__bio-icon" src="assets/star1.svg" alt="" aria-hidden="true" />
-              <span>interface design, emphasizing problem framing,</span>
-            </div>
-            <div class="hero__bio-row">
-              <span>prioritization, and delivering</span>
-              <span>impactful user experiences.</span>
-              <img class="hero__bio-icon hero__bio-icon--arrow" src="assets/arrow.svg" alt="" aria-hidden="true" />
-            </div>
-          </div>
+          <!-- Display headline: the words set as inline items so the images and
+               marks sit in the line of type rather than beside it. Each word is
+               its own element, which is what lets the flow wrap naturally and
+               keeps the images on the baseline. -->
+          <h1 class="hero-display">
+            <span class="hero-display__eyes" aria-hidden="true">
+              <svg viewBox="0 0 64 34" fill="none"><ellipse cx="17" cy="17" rx="15.5" ry="15.5" stroke="currentColor" stroke-width="3"/><ellipse cx="17" cy="17" rx="5.5" ry="7.5" fill="currentColor"/><ellipse cx="47" cy="17" rx="15.5" ry="15.5" stroke="currentColor" stroke-width="3"/><ellipse cx="47" cy="17" rx="5.5" ry="7.5" fill="currentColor"/></svg>
+            </span>
+
+            <span class="hero-display__line">
+              <span class="hero-display__pair"><span>Interaction</span><span class="hero-display__img"><img src="assets/me.png" alt="Ana Borthagaray" loading="eager" /></span></span>
+              <span>Designer</span>
+            </span>
+
+            <span class="hero-display__line">
+              <span class="hero-display__it">crafting</span>
+              <span class="hero-display__mark" aria-hidden="true"><svg class="hero-display__smiley" viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2.5"/><circle cx="16" cy="19" r="2.6" fill="currentColor"/><circle cx="32" cy="19" r="2.6" fill="currentColor"/><path d="M14 29c2.8 4.2 6.2 6.3 10 6.3S31.2 33.2 34 29" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></span>
+              <span>design</span>
+              <span class="hero-display__pair"><span>solutions</span><span class="hero-display__img"><img src="assets/decisions.png" alt="A product decision board" loading="eager" /></span></span>
+            </span>
+
+            <span class="hero-display__line">
+              <span class="hero-display__pair"><span>and</span><span class="hero-display__img"><img src="assets/portrait-hero.png" alt="Ana Borthagaray at work" loading="eager" /></span></span>
+              <span class="hero-display__it">visual</span>
+              <span class="hero-display__pair"><span class="hero-display__it">stories</span><span class="hero-display__mark" aria-hidden="true"><svg class="hero-display__smiley" viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2.5"/><circle cx="16" cy="19" r="2.6" fill="currentColor"/><circle cx="32" cy="19" r="2.6" fill="currentColor"/><path d="M14 29c2.8 4.2 6.2 6.3 10 6.3S31.2 33.2 34 29" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></span></span>
+            </span>
+          </h1>
         </div>
 
         <div class="hero__visual" aria-hidden="true">
