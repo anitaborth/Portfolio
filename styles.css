@@ -2681,6 +2681,24 @@ main {
    two are siblings, so heading-to-content is one value either way. */
 .cs-tabpanel > .cs-block + * { margin-top: 24px; }
 
+/* Section break inside a case study.
+   Without an image to separate one section from the next, the rule and the
+   space do that work. Matched by shape rather than by class: a section is a
+   top-level block that announces itself with a label above a heading, which
+   is true of .cs-block in some case studies and a bare <div> in others. The
+   :has() also means a section added later is separated without anyone
+   remembering to mark it.
+
+   Never before the first block — that one follows the chips or the hero,
+   which already separate it. */
+.modal__body > * + *:has(> .cs-label-gray + .cs-heading),
+.modal__body > * + *:has(> .cs-label-purple + .cs-heading),
+.cs-tabpanel > * + *:has(> .cs-label-gray + .cs-heading),
+.cs-tabpanel > * + *:has(> .cs-label-purple + .cs-heading) {
+  border-top: 1px solid #e2e2e2;
+  padding-top: 56px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .cs-tab { transition: none; }
 }
