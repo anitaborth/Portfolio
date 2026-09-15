@@ -11,7 +11,7 @@
       meta: {
         client: "Amalgama",
         type: "Design System - UI - AI",
-        year: "2026",
+        year: "2023 - Present",
         role: "Sr. UI designer",
         tools: "Figma, Claude",
       },

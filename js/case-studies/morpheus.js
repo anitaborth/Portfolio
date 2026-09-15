@@ -11,7 +11,7 @@
       meta: {
         client: "Amalgama",
         type: "Product Design - Fitness design - UX/UI - Prototyping - AI",
-        year: "2024 - 2026",
+        year: "2024 - Present",
         role: "Sr. Product designer, UX researcher, UI designer",
         tools: "Figma, Claude",
       },

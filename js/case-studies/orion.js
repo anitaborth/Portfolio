@@ -11,7 +11,7 @@
       meta: {
         client: "Accenture",
         type: "Product Design · UX UI · Video",
-        year: "2019 — 2021",
+        year: "2019 - 2021",
         role: "Senior Creative Designer",
       },
       image: "assets/orion/hero.png",

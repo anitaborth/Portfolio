@@ -11,7 +11,7 @@
       meta: {
         client: "Etermax",
         type: "Product Game - UI - UX - Illustration",
-        year: "2021-2023",
+        year: "2021 - 2023",
         role: "Sr. UI designer",
         tools: "Figma",
       },
