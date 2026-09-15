@@ -1591,33 +1591,15 @@ main {
   color: #9a9a9a;
 }
 
-/* A hairline in the gutter, so the columns sit on something instead of
-   floating. Drawn with a pseudo-element placed half a gutter to the left
-   rather than as a border: a border would take width from the column and
-   shorten its measure, this takes none, so all three keep the same text
-   width. Only between columns — never before the first. */
-.cs-cols-3 > .cs-col { position: relative; }
-
-.cs-cols-3 > .cs-col + .cs-col::after {
-  content: "";
-  position: absolute;
-  left: -24px;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: #e2e2e2;
-}
-
-@media (max-width: 860px) {
-  /* Stacked, the divider turns horizontal and sits above each column. */
-  .cs-cols-3 > .cs-col + .cs-col::after {
-    left: 0;
-    right: 0;
-    top: -16px;
-    bottom: auto;
-    width: auto;
-    height: 1px;
-  }
+/* The three columns sat on nothing, so they read as floating. Rather than
+   ruling between them — which divides a set that belongs together — the
+   group is closed into a band: a hairline above and below, and the padding
+   to let it breathe. The lower rule is the one doing the work; a line above
+   alone gives them a ceiling but still no floor. */
+.cs-cols-3 {
+  padding-block: 24px;
+  border-top: 1px solid #e2e2e2;
+  border-bottom: 1px solid #e2e2e2;
 }
 
 @media (max-width: 860px) {
