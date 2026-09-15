@@ -3035,9 +3035,16 @@ main {
 /* ---- header ---- */
 .resume__head {
   display: grid;
-  grid-template-columns: 64px 1fr;
+  /* identity left, download action pinned to the top right */
+  grid-template-columns: 64px 1fr auto;
   gap: 1.25rem;
   align-items: start;
+}
+
+.resume__actions {
+  margin: 0;
+  justify-self: end;
+  align-self: start;
 }
 
 .resume__avatar {
@@ -3072,7 +3079,9 @@ main {
   line-height: 1.7;
   color: var(--resume-fg-muted);
   margin: 1.5rem 0 0;
-  max-width: 52ch;
+  /* Was 52ch, which stopped 264px short of a 720px column while the bullets
+     below ran its full width — the paragraph read as if it were indented. */
+  max-width: 66ch;
 }
 
 .resume__meta {
@@ -3094,8 +3103,6 @@ main {
 
 .resume__meta a { color: inherit; text-decoration: none; }
 .resume__meta a:hover { color: var(--resume-fg-muted); }
-
-.resume__actions { margin: 1.25rem 0 0; }
 
 .resume__download {
   display: inline-block;
@@ -3319,6 +3326,7 @@ main {
 
 @media (max-width: 640px) {
   .resume__head { grid-template-columns: 1fr; }
+  .resume__actions { justify-self: start; margin-top: 0.25rem; }
   .resume__entry-head { flex-direction: column; gap: 0.15rem; }
   .resume__skill-row { grid-template-columns: 1fr; gap: 0.5rem; }
   .resume__skill-label { padding-top: 0; }

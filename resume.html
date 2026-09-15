@@ -22,7 +22,7 @@
   <link rel="preload" href="assets/fonts/switzer-400.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/switzer-700.woff2" as="font" type="font/woff2" crossorigin />
 
-  <link rel="stylesheet" href="styles.css?v=73" />
+  <link rel="stylesheet" href="styles.css?v=74" />
   <!-- Structured data: lets a parser read the CV as data, not just as text. -->
   <script type="application/ld+json">
 {
@@ -173,11 +173,16 @@
         <!-- ============================ HEADER ============================ -->
         <header class="resume__head">
           <span class="resume__avatar" aria-hidden="true">AB</span>
-          <div>
+          <div class="resume__identity">
             <span class="resume-pill resume-pill--ok">Available for work</span>
             <h1 id="resume-heading" class="resume__name">Ana Borthagaray</h1>
             <p class="resume__role">Visual &amp; Product Designer · UX / UI</p>
           </div>
+          <p class="resume__actions">
+            <a class="resume__download" href="ana-borthagaray-resume.pdf" download>
+              Download PDF
+            </a>
+          </p>
         </header>
 
         <p class="resume__bio">
@@ -190,14 +195,6 @@
           <li><a href="mailto:anitaborthagaray@gmail.com">anitaborthagaray@gmail.com</a></li>
           <li>Buenos Aires, Argentina</li>
         </ul>
-
-        <!-- The PDF is generated from this very page (see the @media print
-             rules), so the two never drift apart in layout. -->
-        <p class="resume__actions">
-          <a class="resume__download" href="ana-borthagaray-resume.pdf" download>
-            Download PDF
-          </a>
-        </p>
 
         <!-- ========================== EXPERIENCE ========================== -->
         <section class="resume__section" aria-labelledby="resume-experience">
