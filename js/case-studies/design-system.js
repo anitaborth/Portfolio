@@ -36,7 +36,7 @@
         <div class="cs-block">
           <span class="cs-label-gray">OVERVIEW</span>
           <h3 class="cs-heading">What Embassy is, and how it's organized</h3>
-          <p class="cs-text">Embassy is Amalgama's single source of truth for product UI: the tokens, components, and usage guidelines every team pulls from, whether they're designing in Figma, prototyping with AI, or shipping code. We structured the documentation around three questions &mdash; what the system is, who it serves, and how to use it &mdash; so a new teammate, or a language model reading the docs, can get oriented in minutes instead of days.</p>
+          <p class="cs-text cs-text-2col">Embassy is Amalgama's single source of truth for product UI: the tokens, components, and usage guidelines every team pulls from, whether they're designing in Figma, prototyping with AI, or shipping code. We structured the documentation around three questions &mdash; what the system is, who it serves, and how to use it &mdash; so a new teammate, or a language model reading the docs, can get oriented in minutes instead of days.</p>
           <img src="assets/embassy/quees.png" alt="Embassy documentation home — what the system is, who it's for, and how to use the docs" class="cs-full-img" />
         </div>
 
@@ -186,7 +186,7 @@
         <div>
           <span class="cs-label-gray">SOLUTION</span>
           <h3 class="cs-heading">One library, every surface</h3>
-          <p class="cs-text">Today Embassy ships 30 documented components &mdash; from foundational buttons and inputs to complex patterns like data tables, bottom sheets, and empty states &mdash; each with usage guidelines, accessibility notes, and code-ready specs. It's the same library whether a designer opens Figma or an engineer prompts an AI assistant to scaffold a screen.</p>
+          <p class="cs-text cs-text-2col">Today Embassy ships 30 documented components &mdash; from foundational buttons and inputs to complex patterns like data tables, bottom sheets, and empty states &mdash; each with usage guidelines, accessibility notes, and code-ready specs. It's the same library whether a designer opens Figma or an engineer prompts an AI assistant to scaffold a screen.</p>
           <div class="cs-comp-grid">
             ${[
               ["App bar", "Top and bottom app bars."],

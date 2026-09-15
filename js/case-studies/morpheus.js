@@ -465,7 +465,7 @@
               <span class="cs-accordion-icon">+</span>
             </summary>
             <div class="cs-accordion__body">
-              <p class="cs-text">We also held interviews, which were primarily user testing sessions aimed at validating the changes we implemented in the app.</p>
+              <p class="cs-text cs-text-2col">We also held interviews, which were primarily user testing sessions aimed at validating the changes we implemented in the app.</p>
             </div>
           </details>
 
@@ -474,7 +474,7 @@
         <div>
           <span class="cs-label-gray">SOLUTION</span>
           <h3 class="cs-heading">Design system</h3>
-          <p class="cs-text">We created a UI kit in Figma that includes all the necessary components, their variants, color tokens, typography tokens, margins, and more.</p>
+          <p class="cs-text cs-text-2col">We created a UI kit in Figma that includes all the necessary components, their variants, color tokens, typography tokens, margins, and more.</p>
           <div class="cs-ds-card">
             <img src="assets/morpheus/ds.png" alt="Design system" />
           </div>
