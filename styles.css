@@ -1090,7 +1090,10 @@ main {
   .work-card:hover .work-card__images { transform: none; }
   .hero {
     min-height: 0;
-    padding-block: 3rem;
+    /* Below 900px the hero stops filling a fixed band and wraps the headline,
+       so the breathing room has to come from padding instead. 3rem left it far
+       tighter than the ~160px the composition sits in on a wide screen. */
+    padding-block: clamp(3.5rem, 9vw, 6rem);
   }
   .hero__visual {
     flex-basis: clamp(180px, 24vw, 260px);
@@ -3442,7 +3445,9 @@ main {
 .hero-display {
   /* The hero no longer shares its width with a side visual, so the headline
      runs across the page as it does in the reference. */
-  --display-size: clamp(2.2rem, 8.2vw, 7.5rem);
+  /* Sized down from 8.2vw so the composition sits with more air above and
+     below it inside the hero, rather than filling the band edge to edge. */
+  --display-size: clamp(1.9rem, 6.6vw, 6rem);
 
   font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
   font-weight: 400;
