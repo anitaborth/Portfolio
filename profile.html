@@ -22,10 +22,9 @@
   <link rel="preload" href="assets/fonts/switzer-400.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/switzer-700.woff2" as="font" type="font/woff2" crossorigin />
 
-  <link rel="stylesheet" href="styles.css?v=78" />
+  <link rel="stylesheet" href="styles.css?v=79" />
   <link rel="stylesheet" href="css/variableProximity.css" />
   <link rel="stylesheet" href="css/scrollVelocity.css" />
-  <link rel="stylesheet" href="css/metaBalls.css?v=2" />
 </head>
 
 <body>
@@ -62,7 +61,13 @@
       </div>
     </header>
 
-    <section class="hero" aria-label="Hero">
+    <section class="hero" aria-label="Hero" data-eyes-cursor>
+      <!-- Follows the pointer inside the hero and stands in for the native
+           cursor there; js/eyesCursor.js fills in the position. -->
+      <span class="eyes-cursor" aria-hidden="true">
+        <svg viewBox="0 0 64 34" fill="none"><ellipse cx="17" cy="17" rx="15.5" ry="15.5" stroke="currentColor" stroke-width="3"/><ellipse class="eyes-cursor__pupil" cx="17" cy="17" rx="5.5" ry="7.5" fill="currentColor"/><ellipse cx="47" cy="17" rx="15.5" ry="15.5" stroke="currentColor" stroke-width="3"/><ellipse class="eyes-cursor__pupil" cx="47" cy="17" rx="5.5" ry="7.5" fill="currentColor"/></svg>
+      </span>
+
       <div class="hero__inner container">
         <div class="hero__content">
           <!-- Display headline: the words set as inline items so the images and
@@ -70,10 +75,6 @@
                its own element, which is what lets the flow wrap naturally and
                keeps the images on the baseline. -->
           <h1 class="hero-display">
-            <span class="hero-display__eyes" aria-hidden="true">
-              <svg viewBox="0 0 64 34" fill="none"><ellipse cx="17" cy="17" rx="15.5" ry="15.5" stroke="currentColor" stroke-width="3"/><ellipse cx="17" cy="17" rx="5.5" ry="7.5" fill="currentColor"/><ellipse cx="47" cy="17" rx="15.5" ry="15.5" stroke="currentColor" stroke-width="3"/><ellipse cx="47" cy="17" rx="5.5" ry="7.5" fill="currentColor"/></svg>
-            </span>
-
             <span class="hero-display__line">
               <span class="hero-display__pair"><span>Interaction</span><span class="hero-display__img"><img src="assets/me.png" alt="Ana Borthagaray" loading="eager" /></span></span>
               <span>Designer</span>
@@ -94,9 +95,6 @@
           </h1>
         </div>
 
-        <div class="hero__visual" aria-hidden="true">
-          <div class="metaballs-container"></div>
-        </div>
       </div>
     </section>
 
@@ -168,9 +166,9 @@
     </div>
   </footer>
 
+  <script src="js/eyesCursor.js" defer></script>
   <script src="script.js" defer></script>
   <script src="js/scrollVelocity.js" defer></script>
   <script src="js/variableProximity.js" defer></script>
-  <script type="module" src="js/metaBalls.js?v=2"></script>
 </body>
 </html>

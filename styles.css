@@ -3440,10 +3440,9 @@ main {
 }
 
 .hero-display {
-  /* Sized so each line fits the hero's text column in one row — the metaballs
-     visual takes the rest of the width, so this is narrower than the reference,
-     which runs the headline across the whole page. */
-  --display-size: clamp(2.1rem, 6.2vw, 5.6rem);
+  /* The hero no longer shares its width with a side visual, so the headline
+     runs across the page as it does in the reference. */
+  --display-size: clamp(2.2rem, 7vw, 6.5rem);
 
   font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
   font-weight: 400;
@@ -3452,15 +3451,8 @@ main {
   letter-spacing: -0.03em;
   color: #000;
   margin: 0;
+  text-align: center;
 }
-
-.hero-display__eyes {
-  display: block;
-  width: clamp(38px, 4vw, 58px);
-  color: #1d3fd4;
-  margin-bottom: clamp(1rem, 3vw, 2.5rem);
-}
-.hero-display__eyes svg { width: 100%; height: auto; display: block; }
 
 /* Each line is its own flex row so the images and marks share the baseline with
    the words instead of being pushed onto their own line. */
@@ -3468,6 +3460,7 @@ main {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   gap: 0 0.28em;
 }
 
@@ -3512,4 +3505,39 @@ main {
 @media (max-width: 700px) {
   .hero-display { max-width: none; }
   .hero-display__line { gap: 0 0.22em; }
+}
+
+
+/* ---- eyes cursor -----------------------------------------------------------
+   Replaces the native cursor inside the hero only. js/eyesCursor.js adds
+   .has-eyes-cursor once it knows there is a real pointing device, so a touch
+   screen never loses its cursor to a rule that cannot be undone. */
+.hero { position: relative; }
+
+.eyes-cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: clamp(38px, 3.4vw, 52px);
+  color: #1d3fd4;
+  opacity: 0;
+  transition: opacity 0.25s var(--ease);
+  pointer-events: none;
+  z-index: 2;
+  will-change: transform;
+}
+
+.eyes-cursor svg { width: 100%; height: auto; display: block; }
+.eyes-cursor.is-visible { opacity: 1; }
+
+.eyes-cursor__pupil { transition: transform 0.12s ease-out; }
+
+/* Hide the native cursor only once the script has confirmed a fine pointer. */
+.hero.has-eyes-cursor { cursor: none; }
+.hero.has-eyes-cursor a,
+.hero.has-eyes-cursor button { cursor: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .eyes-cursor,
+  .eyes-cursor__pupil { transition: none; }
 }
