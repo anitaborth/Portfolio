@@ -2625,10 +2625,16 @@ main {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin: 0 0 32px;
+  /* No bottom margin: .modal__body is a flex column, so its gap already
+     separates the chips from the panel — the two were stacking to 92px. */
+  margin: 0;
   padding: 0;
   border: 0;
 }
+
+/* A tabbed body only ever shows the chips and one panel, so it does not need
+   the 60px rhythm that separates the stacked sections of an untabbed one. */
+.modal__body:has(.cs-tabs) { gap: 32px; }
 
 .cs-tab {
   font-family: inherit;
@@ -2668,6 +2674,12 @@ main {
 
 /* The first child of a panel sits flush against the chip row. */
 .cs-tabpanel > :first-child { margin-top: 0; }
+
+/* A heading belongs to what follows it, so it sits closer to that than to
+   whatever came before — the panel's 60px would read as a gap between two
+   unrelated blocks. 24px is what .cs-heading + content already uses when the
+   two are siblings, so heading-to-content is one value either way. */
+.cs-tabpanel > .cs-block + * { margin-top: 24px; }
 
 @media (prefers-reduced-motion: reduce) {
   .cs-tab { transition: none; }
