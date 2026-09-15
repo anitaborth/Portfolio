@@ -1591,6 +1591,35 @@ main {
   color: #9a9a9a;
 }
 
+/* A hairline in the gutter, so the columns sit on something instead of
+   floating. Drawn with a pseudo-element placed half a gutter to the left
+   rather than as a border: a border would take width from the column and
+   shorten its measure, this takes none, so all three keep the same text
+   width. Only between columns — never before the first. */
+.cs-cols-3 > .cs-col { position: relative; }
+
+.cs-cols-3 > .cs-col + .cs-col::after {
+  content: "";
+  position: absolute;
+  left: -24px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #e2e2e2;
+}
+
+@media (max-width: 860px) {
+  /* Stacked, the divider turns horizontal and sits above each column. */
+  .cs-cols-3 > .cs-col + .cs-col::after {
+    left: 0;
+    right: 0;
+    top: -16px;
+    bottom: auto;
+    width: auto;
+    height: 1px;
+  }
+}
+
 @media (max-width: 860px) {
   .cs-cols-3 { grid-template-columns: 1fr; gap: 32px; }
 }
