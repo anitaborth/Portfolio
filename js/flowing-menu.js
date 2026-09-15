@@ -34,6 +34,7 @@
         'assets/morpheus.png',
         'assets/amalgama.png',
         'assets/preguntados.png',
+        'assets/orion/work-orion.png',
         'assets/arredo.png'
       ]
     },

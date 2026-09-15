@@ -987,21 +987,6 @@ main {
   display: block;
 }
 
-/* Placeholder colours for cards without image assets yet */
-.work-card__img {
-  flex: 1;
-  min-width: 0;
-  background: #2a2a2a;
-}
-
-.work-card__img--o1,
-.work-card__img--o2,
-.work-card__img--o3 { background: #1a1a1a; }
-
-.work-card__img--d1 { background: #2a1f3d; }
-.work-card__img--d2 { background: #1a2a3d; }
-.work-card__img--d3 { background: #3d2a1f; }
-
 /* Work card — hover states */
 .work-card:hover .work-card__period,
 .work-card:hover .work-card__identity,
