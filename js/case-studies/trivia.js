@@ -40,11 +40,7 @@
               </div>
               <div class="cs-col">
                 <span class="cs-label-gray">GOAL</span>
-                <p class="cs-text">Improve the shopping experience and turn it into a growth driver.</p>
-                <ul class="cs-goals-list">
-                  <li>Present offers as self-contained modules, with daily gifts to build a return habit.</li>
-                  <li>Lift shop conversion by 10&ndash;15% and grow ARPPU through repeat purchases.</li>
-                </ul>
+                <p class="cs-text">Improve the shopping experience and turn it into a growth driver: present offers as self-contained modules, with daily gifts to build a return habit, and lift shop conversion by 10&ndash;15% while growing ARPPU through repeat purchases.</p>
               </div>
               <div class="cs-col">
                 <span class="cs-label-gray">THE CHALLENGE</span>
@@ -95,11 +91,7 @@
               </div>
               <div class="cs-col">
                 <span class="cs-label-gray">GOAL</span>
-                <p class="cs-text">Make premium value clear and encourage more players to upgrade.</p>
-                <ul class="cs-goals-list">
-                  <li>Communicate each benefit clearly &mdash; no ads, free wheel, unlimited lives.</li>
-                  <li>Lower the barrier with a 3-day trial to lift conversion 8&ndash;12% and Day 30 retention.</li>
-                </ul>
+                <p class="cs-text">Make premium value clear and encourage more players to upgrade: communicate each benefit clearly &mdash; no ads, free wheel, unlimited lives &mdash; and lower the barrier with a 3-day trial to lift conversion 8&ndash;12% and Day 30 retention.</p>
               </div>
               <div class="cs-col">
                 <span class="cs-label-gray">THE CHALLENGE</span>

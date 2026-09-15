@@ -1591,16 +1591,7 @@ main {
   color: #9a9a9a;
 }
 
-/* The three columns sat on nothing, so they read as floating. Rather than
-   ruling between them — which divides a set that belongs together — the
-   group is closed into a band: a hairline above and below, and the padding
-   to let it breathe. The lower rule is the one doing the work; a line above
-   alone gives them a ceiling but still no floor. */
-.cs-cols-3 {
-  padding-block: 24px;
-  border-top: 1px solid #e2e2e2;
-  border-bottom: 1px solid #e2e2e2;
-}
+
 
 @media (max-width: 860px) {
   .cs-cols-3 { grid-template-columns: 1fr; gap: 32px; }
