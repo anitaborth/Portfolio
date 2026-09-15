@@ -3251,6 +3251,14 @@ main {
   margin: 0.45rem 0 0.4rem;
 }
 
+/* The outcome line carries the numbers a reader scores on, so it is set
+   apart from the description rather than buried in the same block. */
+.resume__featured-metrics {
+  margin-top: 0.6rem;
+  color: var(--resume-fg);
+  font-weight: var(--fw-medium);
+}
+
 .resume__featured-text {
   font-size: 0.875rem;
   line-height: 1.65;
