@@ -56,6 +56,11 @@
         <!-- ===================== MOBILE APP ===================== -->
         <section class="cs-tabpanel" role="tabpanel" id="cs-panel-morpheus-mobile" aria-labelledby="cs-tab-morpheus-mobile" data-cs-panel="mobile">
 
+            <div class="cs-block">
+              <span class="cs-label-gray">APP</span>
+              <h3 class="cs-heading">Redesign</h3>
+            </div>
+
         <div class="cs-cols-3">
           <div class="cs-col">
             <span class="cs-label-gray">Problem Statement</span>
@@ -497,6 +502,11 @@
 
         <!-- ===================== WEBSITE ===================== -->
         <section class="cs-tabpanel" role="tabpanel" id="cs-panel-morpheus-website" aria-labelledby="cs-tab-morpheus-website" data-cs-panel="website">
+            <div class="cs-block">
+              <span class="cs-label-gray">WEB</span>
+              <h3 class="cs-heading">Product site</h3>
+            </div>
+
             <div>
               <video class="cs-full-img" controls playsinline style="margin-top:0; border-radius:20px;">
                 <source src="assets/morpheus/website-video.mp4" type="video/mp4" />
