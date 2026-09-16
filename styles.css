@@ -1929,29 +1929,28 @@ main {
   margin-top: 40px;
 }
 
-/* Blue highlight boxes (Problem Statement + Goal) */
 /* Key-takeaway callout.
-   Was centred at 94 characters a line. Centred body copy puts the start of
-   every line in a different place, so the eye has to hunt for it on each
-   return sweep — the cost grows with the number of lines. Now ranged left
-   with the measure capped, and marked with a rule on the leading edge so it
-   reads as an aside without needing the size to say so. */
-/* Key-takeaway callout, as a margin note: what it is on the left, what it
-   says on the right. The label anchors the left edge, so the block can run
-   the full column while the prose still stops at a readable measure — a
-   centred full-width box had neither. Square on the ruled edge so the rule
-   reads as a margin mark rather than as a border around a card. */
+   Was a margin note: a label column on the left, the prose on the right. The
+   label column was doing two jobs — holding the label, and capping the
+   measure — and it only ever filled a couple of lines, so a tall callout
+   opened a hole down its left side that got worse the more it had to say.
+
+   Now the label sits above and the whole block is centred, so the measure is
+   capped by the text's own max-width and the leftover space falls evenly on
+   both sides instead of pooling on one. 640px is the widest both sizes in
+   here stay readable at: ~62 characters a line for the 19px lead, ~70 for the
+   15px text under it. */
 .cs-blue-box {
+  /* One centred column rather than auto margins on each child: several of
+     them set their own margin, which would win on specificity and knock
+     that child out of alignment with the rest. A track places them all the
+     same way whatever their margins say. */
   display: grid;
-  /* Proportional rather than a fixed label column: the text then fills the
-     share that leaves it a readable line instead of stopping short of a
-     capped width and leaving the right of the box empty. */
-  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-  gap: 0 32px;
-  align-items: start;
+  grid-template-columns: min(640px, 100%);
+  justify-content: center;
   background: #eef1fb;
   border-radius: 20px;
-  padding: 32px;
+  padding: 48px;
   /* One step in the panel's vertical scale, same as between the other blocks. */
   margin-top: 48px;
   text-align: left;
@@ -1963,13 +1962,9 @@ main {
    would collapse the callout onto the block above. */
 .modal__body > .cs-blue-box { margin-top: 0; }
 
-.cs-blue-box > * { grid-column: 2; }
-.cs-blue-box > .cs-callout-label { grid-column: 1; grid-row: 1; }
-
 @media (max-width: 720px) {
-  .cs-blue-box { grid-template-columns: 1fr; gap: 10px 0; }
-  .cs-blue-box > *,
-  .cs-blue-box > .cs-callout-label { grid-column: 1; }
+  /* The padding was buying air the narrow screen has none to spare. */
+  .cs-blue-box { padding: 28px 24px; }
 }
 
 /* An eyebrow inside the callout, for the boxes that were opening with a
@@ -1982,8 +1977,7 @@ main {
   letter-spacing: 0.08em;
   color: #0015ff;
   opacity: 0.7;
-  /* Nudged onto the first line's baseline rather than its box top. */
-  padding-top: 5px;
+  margin-bottom: 26px;
 }
 .cs-blue-box p {
   font-size: 19px;
