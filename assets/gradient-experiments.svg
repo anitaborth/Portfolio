@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1068 334" preserveAspectRatio="xMidYMid slice">
+  <!-- A mesh gradient, built as blurred blobs rather than stops: colour fields
+       that bleed into each other with no banding and no raster to scale.
+       The viewBox is the marquee pill's own ratio — at 4:1 the pill cropped a
+       tenth off each side and took the dark corner with it. -->
+  <defs>
+    <filter id="soft" x="-60%" y="-60%" width="220%" height="220%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="100" />
+    </filter>
+  </defs>
+  <rect width="1068" height="334" fill="#15161a" />
+  <g filter="url(#soft)">
+    <ellipse cx="120"  cy="55"  rx="290" ry="200" fill="#101116" />
+    <ellipse cx="105"  cy="300" rx="260" ry="215" fill="#03a97a" />
+    <ellipse cx="415"  cy="95"  rx="230" ry="195" fill="#8a3448" />
+    <ellipse cx="560"  cy="265" rx="265" ry="215" fill="#d8321c" />
+    <ellipse cx="800"  cy="105" rx="275" ry="220" fill="#f5720d" />
+    <ellipse cx="1000" cy="265" rx="265" ry="215" fill="#ffc417" />
+  </g>
+</svg>

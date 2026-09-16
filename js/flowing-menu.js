@@ -23,10 +23,16 @@
   'use strict';
 
   /* `images` cycles across the marquee's repetitions, so a hovered item shows
-     several stills rather than the same one four times. Work uses the project
-     strips from work.html; the others have no artwork yet and fall back to the
-     plain rounded swatch. */
+     several stills rather than the same one four times. Profile carries the
+     two photographs from its own hero, Work the project strips from
+     work.html, and the last two a gradient each — built as SVG, so they scale
+     to whatever the marquee gives them. */
   var menuItems = [
+    {
+      title: 'Profile',
+      link: 'profile.html',
+      images: ['assets/me.png', 'assets/compu.png']
+    },
     {
       title: 'Work',
       link: 'work.html',
@@ -38,9 +44,16 @@
         'assets/arredo.png'
       ]
     },
-    { title: 'Profile', link: 'profile.html', images: [] },
-    { title: 'Experiments', link: 'experiments.html', images: [] },
-    { title: 'Resume', link: 'resume.html', images: [] }
+    {
+      title: 'Experiments',
+      link: 'experiments.html',
+      images: ['assets/gradient-experiments.svg']
+    },
+    {
+      title: 'Resume',
+      link: 'resume.html',
+      images: ['assets/gradient-resume.svg']
+    }
   ];
 
   var SPEED = 15; // seconds per full marquee loop — matches the original default

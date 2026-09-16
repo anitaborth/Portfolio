@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1068 334" preserveAspectRatio="xMidYMid slice">
+  <!-- Same construction as gradient-experiments, on the lighter palette. -->
+  <defs>
+    <filter id="soft" x="-60%" y="-60%" width="220%" height="220%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="100" />
+    </filter>
+  </defs>
+  <rect width="1068" height="334" fill="#b163b0" />
+  <g filter="url(#soft)">
+    <ellipse cx="95"   cy="60"  rx="265" ry="205" fill="#f0509f" />
+    <ellipse cx="80"   cy="300" rx="250" ry="200" fill="#f4643c" />
+    <ellipse cx="430"  cy="70"  rx="245" ry="195" fill="#f7b98c" />
+    <ellipse cx="480"  cy="300" rx="245" ry="195" fill="#b85a9e" />
+    <ellipse cx="780"  cy="280" rx="255" ry="205" fill="#6b46c9" />
+    <ellipse cx="985"  cy="80"  rx="270" ry="210" fill="#4aa3e8" />
+  </g>
+</svg>
