@@ -2743,8 +2743,20 @@ main {
 .cs-tabpanel > * + *:has(> .cs-label-gray + .cs-heading),
 .cs-tabpanel > * + *:has(> .cs-label-purple + .cs-heading) {
   border-top: 1px solid #e2e2e2;
-  padding-top: 56px;
+  /* 80 either side of the rule. A section break has to read as bigger than
+     the 60 between blocks inside one section, or the hierarchy flattens and
+     every composition looks equally far from every other. Left alone: the
+     tighter rhythm inside a composition — chips to title, title to columns. */
+  padding-top: 80px;
 }
+/* The space above the rule: 80 in a tab panel, where blocks are spaced by
+   margin; 20 on top of the body's own 60px flex gap, which lands at the
+   same place. */
+.cs-tabpanel > * + *:has(> .cs-label-gray + .cs-heading),
+.cs-tabpanel > * + *:has(> .cs-label-purple + .cs-heading) { margin-top: 80px; }
+
+.modal__body > * + *:has(> .cs-label-gray + .cs-heading),
+.modal__body > * + *:has(> .cs-label-purple + .cs-heading) { margin-top: 20px; }
 
 @media (prefers-reduced-motion: reduce) {
   .cs-tab { transition: none; }
