@@ -1525,8 +1525,10 @@ main {
    title → body → composition sequence breathes the same way everywhere:
      subtitle (label) → title : 12px
      title → body text        : 16px
-     body / title → image or designed composition : ~24px (carried by each
+     title → image or designed composition : ~24px (carried by each
        composition's own margin-top, e.g. .cs-hypothesis-card, .cs-full-img)
+     body → image or designed composition, closing a section : 112px, the
+       same as the section break above it
 -------------------------------------------------------------------------- */
 .cs-label-gray + .cs-heading,
 .cs-label-purple + .cs-heading { margin-top: 16px; }
@@ -1544,6 +1546,26 @@ main {
 /* Intro paragraph followed by a column block (e.g. a two-column goals grid). */
 .cs-text + .cs-cols-2,
 .cs-text + .cs-cols-3 { margin-top: 40px; }
+
+/* Where a text composition hands over to a designed one — an image, a grid of
+   cards — inside the same section. It matches the 112 the section break gives
+   the text above it, so the block of type sits in the same air top and bottom
+   instead of a lot above and a little below.
+
+   Scoped to compositions that are direct children of a section block: the
+   same pairing occurs inside cards and columns, where 112 would blow them
+   apart. .cs-full-img keeps its own 40 for the rest — two images in a row
+   belong together and should not be pushed to arm's length. */
+:is(.modal__body, .cs-tabpanel) > *
+  > :is(.cs-text, .cs-text-2col, .cs-goals-list, .cs-takeaways-list, p)
+  + :is(.cs-full-img, .cs-comp-grid) { margin-top: 112px; }
+
+@media (max-width: 720px) {
+  /* Steps down with the section break, for the same reason. */
+  :is(.modal__body, .cs-tabpanel) > *
+    > :is(.cs-text, .cs-text-2col, .cs-goals-list, .cs-takeaways-list, p)
+    + :is(.cs-full-img, .cs-comp-grid) { margin-top: 64px; }
+}
 
 /* .cs-section-header is a flex column — its own gap handles label→title,
    so cancel the sibling margin to avoid doubling up. */
