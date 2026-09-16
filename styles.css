@@ -1567,6 +1567,29 @@ main {
     + :is(.cs-full-img, .cs-comp-grid) { margin-top: 64px; }
 }
 
+/* Same 112 after a column set — the other shape a text composition takes.
+   Whichever way it is built, a block of type is followed by the next
+   composition at the distance the section gives it above.
+
+   Two selectors because the columns sit at different depths: their own block
+   in the tabbed case studies, wrapped under a label and heading in the
+   others. The tab panel spaces its blocks by margin, so it takes the whole
+   112; the modal body is a flex column whose 60px gap is already there, so
+   52 on top of it lands in the same place. */
+.cs-tabpanel > :is(.cs-cols-3, .cs-cols-2) + *,
+.cs-tabpanel > *:has(> :is(.cs-cols-3, .cs-cols-2)) + * { margin-top: 112px; }
+
+.modal__body > :is(.cs-cols-3, .cs-cols-2) + *,
+.modal__body > *:has(> :is(.cs-cols-3, .cs-cols-2)) + * { margin-top: 52px; }
+
+@media (max-width: 720px) {
+  .cs-tabpanel > :is(.cs-cols-3, .cs-cols-2) + *,
+  .cs-tabpanel > *:has(> :is(.cs-cols-3, .cs-cols-2)) + * { margin-top: 64px; }
+
+  .modal__body > :is(.cs-cols-3, .cs-cols-2) + *,
+  .modal__body > *:has(> :is(.cs-cols-3, .cs-cols-2)) + * { margin-top: 4px; }
+}
+
 /* .cs-section-header is a flex column — its own gap handles label→title,
    so cancel the sibling margin to avoid doubling up. */
 .cs-section-header > .cs-label-gray + .cs-heading,
@@ -1977,12 +2000,6 @@ main {
   margin-top: 48px;
   text-align: left;
 }
-
-/* Standing on its own between sections rather than closing one, the callout
-   is spaced by the body's flex gap; its own margin would add to that. Only
-   here: inside a tab panel the separation IS the margin, so zeroing it there
-   would collapse the callout onto the block above. */
-.modal__body > .cs-blue-box { margin-top: 0; }
 
 @media (max-width: 720px) {
   /* The padding was buying air the narrow screen has none to spare. */
