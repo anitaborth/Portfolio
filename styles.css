@@ -1389,7 +1389,9 @@ main {
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  /* Same rhythm, so the first composition sits as far below the hero as the
+     next one does below it. */
+  gap: 112px;
 }
 
 .modal__hero { flex-shrink: 0; }
@@ -1404,7 +1406,11 @@ main {
 .modal__body {
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  /* One distance between every top-level block, the same one the section rule
+     sits in the middle of. Anything smaller on one side of a composition than
+     the other reads as a mistake — which is what a patchwork of 60s and 112s
+     was doing. */
+  gap: 112px;
   padding-bottom: 60px;
 }
 
@@ -1567,28 +1573,6 @@ main {
     + :is(.cs-full-img, .cs-comp-grid) { margin-top: 64px; }
 }
 
-/* Same 112 after a column set — the other shape a text composition takes.
-   Whichever way it is built, a block of type is followed by the next
-   composition at the distance the section gives it above.
-
-   Two selectors because the columns sit at different depths: their own block
-   in the tabbed case studies, wrapped under a label and heading in the
-   others. The tab panel spaces its blocks by margin, so it takes the whole
-   112; the modal body is a flex column whose 60px gap is already there, so
-   52 on top of it lands in the same place. */
-.cs-tabpanel > :is(.cs-cols-3, .cs-cols-2) + *,
-.cs-tabpanel > *:has(> :is(.cs-cols-3, .cs-cols-2)) + * { margin-top: 112px; }
-
-.modal__body > :is(.cs-cols-3, .cs-cols-2) + *,
-.modal__body > *:has(> :is(.cs-cols-3, .cs-cols-2)) + * { margin-top: 52px; }
-
-@media (max-width: 720px) {
-  .cs-tabpanel > :is(.cs-cols-3, .cs-cols-2) + *,
-  .cs-tabpanel > *:has(> :is(.cs-cols-3, .cs-cols-2)) + * { margin-top: 64px; }
-
-  .modal__body > :is(.cs-cols-3, .cs-cols-2) + *,
-  .modal__body > *:has(> :is(.cs-cols-3, .cs-cols-2)) + * { margin-top: 4px; }
-}
 
 /* .cs-section-header is a flex column — its own gap handles label→title,
    so cancel the sibling margin to avoid doubling up. */
@@ -2005,6 +1989,12 @@ main {
   /* The padding was buying air the narrow screen has none to spare. */
   .cs-blue-box { padding: 28px 24px; }
 }
+
+/* Direct children of the gapped flex column carry their own top margin, which
+   would add to the gap and put them further from what is above than anything
+   else is. The gap is the rhythm; these two defer to it. */
+.modal__body > .cs-blue-box,
+.modal__body > .cs-full-img { margin-top: 0; }
 
 /* An eyebrow inside the callout, for the boxes that were opening with a
    run-in "Insights:" doing a label's job inside the sentence. */
@@ -2756,7 +2746,7 @@ main {
    margin their first child happened to carry, so the same column mixed 0, 40
    and 60px gaps. 60px is the spacing the case study already uses between its
    nested sub-sections, so the page keeps one scale throughout. */
-.cs-tabpanel > * + * { margin-top: 60px; }
+.cs-tabpanel > * + * { margin-top: 112px; }
 
 /* The first child of a panel sits flush against the chip row. */
 .cs-tabpanel > :first-child { margin-top: 0; }
@@ -2788,28 +2778,18 @@ main {
      tighter rhythm inside a composition — chips to title, title to columns. */
   padding-top: 112px;
 }
-/* The space above the rule: 112 in a tab panel, where blocks are spaced by
-   margin; 52 on top of the body's own 60px flex gap, which lands at the
-   same place. */
-.cs-tabpanel > * + *:has(> .cs-label-gray + .cs-heading),
-.cs-tabpanel > * + *:has(> .cs-label-purple + .cs-heading) { margin-top: 112px; }
-
-.modal__body > * + *:has(> .cs-label-gray + .cs-heading),
-.modal__body > * + *:has(> .cs-label-purple + .cs-heading) { margin-top: 52px; }
-
+/* The space above the rule is the block rhythm itself — the rule sits in the
+   middle of it, so the composition above has the same 112 below it as the
+   one below the rule has above. */
 @media (max-width: 720px) {
-  /* 224px of break costs a phone most of a screen. Still clearly more than
-     the blocks inside a section, which is all the rule has to say. */
+  .modal__content,
+  .modal__body { gap: 64px; }
+  .cs-tabpanel > * + * { margin-top: 64px; }
+
   .modal__body > * + *:has(> .cs-label-gray + .cs-heading),
   .modal__body > * + *:has(> .cs-label-purple + .cs-heading),
   .cs-tabpanel > * + *:has(> .cs-label-gray + .cs-heading),
   .cs-tabpanel > * + *:has(> .cs-label-purple + .cs-heading) { padding-top: 64px; }
-
-  .cs-tabpanel > * + *:has(> .cs-label-gray + .cs-heading),
-  .cs-tabpanel > * + *:has(> .cs-label-purple + .cs-heading) { margin-top: 64px; }
-
-  .modal__body > * + *:has(> .cs-label-gray + .cs-heading),
-  .modal__body > * + *:has(> .cs-label-purple + .cs-heading) { margin-top: 4px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
