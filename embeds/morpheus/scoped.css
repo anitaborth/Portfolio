@@ -694,6 +694,11 @@
 /* The original page reserves an 80px navy bar for the site header. No nav here. */
 .cs-embed-morpheus [class*="__headerBar"]{display:none!important}
 
+/* "Case studies", with the back arrow, is the site's own navigation — it
+   returns to a listing that does not exist here. This is a preview of the
+   Amalgama page, not a copy of the site around it. */
+.cs-embed-morpheus [class*="__heroBreadcrumb"]{display:none!important}
+
 /* Page-level rules landed here when :root/html/body collapsed onto the scope.
    overflow must stay visible: auto or scroll would make the embed its own
    scroll container and clip it inside the modal. */
